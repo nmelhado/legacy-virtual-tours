@@ -1,0 +1,98 @@
+.panoface .lightfaceContent {
+	background-color: #fff;      /* the  color of window background, if  it does not ordered on the call page the other color */
+}
+
+.panoface .lightfaceContent .lightfaceTitle {
+ 	background-color: #471610;    /* the color of the upper bar  (titel) */
+}
+
+
+
+.panoface {
+	margin: 0;
+	padding: 0;
+	border-collapse: collapse;
+	position: absolute;
+	top: -9000px;
+	left: -9000px;
+}
+
+.panoface td {
+	padding: 0;
+	margin: 0;
+	background-color: transparent;
+	vertical-align: top;
+	font-family: 'Verdana';
+	font-size: 11px;
+}
+
+
+.panoface .loading {
+	display: block;
+	margin: 10px auto;
+}
+
+.panoface .lightfaceContent .lightfaceTitle {
+	font-size: 14px;
+	color: #fff;
+	border: 1px solid #000000;
+	font-weight: bold;
+	margin: -1px;
+	margin-bottom: 0;
+	padding: 5px 10px;
+}
+
+.panoface .lightfaceContent .lightfaceDraggable {
+	cursor:move;
+}
+
+.panoface .lightfaceContent .lightfaceMessage {
+	overflow: auto;
+	margin: 0;
+	position: relative;
+	padding: 5px 10px;
+	border: 1px solid #fff;
+}
+
+.panoface .lightfaceContent .lightfaceMessage h3,
+.panoface .lightfaceContent .lightfaceMessage h4,
+.panoface .lightfaceContent .lightfaceMessage h5,
+.panoface .lightfaceContent .lightfaceMessage h6 {
+	margin-top: 6px;
+}
+
+
+.panoface .hiddenButton {
+	visibility: hidden;
+}
+
+.panoface .lightfaceOverlay {
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	background:url(fbloader.gif) center center no-repeat #fff;
+}
+
+.panoface .lightfaceMessageBox	{
+	overflow: auto;
+	padding: 10px 10px;
+	min-height: 20px;
+	position:relative;
+}
+
+.panoface .lightFaceMessageBoxImage {
+	overflow: hidden;
+	padding: 0;
+	background:url(fbloader.gif) center center no-repeat #fff;
+}
+
+.panoface .lightFaceMessageBoxImage img {
+	display: block;
+}
+
+.lightfaceFooter {
+   width: 1px; height: 1px;
+   visibility: hidden;
+}

@@ -1,0 +1,99 @@
+<krpano version="1.19" title="Virtual Tour">
+
+	<include url="skin/vtourskin.xml" />
+
+
+	<!-- customize skin settings: maps, gyro, thumbnails, tooltips, layout, design, ... -->
+	<skin_settings maps="false"
+	               maps_type="bing"
+	               maps_bing_api_key=""
+	               maps_zoombuttons="false"
+	               gyro="true"
+	               title="true"
+	               thumbs="true"
+	               thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160"
+	               thumbs_opened="false"
+	               thumbs_text="false"
+	               thumbs_dragging="true"
+	               thumbs_onhoverscrolling="false"
+	               thumbs_scrollbuttons="false"
+	               thumbs_scrollindicator="false"
+	               thumbs_loop="false"
+	               tooltips_thumbs="false"
+	               tooltips_hotspots="false"
+	               tooltips_mapspots="false"
+	               loadscene_flags="MERGE"
+	               loadscene_blend="BLEND(0.5)"
+	               loadingtext="loading..."
+	               layout_width="100%"
+	               layout_maxwidth.normal="900"
+	               layout_maxwidth.mobile=""
+	               controlbar_width.normal="-44"
+	               controlbar_width.mobile="100%"
+	               controlbar_height.normal="38"
+	               controlbar_height.mobile="34"
+	               controlbar_offset.normal="22"
+	               controlbar_offset.mobile="0"
+	               controlbar_offset_closed="-40"
+	               controlbar_overlap.normal="7"
+	               controlbar_overlap.mobile="2"
+	               design_skin_images="vtourskin.png"
+	               design_bgcolor="0x000000"
+	               design_bgalpha="0.5"
+	               design_bgborder="0 0xFFFFFF 1.0"
+	               design_bgroundedge.normal="9"
+	               design_bgroundedge.mobile="1"
+	               design_bgshadow="0 0 9 0xFFFFFF 0.5"
+	               design_thumbborder_bgborder="4 0xFFFFFF 1.0"
+	               design_thumbborder_padding="2"
+	               design_thumbborder_bgroundedge="5"
+	               design_text_css="color:#FFFFFF; font-family:Arial; font-weight:bold;"
+	               design_text_shadow="1"
+	               />
+
+	<!--
+	    For an alternative skin design either change the <skin_settings> values 
+	    from above or optionally include one of the predefined designs from below.
+	    Either by removing the 'xml-if-check' from the particular <include> element
+	    or by adding e.g. initvar:{design:'flat_light'} to the embedpano() call in
+	    the html file:
+	-->
+	<include url="skin/vtourskin_design_glass.xml"       if="design === 'glass'"       />
+	<include url="skin/vtourskin_design_flat.xml"        if="design === 'flat'"        />
+	<include url="skin/vtourskin_design_flat_light.xml"  if="design === 'flat_light'"  />
+	<include url="skin/vtourskin_design_ultra_light.xml" if="design === 'ultra_light'" />
+	<include url="skin/vtourskin_design_117.xml"         if="design === '117'"         />
+
+
+	<!-- startup action - here the first pano/scene will be loaded -->
+	<action name="startup" autorun="onstart">
+		if(startscene === null, copy(startscene,scene[0].name));
+		loadscene(get(startscene), null, MERGE);
+	</action>
+
+
+	
+	<scene name="scene_Jewelry_Showroom_01" title="Jewelry Showroom 01" onstart="" thumburl="panos/Jewelry_Showroom_01.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Jewelry_Showroom_01.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512">
+			<level tiledimagewidth="3200" tiledimageheight="3200">
+				<cube url="panos/Jewelry_Showroom_01.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1536" tiledimageheight="1536">
+				<cube url="panos/Jewelry_Showroom_01.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/Jewelry_Showroom_01.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+
+		<!-- place your scene hotspots here -->
+
+	</scene>
+
+
+</krpano>
