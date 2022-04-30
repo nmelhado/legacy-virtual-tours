@@ -1,0 +1,3968 @@
+﻿<krpano version="1.19" title="Pier 17">
+
+	<include url="skin/vtourskin.xml" />
+
+	<include url="plugins/showtext.xml" />
+
+	<!-- customize skin settings: maps, gyro, webvr, thumbnails, tooltips, layout, design, ... -->
+	<skin_settings maps="false"
+	               maps_type="google"
+	               maps_bing_api_key=""
+	               maps_google_api_key=""
+	               maps_zoombuttons="false"
+	               gyro="true"
+	               webvr="true"
+	               webvr_gyro_keeplookingdirection="false"
+	               webvr_prev_next_hotspots="true"
+	               littleplanetintro="false"
+	               title="true"
+	               thumbs="false"
+	               thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160"
+	               thumbs_opened="false"
+	               thumbs_text="false"
+	               thumbs_dragging="true"
+	               thumbs_onhoverscrolling="false"
+	               thumbs_scrollbuttons="false"
+	               thumbs_scrollindicator="false"
+	               thumbs_loop="false"
+	               tooltips_buttons="false"
+	               tooltips_thumbs="false"
+	               tooltips_hotspots="false"
+	               tooltips_mapspots="false"
+	               deeplinking="false"
+	               loadscene_flags="MERGE"
+	               loadscene_blend="OPENBLEND(0.5, 0.0, 0.75, 0.05, linear)"
+	               loadscene_blend_prev="SLIDEBLEND(0.5, 180, 0.75, linear)"
+	               loadscene_blend_next="SLIDEBLEND(0.5,   0, 0.75, linear)"
+	               loadingtext="loading..."
+	               layout_width="100%"
+	               layout_maxwidth.normal="900"
+	               layout_maxwidth.mobile=""
+	               controlbar_width.normal="-44"
+	               controlbar_width.mobile="100%"
+	               controlbar_height.normal="38"
+	               controlbar_height.mobile="34"
+	               controlbar_offset.normal="22"
+	               controlbar_offset.mobile="0"
+	               controlbar_offset_closed="-40"
+	               controlbar_overlap.normal="7"
+	               controlbar_overlap.mobile="2"
+	               design_skin_images="vtourskin.png"
+	               design_bgcolor="0x5ba6be"
+	               design_bgalpha="0.4"
+	               design_bgborder="1 0x5ba6be 1.0"
+	               design_bgroundedge.normal="10"
+	               design_bgroundedge.mobile="1"
+	               design_bgshadow="0 0 9 0xFFFFFF 0.8"
+	               design_thumbborder_bgborder="4 0xFFFFFF 1.0"
+	               design_thumbborder_padding="2"
+	               design_thumbborder_bgroundedge="5"
+	               design_text_css="color:#FFFFFF; font-family:Arial; font-weight:bold;"
+	               design_text_shadow="1"
+	               />
+
+<textstyle name="DEFAULT"
+           origin="cursor"
+           edge="bottom"
+           xoffset="0"
+           yoffset="-3"
+           fadeintime="0.0"
+           showtime="0.1"
+           fadetime="0.0"
+           font="Baskerville"
+           fontsize="18px"
+           bold="true"
+           italic="false"
+           textcolor="0xFFFFFF"
+           textalign="none"
+           padding="1"
+           css=""
+           width=""
+           height=""
+           vcenter=""
+           background="false"
+           backgroundcolor="0xFFFFFF"
+           backgroundalpha="1.0"
+           border="false"
+           bordercolor="0x000000"
+           borderalpha="1.0"
+           borderwidth="1.0"
+           roundedge="0"
+           shadow="0.0"
+           shadowrange="4.0"
+           shadowangle="45"
+           shadowcolor="0x000000"
+           shadowalpha="1.0"
+           textshadow="1.0"
+           textshadowrange="4.0"
+           textshadowangle="45"
+           textshadowcolor="0x000000"
+           textshadowalpha="1.0"
+           embeddedfonts="false"
+           alpha="1.0"
+           blendmode="normal"
+           effect=""
+           noclip="true"
+           />
+
+<style	name="nova_logo"
+		url="Ref/NOVA_SQUARE_Bold_White.png"
+		type="image"
+		keep="true"
+		visible="true"
+		enabled="true"
+		handcursor="true"
+		capture="false"
+		zorder="10"
+		align="topleft"
+		edge="topleft"
+		x="15"
+		y="15"
+		alpha="0.7"
+       scale="0.3"
+		onhover="showtext(' Vertify by Nova Concepts ')"
+		onclick="openurl(http://www.novaconceptsny.com,_blank);"
+/>
+
+<events onresize="d_resize();"
+		onnewscene="map_loc(); hide_comment(); comment_show(); "
+/>
+
+<action name="comment_show">
+	txtadd(cur_comment,'comment_demo_',get(scene[get(xml.scene)].name));
+	set(plugin[get(cur_comment)].visible,true);
+</action>
+
+<action name="d_resize">
+
+	div(screenaspect, stagewidth, stageheight);
+	
+	if(screenaspect GT 1,
+		if(hotspot[spot0],set(hotspot[spot0].height,14%); set(hotspot[spot0].width,prop););
+		if(hotspot[spot1],set(hotspot[spot1].height,14%); set(hotspot[spot1].width,prop););
+		if(hotspot[spot2],set(hotspot[spot2].height,14%); set(hotspot[spot2].width,prop););
+		if(hotspot[spot3],set(hotspot[spot3].height,14%); set(hotspot[spot3].width,prop););
+		if(hotspot[spot4],set(hotspot[spot4].height,14%); set(hotspot[spot4].width,prop););
+		if(hotspot[spot5],set(hotspot[spot5].height,14%); set(hotspot[spot5].width,prop););
+		if(hotspot[spot6],set(hotspot[spot6].height,14%); set(hotspot[spot6].width,prop););
+		if(hotspot[spot7],set(hotspot[spot7].height,14%); set(hotspot[spot7].width,prop););
+		if(hotspot[spot8],set(hotspot[spot8].height,14%); set(hotspot[spot8].width,prop););
+		if(hotspot[spot9],set(hotspot[spot9].height,14%); set(hotspot[spot9].width,prop););
+		if(hotspot[spot10],set(hotspot[spot10].height,14%); set(hotspot[spot10].width,prop););
+		if(hotspot[spot11],set(hotspot[spot11].height,14%); set(hotspot[spot11].width,prop););
+		if(hotspot[spot12],set(hotspot[spot12].height,14%); set(hotspot[spot12].width,prop););
+		if(hotspot[spot13],set(hotspot[spot13].height,14%); set(hotspot[spot13].width,prop););
+		if(hotspot[spot14],set(hotspot[spot14].height,14%); set(hotspot[spot14].width,prop););
+		if(hotspot[spot15],set(hotspot[spot15].height,14%); set(hotspot[spot15].width,prop););
+		if(hotspot[spot16],set(hotspot[spot16].height,14%); set(hotspot[spot16].width,prop););
+	,
+		if(hotspot[spot0],set(hotspot[spot0].width,14%); set(hotspot[spot0].height,prop););
+		if(hotspot[spot1],set(hotspot[spot1].width,14%); set(hotspot[spot1].height,prop););
+		if(hotspot[spot2],set(hotspot[spot2].width,14%); set(hotspot[spot2].height,prop););
+		if(hotspot[spot3],set(hotspot[spot3].width,14%); set(hotspot[spot3].height,prop););
+		if(hotspot[spot4],set(hotspot[spot4].width,14%); set(hotspot[spot4].height,prop););
+		if(hotspot[spot5],set(hotspot[spot5].width,14%); set(hotspot[spot5].height,prop););
+		if(hotspot[spot6],set(hotspot[spot6].width,14%); set(hotspot[spot6].height,prop););
+		if(hotspot[spot7],set(hotspot[spot7].width,14%); set(hotspot[spot7].height,prop););
+		if(hotspot[spot8],set(hotspot[spot8].width,14%); set(hotspot[spot8].height,prop););
+		if(hotspot[spot9],set(hotspot[spot9].width,14%); set(hotspot[spot9].height,prop););
+		if(hotspot[spot10],set(hotspot[spot10].width,14%); set(hotspot[spot10].height,prop););
+		if(hotspot[spot11],set(hotspot[spot11].width,14%); set(hotspot[spot11].height,prop););
+		if(hotspot[spot12],set(hotspot[spot12].width,14%); set(hotspot[spot12].height,prop););
+		if(hotspot[spot13],set(hotspot[spot13].width,14%); set(hotspot[spot13].height,prop););
+		if(hotspot[spot14],set(hotspot[spot14].width,14%); set(hotspot[spot14].height,prop););
+		if(hotspot[spot15],set(hotspot[spot15].width,14%); set(hotspot[spot15].height,prop););
+		if(hotspot[spot16],set(hotspot[spot16].width,14%); set(hotspot[spot16].height,prop););
+	);
+
+	mul(stagewidth2, stagewidth, 0.8);
+	mul(stageheight2, stageheight, 0.92);
+	div(screenaspect2, stagewidth2, stageheight2);
+	
+	div(imageaspect_map, layer[NOVA_Map].imagewidth, layer[NOVA_Map].imageheight);
+	if(imageaspect_map GT screenaspect2,
+		set(layer[NOVA_Map].width,65%); set(layer[NOVA_Map].height,prop);
+		,
+		set(layer[NOVA_Map].width,prop); set(layer[NOVA_Map].height,72%);
+	);
+	
+	div(imageaspect_inst, layer[NOVA_Inst].imagewidth, layer[NOVA_Inst].imageheight);
+	if(imageaspect_inst GT screenaspect,
+		set(layer[NOVA_Inst].width,80%); set(layer[NOVA_Inst].height,prop);
+		,
+		set(layer[NOVA_Inst].width,prop); set(layer[NOVA_Inst].height,70%);
+	);
+	
+	sub(comm_height,stageheight2,533);
+	set(layer[comment_container].height,get(comm_height));
+	set(layer[tracker_container].height,get(comm_height));
+	set(layer[timeline_container].height,get(comm_height));
+	size_comment();
+
+</action>
+
+<style 	name="skin_hotspotstyle"
+		url="skin/NOVA_Hotspot Circle.png"
+		edge="center"
+		devices="all"
+		tooltip=""
+		scalechildren="true"
+		maskchildren="false"
+		frame="1"
+		alpha="0.8"
+		visible="true"
+		zorder="40"
+		capture="true" 
+		distorted="false"
+		onclick="if(linkedscene, tween(scale,0.15,0.39); tween(oy,-20,0.39); tween(alpha,0,0.39); tween(view.fov,90,0.39,easeInOutSine); pin_status(0); pin_status2(get(linkedscene),null); delayedcall(0.4,set(events.onloadcomplete,null); loadscene(get(linkedscene),null,MERGE|KEEPVIEW,get(skin_settings.loadscene_blend)); skin_updatescroll();set(view.fov,105); tween(layer[skin_tooltip].alpha, 0.0, 0.1, default); set(layer[skin_tooltip].visible,false); ););" 
+		onloaded=" if(linkedscene AND skin_settings.tooltips_hotspots, copy(tooltip,scene[get(linkedscene)].title); loadstyle(skin_tooltips); ); d_resize(); delayedcall(0.1,hotspot_phase2(););"
+		/>
+		
+	<style name="skin_tooltips"
+	       onover.mouse="copy(layer[skin_tooltip].html, tooltip);
+	                     set(layer[skin_tooltip].visible, true);
+	                     tween(layer[skin_tooltip].alpha, 1.0, 0.1);
+	                     asyncloop(hovering, copy(layer[skin_tooltip].x,mouse.stagex); copy(layer[skin_tooltip].y,mouse.stagey); );"
+	       onout.mouse="tween(layer[skin_tooltip].alpha, 0.0, 0.1, default); set(layer[skin_tooltip].visible,false);"
+	       />
+		   
+	<action name="hotspot_phase2">
+		txtadd(temp_outer,'HOVR_Outer_',get(name),'z');
+		txtadd(temp_arrows,'HOVR_Arrows_',get(name));
+		txtadd(temp_circle,'HOVR_Circle_',get(name));
+		txtadd(temp_parent,'hotspot[',get(name),']');
+		txtadd(temp_align,'hotspot[',get(name),'].center');
+
+		addlayer(get(temp_outer));
+		set(layer[get(temp_outer)].url,skin/NOVA_Hotspot Outer.png);
+		set(layer[get(temp_outer)].parent,get(temp_parent));
+		set(layer[get(temp_outer)].enabled,false);
+		set(layer[get(temp_outer)].keep,false);
+		set(layer[get(temp_outer)].align,get(temp_align));
+		set(layer[get(temp_outer)].scale_check,2);
+		set(layer[get(temp_outer)].scale,1);
+		set(layer[get(temp_outer)].frame,359);
+		set(layer[get(temp_outer)].zorder,39);
+		set(layer[get(temp_outer)].distorted,false);
+		set(layer[get(temp_outer)].visible,true);
+		
+		addlayer(get(temp_arrows));
+		set(layer[get(temp_arrows)].url,skin/NOVA_Hotspot Arrows.png);
+		set(layer[get(temp_arrows)].parent,get(temp_parent));
+		set(layer[get(temp_arrows)].enabled,false);
+		set(layer[get(temp_arrows)].keep,false);
+		set(layer[get(temp_arrows)].align,get(temp_align));
+		set(layer[get(temp_arrows)].frame,359);
+		set(layer[get(temp_arrows)].zorder,39);
+		set(layer[get(temp_arrows)].distorted,false);
+		set(layer[get(temp_arrows)].visible,true);
+		
+		addlayer(get(temp_circle));
+		set(layer[get(temp_circle)].url,skin/NOVA_Hotspot.png);
+		set(layer[get(temp_circle)].parent,get(temp_parent));
+		set(layer[get(temp_circle)].enabled,false);
+		set(layer[get(temp_circle)].keep,false);
+		set(layer[get(temp_circle)].frame,359);
+		set(layer[get(temp_circle)].align,get(temp_align));
+		set(layer[get(temp_circle)].zorder,39);
+		set(layer[get(temp_circle)].distorted,false);
+		set(layer[get(temp_circle)].visible,true);
+	</action>
+
+	<action name="hotspot_animate">
+		if(layer[HOVR_Circle_spot0],
+			dec(layer[HOVR_Circle_spot0].frame,1,0,359);
+			set(layer[HOVR_Circle_spot0].rotate,get(layer[HOVR_Circle_spot0].frame));
+			
+			inc(layer[HOVR_Outer_spot0z].frame,1,359,0);
+			set(layer[HOVR_Outer_spot0z].rotate,get(layer[HOVR_Outer_spot0z].frame));
+			if(layer[HOVR_Outer_spot0z].scale_check GT 1,
+				set(layer[HOVR_Outer_spot0z].scale_check,0);
+				if(layer[HOVR_Outer_spot0z].scale GT 1.1,
+					tween(layer[HOVR_Outer_spot0z].scale, 1.0, 2.0);
+					delayedcall(2.0, set(layer[HOVR_Outer_spot0z].scale_check,2));
+				,
+					tween(layer[HOVR_Outer_spot0z].scale, 1.22, 2.0);
+					delayedcall(2.0, set(layer[HOVR_Outer_spot0z].scale_check,2));
+				);
+			);
+			
+			inc(layer[HOVR_Arrows_spot0].frame,1,359,0);
+			set(layer[HOVR_Arrows_spot0].rotate,get(layer[HOVR_Arrows_spot0].frame));
+		);
+		
+		if(layer[HOVR_Circle_spot1],
+			dec(layer[HOVR_Circle_spot1].frame,1,0,359);
+			set(layer[HOVR_Circle_spot1].rotate,get(layer[HOVR_Circle_spot1].frame));
+			
+			inc(layer[HOVR_Outer_spot1z].frame,1,359,0);
+			set(layer[HOVR_Outer_spot1z].rotate,get(layer[HOVR_Outer_spot1z].frame));
+			if(layer[HOVR_Outer_spot1z].scale_check GT 1,
+				set(layer[HOVR_Outer_spot1z].scale_check,0);
+				if(layer[HOVR_Outer_spot1z].scale GT 1.1,
+					tween(layer[HOVR_Outer_spot1z].scale, 1.0, 2.0);
+					delayedcall(2.0, set(layer[HOVR_Outer_spot1z].scale_check,2));
+				,
+					tween(layer[HOVR_Outer_spot1z].scale, 1.22, 2.0);
+					delayedcall(2.0, set(layer[HOVR_Outer_spot1z].scale_check,2));
+				);
+			);
+			
+			inc(layer[HOVR_Arrows_spot1].frame,1,359,0);
+			set(layer[HOVR_Arrows_spot1].rotate,get(layer[HOVR_Arrows_spot1].frame));
+		);
+		
+		if(layer[HOVR_Circle_spot2],
+			dec(layer[HOVR_Circle_spot2].frame,1,0,359);
+			set(layer[HOVR_Circle_spot2].rotate,get(layer[HOVR_Circle_spot2].frame));
+			
+			inc(layer[HOVR_Outer_spot2z].frame,1,359,0);
+			set(layer[HOVR_Outer_spot2z].rotate,get(layer[HOVR_Outer_spot2z].frame));
+			if(layer[HOVR_Outer_spot2z].scale_check GT 1,
+				set(layer[HOVR_Outer_spot2z].scale_check,0);
+				if(layer[HOVR_Outer_spot2z].scale GT 1.1,
+					tween(layer[HOVR_Outer_spot2z].scale, 1.0, 2.0);
+					delayedcall(2.0, set(layer[HOVR_Outer_spot2z].scale_check,2));
+				,
+					tween(layer[HOVR_Outer_spot2z].scale, 1.22, 2.0);
+					delayedcall(2.0, set(layer[HOVR_Outer_spot2z].scale_check,2));
+				);
+			);
+			
+			inc(layer[HOVR_Arrows_spot2].frame,1,359,0);
+			set(layer[HOVR_Arrows_spot2].rotate,get(layer[HOVR_Arrows_spot2].frame));
+		);
+		
+		if(layer[HOVR_Circle_spot3],
+			dec(layer[HOVR_Circle_spot3].frame,1,0,359);
+			set(layer[HOVR_Circle_spot3].rotate,get(layer[HOVR_Circle_spot3].frame));
+			
+			inc(layer[HOVR_Outer_spot3z].frame,1,359,0);
+			set(layer[HOVR_Outer_spot3z].rotate,get(layer[HOVR_Outer_spot3z].frame));
+			if(layer[HOVR_Outer_spot3z].scale_check GT 1,
+				set(layer[HOVR_Outer_spot3z].scale_check,0);
+				if(layer[HOVR_Outer_spot3z].scale GT 1.1,
+					tween(layer[HOVR_Outer_spot3z].scale, 1.0, 2.0);
+					delayedcall(2.0, set(layer[HOVR_Outer_spot3z].scale_check,2));
+				,
+					tween(layer[HOVR_Outer_spot3z].scale, 1.22, 2.0);
+					delayedcall(2.0, set(layer[HOVR_Outer_spot3z].scale_check,2));
+				);
+			);
+			
+			inc(layer[HOVR_Arrows_spot3].frame,1,359,0);
+			set(layer[HOVR_Arrows_spot3].rotate,get(layer[HOVR_Arrows_spot3].frame));
+		);
+		
+		if(layer[HOVR_Circle_spot4],
+			dec(layer[HOVR_Circle_spot4].frame,1,0,359);
+			set(layer[HOVR_Circle_spot4].rotate,get(layer[HOVR_Circle_spot4].frame));
+			
+			inc(layer[HOVR_Outer_spot4z].frame,1,359,0);
+			set(layer[HOVR_Outer_spot4z].rotate,get(layer[HOVR_Outer_spot4z].frame));
+			if(layer[HOVR_Outer_spot4z].scale_check GT 1,
+				set(layer[HOVR_Outer_spot4z].scale_check,0);
+				if(layer[HOVR_Outer_spot4z].scale GT 1.1,
+					tween(layer[HOVR_Outer_spot4z].scale, 1.0, 2.0);
+					delayedcall(2.0, set(layer[HOVR_Outer_spot4z].scale_check,2));
+				,
+					tween(layer[HOVR_Outer_spot4z].scale, 1.22, 2.0);
+					delayedcall(2.0, set(layer[HOVR_Outer_spot4z].scale_check,2));
+				);
+			);
+			
+			inc(layer[HOVR_Arrows_spot4].frame,1,359,0);
+			set(layer[HOVR_Arrows_spot4].rotate,get(layer[HOVR_Arrows_spot4].frame));
+		);
+		
+		if(layer[HOVR_Circle_spot5],
+			dec(layer[HOVR_Circle_spot5].frame,1,0,359);
+			set(layer[HOVR_Circle_spot5].rotate,get(layer[HOVR_Circle_spot5].frame));
+			
+			inc(layer[HOVR_Outer_spot5z].frame,1,359,0);
+			set(layer[HOVR_Outer_spot5z].rotate,get(layer[HOVR_Outer_spot5z].frame));
+			if(layer[HOVR_Outer_spot5z].scale_check GT 1,
+				set(layer[HOVR_Outer_spot5z].scale_check,0);
+				if(layer[HOVR_Outer_spot5z].scale GT 1.1,
+					tween(layer[HOVR_Outer_spot5z].scale, 1.0, 2.0);
+					delayedcall(2.0, set(layer[HOVR_Outer_spot5z].scale_check,2));
+				,
+					tween(layer[HOVR_Outer_spot5z].scale, 1.22, 2.0);
+					delayedcall(2.0, set(layer[HOVR_Outer_spot5z].scale_check,2));
+				);
+			);
+			
+			inc(layer[HOVR_Arrows_spot5].frame,1,359,0);
+			set(layer[HOVR_Arrows_spot5].rotate,get(layer[HOVR_Arrows_spot5].frame));
+		);
+		
+		if(layer[HOVR_Circle_spot6],
+			dec(layer[HOVR_Circle_spot6].frame,1,0,359);
+			set(layer[HOVR_Circle_spot6].rotate,get(layer[HOVR_Circle_spot6].frame));
+			
+			inc(layer[HOVR_Outer_spot6z].frame,1,359,0);
+			set(layer[HOVR_Outer_spot6z].rotate,get(layer[HOVR_Outer_spot6z].frame));
+			if(layer[HOVR_Outer_spot6z].scale_check GT 1,
+				set(layer[HOVR_Outer_spot6z].scale_check,0);
+				if(layer[HOVR_Outer_spot6z].scale GT 1.1,
+					tween(layer[HOVR_Outer_spot6z].scale, 1.0, 2.0);
+					delayedcall(2.0, set(layer[HOVR_Outer_spot6z].scale_check,2));
+				,
+					tween(layer[HOVR_Outer_spot6z].scale, 1.22, 2.0);
+					delayedcall(2.0, set(layer[HOVR_Outer_spot6z].scale_check,2));
+				);
+			);
+			
+			inc(layer[HOVR_Arrows_spot6].frame,1,359,0);
+			set(layer[HOVR_Arrows_spot6].rotate,get(layer[HOVR_Arrows_spot6].frame));
+		);
+		
+		if(layer[HOVR_Circle_spot7],
+			dec(layer[HOVR_Circle_spot7].frame,1,0,359);
+			set(layer[HOVR_Circle_spot7].rotate,get(layer[HOVR_Circle_spot7].frame));
+			
+			inc(layer[HOVR_Outer_spot7z].frame,1,359,0);
+			set(layer[HOVR_Outer_spot7z].rotate,get(layer[HOVR_Outer_spot7z].frame));
+			if(layer[HOVR_Outer_spot7z].scale_check GT 1,
+				set(layer[HOVR_Outer_spot7z].scale_check,0);
+				if(layer[HOVR_Outer_spot7z].scale GT 1.1,
+					tween(layer[HOVR_Outer_spot7z].scale, 1.0, 2.0);
+					delayedcall(2.0, set(layer[HOVR_Outer_spot7z].scale_check,2));
+				,
+					tween(layer[HOVR_Outer_spot7z].scale, 1.22, 2.0);
+					delayedcall(2.0, set(layer[HOVR_Outer_spot7z].scale_check,2));
+				);
+			);
+			
+			inc(layer[HOVR_Arrows_spot7].frame,1,359,0);
+			set(layer[HOVR_Arrows_spot7].rotate,get(layer[HOVR_Arrows_spot7].frame));
+		);
+		
+		if(layer[HOVR_Circle_spot8],
+			dec(layer[HOVR_Circle_spot8].frame,1,0,359);
+			set(layer[HOVR_Circle_spot8].rotate,get(layer[HOVR_Circle_spot8].frame));
+			
+			inc(layer[HOVR_Outer_spot8z].frame,1,359,0);
+			set(layer[HOVR_Outer_spot8z].rotate,get(layer[HOVR_Outer_spot8z].frame));
+			if(layer[HOVR_Outer_spot8z].scale_check GT 1,
+				set(layer[HOVR_Outer_spot8z].scale_check,0);
+				if(layer[HOVR_Outer_spot8z].scale GT 1.1,
+					tween(layer[HOVR_Outer_spot8z].scale, 1.0, 2.0);
+					delayedcall(2.0, set(layer[HOVR_Outer_spot8z].scale_check,2));
+				,
+					tween(layer[HOVR_Outer_spot8z].scale, 1.22, 2.0);
+					delayedcall(2.0, set(layer[HOVR_Outer_spot8z].scale_check,2));
+				);
+			);
+			
+			inc(layer[HOVR_Arrows_spot8].frame,1,359,0);
+			set(layer[HOVR_Arrows_spot8].rotate,get(layer[HOVR_Arrows_spot8].frame));
+		);
+		
+		if(layer[HOVR_Circle_spot9],
+			dec(layer[HOVR_Circle_spot9].frame,1,0,359);
+			set(layer[HOVR_Circle_spot9].rotate,get(layer[HOVR_Circle_spot9].frame));
+			
+			inc(layer[HOVR_Outer_spot9z].frame,1,359,0);
+			set(layer[HOVR_Outer_spot9z].rotate,get(layer[HOVR_Outer_spot9z].frame));
+			if(layer[HOVR_Outer_spot9z].scale_check GT 1,
+				set(layer[HOVR_Outer_spot9z].scale_check,0);
+				if(layer[HOVR_Outer_spot9z].scale GT 1.1,
+					tween(layer[HOVR_Outer_spot9z].scale, 1.0, 2.0);
+					delayedcall(2.0, set(layer[HOVR_Outer_spot9z].scale_check,2));
+				,
+					tween(layer[HOVR_Outer_spot9z].scale, 1.22, 2.0);
+					delayedcall(2.0, set(layer[HOVR_Outer_spot9z].scale_check,2));
+				);
+			);
+			
+			inc(layer[HOVR_Arrows_spot9].frame,1,359,0);
+			set(layer[HOVR_Arrows_spot9].rotate,get(layer[HOVR_Arrows_spot9].frame));
+		);
+		
+		if(layer[HOVR_Circle_spot10],
+			dec(layer[HOVR_Circle_spot10].frame,1,0,359);
+			set(layer[HOVR_Circle_spot10].rotate,get(layer[HOVR_Circle_spot10].frame));
+			
+			inc(layer[HOVR_Outer_spot10z].frame,1,359,0);
+			set(layer[HOVR_Outer_spot10z].rotate,get(layer[HOVR_Outer_spot10z].frame));
+			if(layer[HOVR_Outer_spot10z].scale_check GT 1,
+				set(layer[HOVR_Outer_spot10z].scale_check,0);
+				if(layer[HOVR_Outer_spot10z].scale GT 1.1,
+					tween(layer[HOVR_Outer_spot10z].scale, 1.0, 2.0);
+					delayedcall(2.0, set(layer[HOVR_Outer_spot10z].scale_check,2));
+				,
+					tween(layer[HOVR_Outer_spot10z].scale, 1.22, 2.0);
+					delayedcall(2.0, set(layer[HOVR_Outer_spot10z].scale_check,2));
+				);
+			);
+			
+			inc(layer[HOVR_Arrows_spot10].frame,1,359,0);
+			set(layer[HOVR_Arrows_spot10].rotate,get(layer[HOVR_Arrows_spot10].frame));
+		);
+
+		delayedcall(0.02, hotspot_animate(););    <!-- here you set the speed of the frame change -->
+	</action>
+	
+	<action name="hotspot_outer">
+		inc(frame,1,359,0);
+		set(rotate,get(frame));
+		delayedcall(0.02, hotspot_outer() );    <!-- here you set the speed of the frame change -->
+	</action>
+	
+	<action name="hotspot_loading_arrows">
+		inc(frame,1,359,0);
+		set(rotate,get(frame));
+		delayedcall(0.012, hotspot_loading_arrows() );    <!-- here you set the speed of the frame change -->
+	</action>
+
+	<action name="skin_nextscene">
+		add(newsceneindex, scene[get(xml.scene)].index, 1);
+		if(newsceneindex GT lastsceneindex, 
+			set(newsceneindex2,0);
+		,
+			set(newsceneindex2,get(newsceneindex));
+		);
+		copy(newsceneindex3,scene[get(newsceneindex2)].name);
+		loadscene(get(newsceneindex3),null,MERGE|KEEPVIEW,get(skin_settings.loadscene_blend));
+	</action>
+	
+	<action name="skin_prevscene">
+		sub(newsceneindex, scene[get(xml.scene)].index, 1);
+		sub(lastsceneindex, scene.count, 1);
+		if(newsceneindex LT 0,
+			set(newsceneindex2,get(lastsceneindex));
+		,
+			set(newsceneindex2,get(newsceneindex));
+		);
+		copy(newsceneindex3,scene[get(newsceneindex2)].name);
+		loadscene(get(newsceneindex3),null,MERGE|KEEPVIEW,get(skin_settings.loadscene_blend));
+	</action>
+
+	<layer name="NOVA_Inst_Back"
+		url="Ref/black1px.jpg"
+		visible="true"
+		keep="true"
+		zorder="91"
+		capture="true"
+		alpha="0.6"
+		width="100%"
+		height="100%"
+		align="center"
+		edge="center"
+		enabled="true"
+		handcursor="false"
+		ondown="set(visible,false); set(layer[NOVA_Inst].visible,false);"
+	/>
+
+	<layer name="NOVA_Inst"
+		url="Ref/Instructions.png"
+		visible="true"
+		keep="true"
+		zorder="92"
+		capture="true"
+		alpha="1.0"
+		align="center"
+		edge="center"
+		enabled="true"
+		handcursor="true"
+		onloaded="d_resize();"
+		ondown="set(visible,false); set(layer[NOVA_Inst_Back].visible,false);"
+	/>
+	
+<area mode="align"
+      align="rightbottom"
+      x="0"
+      y="0"
+      width="80%"
+      height="92%"
+      />
+
+	   <!-- TOP TOOLBAR -->
+	   
+	<layer name="topB"
+		parent="stage"
+		url="Ref/top_bar.jpg"
+		visible="true"
+		keep="true"
+		zorder="60"
+		capture="true"
+		width="100%"
+		height="8%"
+		alpha="1.0"
+		align="topleft"
+		edge="topleft"
+		enabled="true"
+		handcursor="false"
+	/>
+	   
+	<layer name="vert_logo"
+		url="Ref/vert_logo.jpg"
+		parent="layer[topB]"
+		visible="true"
+		keep="true"
+		zorder="61"
+		capture="true"
+		width="prop"
+		height="100%"
+		alpha="1.0"
+		align="topleft"
+		edge="topleft"
+		enabled="true"
+		handcursor="false"
+	/>
+
+	   <!-- LEFT TOOLBAR -->
+	   
+	<layer name="toolB"
+		parent="stage"
+		url="Ref/toolbar_gray.jpg"
+		visible="true"
+		keep="true"
+		zorder="65"
+		capture="true"
+		width="20%"
+		height="92%"
+		alpha="1.0"
+		align="bottomleft"
+		edge="bottomleft"
+		enabled="true"
+		handcursor="false"
+	/>
+	   
+	<layer name="map_holder"
+		url="Ref/map_holder.jpg"
+		parent="layer[toolB]"
+		scalechildren="true"
+		visible="true"
+		keep="true"
+		zorder="61"
+		capture="true"
+		width="99.7%"
+		height="prop"
+		alpha="1.0"
+		align="topleft"
+		edge="topleft"
+		enabled="true"
+		handcursor="false"
+	/>
+	   
+	<layer name="direc_button_holder"
+		url="Ref/direction_buttons_back.jpg"
+		parent="layer[toolB]"
+		scalechildren="true"
+		visible="true"
+		keep="true"
+		zorder="61"
+		capture="true"
+		width="99.7%"
+		height="prop"
+		alpha="1.0"
+		y="333.3"
+		align="topleft"
+		edge="topleft"
+		enabled="true"
+		handcursor="false"
+	/>
+	   
+	<layer name="direc_button_left"
+		url="Ref/direction_buttons.jpg"
+		parent="layer[direc_button_holder]"
+		scalechildren="true"
+		visible="true"
+		crop="0|0|125|36"
+		ondowncrop="0|72|125|36"
+		onovercrop="0|144|125|36"
+		keep="true"
+		zorder="62"
+		capture="true"
+		width="125"
+		height="prop"
+		alpha="1.0"
+		align="topleft"
+		edge="topleft"
+		enabled="true"
+		handcursor="true"
+		ondown="set(hlookat_moveforce,-1);"
+		onup="set(hlookat_moveforce,0);"
+	/>
+	   
+	<layer name="direc_button_up"
+		url="Ref/direction_buttons.jpg"
+		parent="layer[direc_button_holder]"
+		scalechildren="true"
+		visible="true"
+		crop="125|0|125|36"
+		ondowncrop="125|72|125|36"
+		onovercrop="125|144|125|36"
+		keep="true"
+		zorder="62"
+		capture="true"
+		width="125"
+		x="125"
+		height="prop"
+		alpha="1.0"
+		align="topleft"
+		edge="topleft"
+		enabled="true"
+		handcursor="true"
+		ondown="set(vlookat_moveforce,-1);"
+		onup="set(vlookat_moveforce,0);"
+	/>
+	   
+	<layer name="direc_button_right"
+		url="Ref/direction_buttons.jpg"
+		parent="layer[direc_button_holder]"
+		scalechildren="true"
+		visible="true"
+		crop="250|0|125|36"
+		ondowncrop="250|72|125|36"
+		onovercrop="250|144|125|36"
+		keep="true"
+		zorder="62"
+		capture="true"
+		width="125"
+		x="250"
+		height="prop"
+		alpha="1.0"
+		align="topleft"
+		edge="topleft"
+		enabled="true"
+		handcursor="true"
+		ondown="set(hlookat_moveforce,+1);"
+		onup="set(hlookat_moveforce,0);"
+	/>
+	   
+	<layer name="direc_button_minus"
+		url="Ref/direction_buttons.jpg"
+		parent="layer[direc_button_holder]"
+		scalechildren="true"
+		visible="true"
+		crop="250|36|125|36"
+		ondowncrop="250|108|125|36"
+		onovercrop="250|180|125|36"
+		keep="true"
+		zorder="62"
+		capture="true"
+		width="125"
+		y="36"
+		height="prop"
+		alpha="1.0"
+		align="topleft"
+		edge="topleft"
+		enabled="true"
+		handcursor="true"
+		ondown="set(fov_moveforce,+1);"
+		onup="set(fov_moveforce,0);"
+	/>
+	   
+	<layer name="direc_button_down"
+		url="Ref/direction_buttons.jpg"
+		parent="layer[direc_button_holder]"
+		scalechildren="true"
+		visible="true"
+		crop="125|36|125|36"
+		ondowncrop="125|108|125|36"
+		onovercrop="125|180|125|36"
+		keep="true"
+		zorder="62"
+		capture="true"
+		width="125"
+		x="125"
+		y="36"
+		height="prop"
+		alpha="1.0"
+		align="topleft"
+		edge="topleft"
+		enabled="true"
+		handcursor="true"
+		ondown="set(vlookat_moveforce,+1);"
+		onup="set(vlookat_moveforce,0);"
+	/>
+	   
+	<layer name="direc_button_plus"
+		url="Ref/direction_buttons.jpg"
+		parent="layer[direc_button_holder]"
+		scalechildren="true"
+		visible="true"
+		crop="0|36|125|36"
+		ondowncrop="0|108|125|36"
+		onovercrop="0|180|125|36"
+		keep="true"
+		zorder="62"
+		capture="true"
+		width="125"
+		x="250"
+		y="36"
+		height="prop"
+		alpha="1.0"
+		align="topleft"
+		edge="topleft"
+		enabled="true"
+		handcursor="true"
+		ondown="set(fov_moveforce,-1);"
+		onup="set(fov_moveforce,0);"
+	/>
+	   
+	<layer name="pano_next_back"
+		url="Ref/pano_next_back.jpg"
+		parent="layer[toolB]"
+		scalechildren="true"
+		visible="true"
+		keep="true"
+		zorder="61"
+		capture="true"
+		width="99.348%"
+		height="prop"
+		alpha="1.0"
+		y="407.1"
+		align="topleft"
+		edge="topleft"
+		enabled="true"
+		handcursor="false"
+	/>
+	   
+	<layer name="pano_prev"
+		url="Ref/pano_next.jpg"
+		parent="layer[pano_next_back]"
+		visible="true"
+		crop="0|0|188|36"
+		ondowncrop="0|36|188|36"
+		onovercrop="0|72|188|36"
+		keep="true"
+		zorder="62"
+		capture="true"
+		width="188"
+		height="prop"
+		alpha="1.0"
+		align="topleft"
+		edge="topleft"
+		enabled="true"
+		handcursor="true"
+		onclick="skin_prevscene()"
+	/>
+	   
+	<layer name="pano_next"
+		url="Ref/pano_next.jpg"
+		parent="layer[pano_next_back]"
+		visible="true"
+		crop="188|0|188|36"
+		ondowncrop="188|36|188|36"
+		onovercrop="188|72|188|36"
+		keep="true"
+		zorder="62"
+		capture="true"
+		width="188"
+		x="188"
+		height="prop"
+		alpha="1.0"
+		align="topleft"
+		edge="topleft"
+		enabled="true"
+		handcursor="true"
+		onclick="skin_nextscene()"
+	/>
+	   
+	<layer name="toolB_spacer"
+		url="Ref/spacer.jpg"
+		parent="layer[toolB]"
+		scalechildren="true"
+		visible="true"
+		keep="true"
+		zorder="61"
+		capture="true"
+		width="99.7%"
+		height="prop"
+		alpha="1.0"
+		y="444"
+		align="topleft"
+		edge="topleft"
+		enabled="true"
+		handcursor="false"
+	/>
+	   
+	<layer name="menu_back"
+		url="Ref/pano_next_back.jpg"
+		parent="layer[toolB]"
+		scalechildren="true"
+		visible="true"
+		keep="true"
+		zorder="61"
+		capture="true"
+		width="99.7%"
+		height="prop"
+		alpha="1.0"
+		y="459"
+		align="topleft"
+		edge="topleft"
+		enabled="true"
+		handcursor="false"
+	/>
+	   
+	<layer name="menu_comments"
+		url="Ref/menu_buttons.jpg"
+		parent="layer[menu_back]"
+		scalechildren="true"
+		visible="true"
+		crop="0|0|125|36"
+		ondowncrop="0|36|125|36"
+		onovercrop="0|72|125|36"
+		keep="true"
+		zorder="62"
+		capture="true"
+		width="125"
+		height="prop"
+		alpha="1.0"
+		align="topleft"
+		edge="topleft"
+		enabled="true"
+		handcursor="true"
+		onclick="menu_buttons(1);"
+	/>
+	   
+	<layer name="menu_tracker"
+		url="Ref/menu_buttons.jpg"
+		parent="layer[menu_back]"
+		scalechildren="true"
+		visible="true"
+		crop="125|0|125|36"
+		ondowncrop="125|36|125|36"
+		onovercrop="125|72|125|36"
+		keep="true"
+		zorder="62"
+		x="125"
+		capture="true"
+		width="125"
+		height="prop"
+		alpha="1.0"
+		align="topleft"
+		edge="topleft"
+		enabled="true"
+		handcursor="true"
+		onclick="menu_buttons(2);"
+	/>
+	   
+	<layer name="menu_marker"
+		url="Ref/menu_buttons.jpg"
+		parent="layer[menu_back]"
+		scalechildren="true"
+		visible="true"
+		crop="250|0|125|36"
+		ondowncrop="250|36|125|36"
+		onovercrop="250|72|125|36"
+		keep="true"
+		zorder="62"
+		x="250"
+		capture="true"
+		width="125"
+		height="prop"
+		alpha="1.0"
+		align="topleft"
+		edge="topleft"
+		enabled="true"
+		handcursor="true"
+		onclick="menu_buttons(3);"
+	/>
+	   
+	<layer name="timeline_overlay_back"
+		url="Ref/pano_next_back.jpg"
+		parent="layer[toolB]"
+		scalechildren="true"
+		visible="true"
+		keep="true"
+		zorder="61"
+		capture="true"
+		width="99.3488%"
+		height="prop"
+		alpha="1.0"
+		y="496"
+		align="topleft"
+		edge="topleft"
+		enabled="true"
+		handcursor="false"
+	/>
+	   
+	<layer name="timeline"
+		url="Ref/timeline_overlay.jpg"
+		parent="layer[timeline_overlay_back]"
+		visible="true"
+		crop="0|0|188|36"
+		ondowncrop="0|36|188|36"
+		onovercrop="0|72|188|36"
+		keep="true"
+		zorder="62"
+		capture="true"
+		width="188"
+		height="prop"
+		alpha="1.0"
+		align="topleft"
+		edge="topleft"
+		enabled="true"
+		handcursor="true"
+		onclick="menu_buttons(4);"
+	/>
+	   
+	<layer name="overlay"
+		url="Ref/timeline_overlay.jpg"
+		parent="layer[timeline_overlay_back]"
+		visible="true"
+		crop="188|0|188|36"
+		ondowncrop="188|36|188|36"
+		keep="true"
+		zorder="62"
+		capture="true"
+		width="188"
+		x="188"
+		height="prop"
+		alpha="1.0"
+		align="topleft"
+		edge="topleft"
+		enabled="true"
+		handcursor="true"
+		onclick="overlay()"
+	/>
+	
+	<action name="menu_buttons">
+		if(%1 == 1,
+			set(layer[comment_container].visible,true);
+			set(layer[menu_comments].enabled,false);
+			set(layer[menu_comments].handcursor,false);
+			set(layer[menu_comments].crop,0|36|125|36);
+			
+			set(layer[tracker_container].visible,false);
+			set(layer[menu_tracker].enabled,true);
+			set(layer[menu_tracker].handcursor,true);
+			set(layer[menu_tracker].crop,125|0|125|36);
+			
+			set(layer[timeline_container].visible,false);
+			set(layer[timeline].enabled,true);
+			set(layer[timeline].handcursor,true);
+			set(layer[timeline].crop,0|0|188|36);
+		);
+		if(%1 == 2,
+			set(layer[comment_container].visible,false);
+			set(layer[menu_comments].enabled,true);
+			set(layer[menu_comments].handcursor,true);
+			set(layer[menu_comments].crop,0|0|125|36);
+			
+			set(layer[tracker_container].visible,true);
+			set(layer[menu_tracker].enabled,false);
+			set(layer[menu_tracker].handcursor,false);
+			set(layer[menu_tracker].crop,125|36|125|36);
+			
+			set(layer[timeline_container].visible,false);
+			set(layer[timeline].enabled,true);
+			set(layer[timeline].handcursor,true);
+			set(layer[timeline].crop,0|0|188|36);
+		);
+		if(%1 == 4,
+			set(layer[comment_container].visible,false);
+			set(layer[menu_comments].enabled,true);
+			set(layer[menu_comments].handcursor,true);
+			set(layer[menu_comments].crop,0|0|125|36);
+			
+			set(layer[tracker_container].visible,false);
+			set(layer[menu_tracker].enabled,true);
+			set(layer[menu_tracker].handcursor,true);
+			set(layer[menu_tracker].crop,125|0|125|36);
+			
+			set(layer[timeline_container].visible,true);
+			set(layer[timeline].enabled,false);
+			set(layer[timeline].handcursor,false);
+			set(layer[timeline].crop,0|36|188|36);
+		);
+	</action>
+	
+	<action name="overlay">
+		if(overlay_status == false,
+			set(layer[overlay].crop,188|36|188|36);
+			set(layer[overlay].ondowncrop,188|0|188|36);
+			set(overlay_status,true);
+		,
+			set(layer[overlay].crop,188|0|188|36);
+			set(layer[overlay].ondowncrop,188|36|188|36);
+			set(overlay_status,false);
+		);
+	</action>
+	
+<!-- COMMENT SECTION -->
+
+<layer name="comment_container"
+	url="Ref/comments_gray.jpg"
+	parent="layer[toolB]"
+	keep="true"
+	scalechildren="false"
+	zorder="61"
+	width="99.6%"
+	edge="bottomleft"
+	align="bottomleft"
+	y="0"
+	visible="true"
+	alpha="1.0"
+	enabled="true"
+	handcursor="false"
+	onclick="js( krpano_focus('krpanoSWFObject'); );"
+/>
+
+<plugin name="comment_input"
+	keep="true"
+	parent="layer[comment_container]"
+	url="plugins/textinput.js"
+	align="bottomleft"
+	edge="bottomleft"
+	y="60"
+	x="20"
+	width="335"
+	height="20"
+	zorder="67"
+	text=""
+	onchanged=""
+/>
+
+<layer name="comment_submit"
+	url="Ref/submit.jpg"
+	parent="layer[comment_container]"
+	zorder="62"
+	keep="true"
+	width="50%"
+	height="prop"
+	status="1"
+	capture="true"
+	edge="bottom"
+	align="bottom"
+	enabled="true"
+	handcursor="true"
+	visible="true"
+	crop="0|0|188|36"
+	ondowncrop="0|36|188|36"
+	onovercrop="0|72|188|36"
+	x=""
+	y="10"
+	alpha="1.0"
+	onclick="submit_comment()"
+/>
+
+<action name="create_comment">
+	txtadd(comment42,'comment_demo_',get(scene[get(ii)].name));
+	addplugin(get(comment42));
+	set(plugin[get(comment42)].parent,layer[comment_container]);
+	set(plugin[get(comment42)].url,plugins/textfield.swf);
+	set(plugin[get(comment42)].align,topleft);
+	set(plugin[get(comment42)].keep,true);
+	set(plugin[get(comment42)].edge,topleft);
+	set(plugin[get(comment42)].x,20);
+	set(plugin[get(comment42)].y,5);
+	set(plugin[get(comment42)].zorder,63);
+	set(plugin[get(comment42)].visible,true);
+	set(plugin[get(comment42)].width,335);
+	set(plugin[get(comment42)].height,40);
+	set(plugin[get(comment42)].background,false);
+	set(plugin[get(comment42)].html,);
+	set(plugin[get(comment42)].css,text-align:left; color:#000000; font-family:Arial; font-size:14px;);
+	set(plugin[get(comment42)].enabled,false);
+	
+	inc(ii);
+	if(ii LT scene.count,
+		create_comment();
+	,
+		hide_comment();
+		comment_show();
+	);
+</action>
+
+<action name="hide_comment">
+	if(%1 != true,
+		set(i,0);
+	);
+	txtadd(comment42,'comment_demo_',get(scene[get(i)].name));
+	set(plugin[get(comment42)].visible,false);
+	
+	inc(i);
+	if(i LT scene.count,
+		hide_comment(true);
+	);
+</action>
+
+<action name="size_comment">
+	if(%1 != true,
+		set(iii,0);
+	);
+	txtadd(comment43,'comment_demo_',get(scene[get(iii)].name));
+	mul(stageheight2, stageheight, 0.92);
+	sub(comm2_height,stageheight2,618);
+	set(plugin[get(comment43)].height,get(comm2_height));
+	
+	inc(iii);
+	if(iii LT scene.count,
+		size_comment(true);
+	);
+</action>
+
+<plugin name="comment_demo_scene_Pier-17-Ground_01"
+	parent="layer[comment_container]"
+	url="plugins/textfield.swf"
+	align="topleft"
+	keep="false"
+	edge="topleft"
+	y="5"
+	x="20"
+	html=""
+	css="text-align:left; color:#000000; font-family:Arial; font-size:14px;"
+	background="false"
+	width="335"
+	autoheight="true"
+	onautosized="add(height,12);"
+	zorder="63"
+	enabled="false"
+/>
+
+<action name="submit_comment">
+	js( krpano_focus('krpanoSWFObject'); );
+	if(plugin[comment_input].text != ,
+		txtadd(temp_text,'<p align="left"><br/><b><font color="#000000" size="2">Pablo M:</font></b><br/>',get(plugin[comment_input].text),'</p>');
+		txtadd(cur_comment,'comment_demo_',get(scene[get(xml.scene)].name));		
+		txtadd(plugin[get(cur_comment)].html,get(temp_text));
+		set(plugin[comment_input].text,);
+	);
+</action>
+<!-- END COMMENT SECTION -->
+	
+<!-- TRACKER SECTION -->
+
+<layer name="tracker_container"
+	url="Ref/tracker_gray.jpg"
+	parent="layer[toolB]"
+	keep="true"
+	scalechildren="false"
+	zorder="61"
+	width="99.6%"
+	edge="bottomleft"
+	align="bottomleft"
+	y="0"
+	visible="true"
+	alpha="1.0"
+	enabled="true"
+	handcursor="false"
+/>
+
+<layer name="tracker_header"
+	url="Ref/tracker_header.jpg"
+	parent="layer[tracker_container]"
+	keep="true"
+	scalechildren="false"
+	zorder="62"
+	width="100%"
+	height="prop"
+	edge="topleft"
+	align="topleft"
+	y="0"
+	visible="true"
+	alpha="1.0"
+	enabled="true"
+	handcursor="false"
+/>
+
+<layer name="tracker_level"
+	url="Ref/tracker_level.jpg"
+	parent="layer[tracker_container]"
+	keep="true"
+	scalechildren="false"
+	crop="0|0|1000|125"
+	onovercrop="0|125|1000|125"
+	ondowncrop="0|250|1000|125"
+	zorder="62"
+	width="100%"
+	height="prop"
+	edge="topleft"
+	align="topleft"
+	y="87"
+	visible="true"
+	alpha="1.0"
+	enabled="true"
+	handcursor="true"
+	onclick="loadscene(scene_Pier-17-3_12,null,get(skin_settings.loadscene_flags),get(skin_settings.loadscene_blend));"
+/>
+
+<!-- END TRACKER SECTION -->
+	
+<!-- TIMELINE SECTION -->
+
+<layer name="timeline_container"
+	url="Ref/comments_gray.jpg"
+	parent="layer[toolB]"
+	keep="true"
+	scalechildren="false"
+	zorder="61"
+	width="99.6%"
+	edge="bottomleft"
+	align="bottomleft"
+	y="0"
+	visible="true"
+	alpha="1.0"
+	enabled="true"
+	handcursor="false"
+/>
+
+<layer name="timeline_cur"
+	url="Ref/timeline_cur.jpg"
+	parent="layer[timeline_container]"
+	keep="true"
+	scalechildren="false"
+	crop="0|0|1000|125"
+	onovercrop="0|125|1000|125"
+	ondowncrop="0|250|1000|125"
+	zorder="62"
+	width="100%"
+	height="prop"
+	edge="topleft"
+	align="topleft"
+	visible="true"
+	alpha="1.0"
+	enabled="true"
+	handcursor="true"
+	onclick="loadscene(get(scene[get(xml.scene)].name),null,MERGE|KEEPVIEW,get(skin_settings.loadscene_blend));"
+/>
+
+<layer name="timeline_fut"
+	url="Ref/timeline_fut.jpg"
+	parent="layer[timeline_container]"
+	keep="true"
+	scalechildren="false"
+	zorder="62"
+	width="100%"
+	height="prop"
+	edge="topleft"
+	align="topleft"
+	y="48"
+	visible="true"
+	alpha="1.0"
+	enabled="false"
+	handcursor="false"
+/>
+
+<!-- END TIMELINE SECTION -->
+	
+<!-- MARKER SECTION -->
+
+<layer name="marker_green"
+	url="Ref/markers.jpg"
+	crop="105|0|35|36"
+	onovercrop="105|72|35|36"
+	ondowncrop="105|36|35|36"
+	keep="true"
+	scalechildren="false"
+	zorder="61"
+	width="40"
+	height="prop"
+	edge="topright"
+	align="topright"
+	y="10"
+	x="10"
+	visible="true"
+	alpha="1.0"
+	enabled="true"
+	handcursor="true"
+/>
+
+<layer name="marker_yellow"
+	url="Ref/markers.jpg"
+	crop="70|0|35|36"
+	onovercrop="70|72|35|36"
+	ondowncrop="70|36|35|36"
+	keep="true"
+	scalechildren="false"
+	zorder="61"
+	width="40"
+	height="prop"
+	edge="topright"
+	align="topright"
+	y="10"
+	x="60"
+	visible="true"
+	alpha="1.0"
+	enabled="true"
+	handcursor="true"
+/>
+
+<layer name="marker_orange"
+	url="Ref/markers.jpg"
+	crop="35|0|35|36"
+	onovercrop="35|72|35|36"
+	ondowncrop="35|36|35|36"
+	keep="true"
+	scalechildren="false"
+	zorder="61"
+	width="40"
+	height="prop"
+	edge="topright"
+	align="topright"
+	y="10"
+	x="110"
+	visible="true"
+	alpha="1.0"
+	enabled="true"
+	handcursor="true"
+/>
+
+<layer name="marker_red"
+	url="Ref/markers.jpg"
+	crop="0|0|35|36"
+	onovercrop="0|72|35|36"
+	ondowncrop="0|36|35|36"
+	keep="true"
+	scalechildren="false"
+	zorder="61"
+	width="40"
+	height="prop"
+	edge="topright"
+	align="topright"
+	y="10"
+	x="160"
+	visible="true"
+	alpha="1.0"
+	enabled="true"
+	handcursor="true"
+	onclick="set(hotspot[marker].visible,true);"
+/>
+
+<!-- END MARKER SECTION -->
+
+
+	   <!-- MAP -->
+	   
+<plugin name="radarSM_ground"
+        url.flash="plugins/radar.swf"
+        url.html5="plugins/radar.js"
+        parent="layer[NOVA_Map_Small_Pin_ground]"
+        align="center"
+        edge="center"
+		keep="true"
+        scale="4.0"
+        heading="0.0"
+        headingoffset="87.0"
+        fillcolor="0x5ba6be"
+        fillalpha="0.65"
+        linewidth="0.0"
+        linecolor="0xFFFFFF"
+        linealpha="0.3"
+        invert="false"
+		zorder="25"
+		visible="true"
+        />
+	   
+<plugin name="radarSM_3"
+        url.flash="plugins/radar.swf"
+        url.html5="plugins/radar.js"
+        parent="layer[NOVA_Map_Small_Pin_3]"
+        align="center"
+        edge="center"
+		keep="true"
+        scale="4.0"
+        heading="0.0"
+        headingoffset="87.0"
+        fillcolor="0x5ba6be"
+        fillalpha="0.5"
+        linewidth="0.0"
+        linecolor="0xFFFFFF"
+        linealpha="0.3"
+        invert="false"
+		zorder="25"
+		visible="true"
+        />
+	   
+<plugin name="radarSM_4"
+        url.flash="plugins/radar.swf"
+        url.html5="plugins/radar.js"
+        parent="layer[NOVA_Map_Small_Pin_4]"
+        align="center"
+        edge="center"
+		keep="true"
+        scale="4.0"
+        heading="0.0"
+        headingoffset="87.0"
+        fillcolor="0x5ba6be"
+        fillalpha="0.5"
+        linewidth="0.0"
+        linecolor="0xFFFFFF"
+        linealpha="0.3"
+        invert="false"
+		zorder="25"
+		visible="true"
+        />
+	   
+<plugin name="radarSM_roof"
+        url.flash="plugins/radar.swf"
+        url.html5="plugins/radar.js"
+        parent="layer[NOVA_Map_Small_Pin_roof]"
+        align="center"
+        edge="center"
+		keep="true"
+        scale="4.0"
+        heading="0.0"
+        headingoffset="87.0"
+        fillcolor="0x5ba6be"
+        fillalpha="0.5"
+        linewidth="0.0"
+        linecolor="0xFFFFFF"
+        linealpha="0.3"
+        invert="false"
+		zorder="25"
+		visible="true"
+        />
+
+	<layer name="NOVA_Map_Back"
+		url="Ref/black1px.jpg"
+		visible="false"
+		keep="true"
+		zorder="19"
+		capture="false"
+		alpha="0.6"
+		width="100%"
+		height="100%"
+		align="center"
+		edge="center"
+		enabled="true"
+		handcursor="false"
+		ondown="set(visible,false); set(layer[NOVA_Map].visible,false);"
+	/>
+	
+	<layer name="NOVA_Map_Small"
+		url="Ref/map_back.jpg"
+		parent="layer[map_holder]"
+		keep="true"
+		visible="true"
+		enabled="true"
+		handcursor="true"
+		maskchildren="false"
+		scalechildren="true"
+		width="90%"
+		height="prop"
+		x="40"
+		y="83"
+		capture="true"
+		zorder="66"
+		align="topleft"
+		edge="topleft"
+		alpha="1.0"
+		onclick="skin_showthumbs(false); switch(layer[NOVA_Map].visible); switch(layer[NOVA_Map_Back].visible);"
+	/>
+	
+	<layer name="NOVA_Map_Level_ground_inactive"
+		url="Ref/level_buttons.png"
+		crop="0|0|495|149"
+		parent="layer[NOVA_Map_Small]"
+		keep="true"
+		visible="false"
+		enabled="true"
+		handcursor="true"
+		maskchildren="false"
+		scalechildren="true"
+		capture="true"
+		zorder="19"
+		align="bottomleft"
+		edge="topleft"
+		alpha="1.0"
+		scale="1.0"
+		onclick="skin_showthumbs(false); switch(layer[NOVA_Map].visible); switch(layer[NOVA_Map_Back].visible);"
+	/>
+	
+	<layer name="NOVA_Map_Level_ground_active"
+		url="Ref/level_buttons.png"
+		crop="0|149|495|149"
+		parent="layer[NOVA_Map_Small]"
+		keep="true"
+		visible="false"
+		enabled="true"
+		handcursor="true"
+		maskchildren="false"
+		scalechildren="true"
+		capture="true"
+		zorder="17"
+		align="bottomleft"
+		edge="topleft"
+		alpha="1.0"
+		scale="1.0"
+		onloaded=""
+		onout="set(zorder,17); set(crop,0|149|495|149);"
+		onover="set(zorder,18); set(crop,0|298|495|149);"
+		onclick="delayedcall(0.1,loadscene(scene_Pier-17-Ground_01,null,get(skin_settings.loadscene_flags),get(skin_settings.loadscene_blend));); set(layer[NOVA_Map].visible,false); set(layer[NOVA_Map_Back].visible,false);"
+	/>
+	
+	<layer name="NOVA_Map_Level_3_inactive"
+		url="Ref/level_buttons.png"
+		crop="495|0|522|149"
+		parent="layer[NOVA_Map_Small]"
+		keep="true"
+		visible="false"
+		enabled="true"
+		handcursor="true"
+		maskchildren="false"
+		scalechildren="true"
+		capture="true"
+		zorder="19"
+		align="bottomleft"
+		edge="topleft"
+		x="401"
+		alpha="1.0"
+		scale="1.0"
+		onclick="skin_showthumbs(false); switch(layer[NOVA_Map].visible); switch(layer[NOVA_Map_Back].visible);"
+	/>
+	
+	<layer name="NOVA_Map_Level_3_active"
+		url="Ref/level_buttons.png"
+		crop="495|149|522|149"
+		parent="layer[NOVA_Map_Small]"
+		keep="true"
+		visible="false"
+		enabled="true"
+		handcursor="true"
+		maskchildren="false"
+		scalechildren="true"
+		capture="true"
+		zorder="17"
+		align="bottomleft"
+		edge="topleft"
+		x="401"
+		alpha="1.0"
+		scale="1.0"
+		onloaded=""
+		onout="set(zorder,17); set(crop,495|149|522|149);"
+		onover="set(zorder,18); set(crop,495|298|522|149);"
+		onclick="delayedcall(0.1,loadscene(scene_Pier-17-3_01,null,get(skin_settings.loadscene_flags),get(skin_settings.loadscene_blend));); set(layer[NOVA_Map].visible,false); set(layer[NOVA_Map_Back].visible,false);"
+	/>
+	
+	<layer name="NOVA_Map_Level_4_inactive"
+		url="Ref/level_buttons.png"
+		crop="1017|0|522|149"
+		parent="layer[NOVA_Map_Small]"
+		keep="true"
+		visible="false"
+		enabled="true"
+		handcursor="true"
+		maskchildren="false"
+		scalechildren="true"
+		capture="true"
+		zorder="19"
+		align="bottomleft"
+		edge="topleft"
+		x="829"
+		alpha="1.0"
+		scale="1.0"
+		onclick="skin_showthumbs(false); switch(layer[NOVA_Map].visible); switch(layer[NOVA_Map_Back].visible);"
+	/>
+	
+	<layer name="NOVA_Map_Level_4_active"
+		url="Ref/level_buttons.png"
+		crop="1017|149|522|149"
+		parent="layer[NOVA_Map_Small]"
+		keep="true"
+		visible="false"
+		enabled="true"
+		handcursor="true"
+		maskchildren="false"
+		scalechildren="true"
+		capture="true"
+		zorder="17"
+		align="bottomleft"
+		edge="topleft"
+		x="829"
+		alpha="1.0"
+		scale="1.0"
+		onloaded=""
+		onout="set(zorder,17); set(crop,1017|149|522|149);"
+		onover="set(zorder,18); set(crop,1017|298|522|149);"
+		onclick="delayedcall(0.1,loadscene(scene_Pier-17-4_01,null,get(skin_settings.loadscene_flags),get(skin_settings.loadscene_blend));); set(layer[NOVA_Map].visible,false); set(layer[NOVA_Map_Back].visible,false);"
+	/>
+	
+	<layer name="NOVA_Map_Level_roof_inactive"
+		url="Ref/level_buttons.png"
+		crop="1539|0|495|149"
+		parent="layer[NOVA_Map_Small]"
+		keep="true"
+		visible="false"
+		enabled="true"
+		handcursor="true"
+		maskchildren="false"
+		scalechildren="true"
+		capture="true"
+		zorder="19"
+		align="bottomright"
+		edge="topright"
+		alpha="1.0"
+		scale="1.0"
+		onclick="skin_showthumbs(false); switch(layer[NOVA_Map].visible); switch(layer[NOVA_Map_Back].visible);"
+	/>
+	
+	<layer name="NOVA_Map_Level_roof_active"
+		url="Ref/level_buttons.png"
+		crop="1539|149|495|149"
+		parent="layer[NOVA_Map_Small]"
+		keep="true"
+		visible="false"
+		enabled="true"
+		handcursor="true"
+		maskchildren="false"
+		scalechildren="true"
+		capture="true"
+		zorder="17"
+		align="bottomright"
+		edge="topright"
+		alpha="1.0"
+		scale="1.0"
+		onloaded=""
+		onout="set(zorder,17); set(crop,1539|149|495|149);"
+		onover="set(zorder,18); set(crop,1539|298|495|149);"
+		onclick="delayedcall(0.1,loadscene(scene_Pier-17-rOOF_01,null,get(skin_settings.loadscene_flags),get(skin_settings.loadscene_blend));); set(layer[NOVA_Map].visible,false); set(layer[NOVA_Map_Back].visible,false);"
+	/>
+	
+	<layer name="NOVA_Map_Small_ground"
+		url="Ref/map_ground.jpg"
+		parent="layer[NOVA_Map_Small]"
+		keep="true"
+		visible="false"
+		enabled="true"
+		handcursor="true"
+		maskchildren="true"
+		scalechildren="true"
+		capture="true"
+		zorder="17"
+		align="topleft"
+		edge="topleft"
+		alpha="1.0"
+		onloaded=""
+		onclick="skin_showthumbs(false); switch(layer[NOVA_Map].visible); switch(layer[NOVA_Map_Back].visible);"
+	/>
+	
+	<layer name="NOVA_Map_Small_3"
+		url="Ref/map_3.jpg"
+		parent="layer[NOVA_Map_Small]"
+		keep="true"
+		visible="false"
+		enabled="true"
+		handcursor="true"
+		maskchildren="true"
+		scalechildren="true"
+		capture="true"
+		zorder="17"
+		align="topleft"
+		edge="topleft"
+		alpha="1.0"
+		onloaded=""
+		onclick="skin_showthumbs(false); switch(layer[NOVA_Map].visible); switch(layer[NOVA_Map_Back].visible);"
+	/>
+	
+	<layer name="NOVA_Map_Small_4"
+		url="Ref/map_4.jpg"
+		parent="layer[NOVA_Map_Small]"
+		keep="true"
+		visible="false"
+		enabled="true"
+		handcursor="true"
+		maskchildren="true"
+		scalechildren="true"
+		capture="true"
+		zorder="17"
+		align="topleft"
+		edge="topleft"
+		alpha="1.0"
+		onloaded=""
+		onclick="skin_showthumbs(false); switch(layer[NOVA_Map].visible); switch(layer[NOVA_Map_Back].visible);"
+	/>
+	
+	<layer name="NOVA_Map_Small_roof"
+		url="Ref/map_roof.jpg"
+		parent="layer[NOVA_Map_Small]"
+		keep="true"
+		visible="false"
+		enabled="true"
+		handcursor="true"
+		maskchildren="true"
+		scalechildren="true"
+		capture="true"
+		zorder="17"
+		align="topleft"
+		edge="topleft"
+		alpha="1.0"
+		onloaded=""
+		onclick="skin_showthumbs(false); switch(layer[NOVA_Map].visible); switch(layer[NOVA_Map_Back].visible);"
+	/>
+	
+	<action name="map_loc" >
+		txtadd(cur_pin, 'Pin','-', get(scene[get(xml.scene)].title));
+		set(layer[NOVA_Map_Small_Pin_ground].x,get(layer[get(cur_pin)].x));
+		set(layer[NOVA_Map_Small_Pin_ground].y,get(layer[get(cur_pin)].y));
+		set(layer[NOVA_Map_Small_Pin_3].x,get(layer[get(cur_pin)].x));
+		set(layer[NOVA_Map_Small_Pin_3].y,get(layer[get(cur_pin)].y));
+		set(layer[NOVA_Map_Small_Pin_4].x,get(layer[get(cur_pin)].x));
+		set(layer[NOVA_Map_Small_Pin_4].y,get(layer[get(cur_pin)].y));
+		set(layer[NOVA_Map_Small_Pin_roof].x,get(layer[get(cur_pin)].x));
+		set(layer[NOVA_Map_Small_Pin_roof].y,get(layer[get(cur_pin)].y));
+	</action>
+	
+	<layer name="NOVA_Map_Small_Pin_ground"
+	parent="layer[NOVA_Map_Small_ground]"
+		url="Ref/pin.png"
+		maskchildren="false"
+		scalechildren="true"
+		keep="true"
+		visible="true"
+		enabled="false"
+		handcursor="false"
+		capture="true"
+		zorder="18"
+		align="bottomleft"
+		edge="center"
+		scale="0.4"
+		x=""
+		y=""
+		alpha="1.0"
+	/>
+	
+	<layer name="NOVA_Map_Small_Pin_3"
+	parent="layer[NOVA_Map_Small_3]"
+		url="Ref/pin.png"
+		maskchildren="false"
+		scalechildren="true"
+		keep="true"
+		visible="true"
+		enabled="false"
+		handcursor="false"
+		capture="true"
+		zorder="18"
+		align="bottomleft"
+		edge="center"
+		scale="0.4"
+		x=""
+		y=""
+		alpha="1.0"
+	/>
+	
+	<layer name="NOVA_Map_Small_Pin_4"
+	parent="layer[NOVA_Map_Small_4]"
+		url="Ref/pin.png"
+		maskchildren="false"
+		scalechildren="true"
+		keep="true"
+		visible="true"
+		enabled="false"
+		handcursor="false"
+		capture="true"
+		zorder="18"
+		align="bottomleft"
+		edge="center"
+		scale="0.4"
+		x=""
+		y=""
+		alpha="1.0"
+	/>
+
+	<layer name="NOVA_Map_Small_Pin_roof"
+	parent="layer[NOVA_Map_Small_roof]"
+		url="Ref/pin.png"
+		maskchildren="false"
+		scalechildren="true"
+		keep="true"
+		visible="true"
+		enabled="false"
+		handcursor="false"
+		capture="true"
+		zorder="18"
+		align="bottomleft"
+		edge="center"
+		scale="0.4"
+		x=""
+		y=""
+		alpha="1.0"
+	/>
+	
+	<action name="pin_grow" >
+	if(scale GT 0.5,
+		tween(scale,0.4,1.0);
+	,
+		tween(scale,0.56,1.0);
+	);
+	delayedcall(1.0,pin_grow());
+	</action>
+
+	<layer name="NOVA_Map"
+		url="Ref/map_back.jpg"
+		keep="true"
+		visible="false"
+		enabled="true"
+		handcursor="false"
+		maskchildren="false"
+		scalechildren="true"
+		capture="true"
+		zorder="60"
+		align="center"
+		edge="center"
+		alpha="1.0"
+		onloaded="d_resize();"
+	/>
+	
+	<layer name="NOVA_Map_ground"
+		url="Ref/map_ground.jpg"
+		parent="layer[NOVA_Map]"
+		keep="true"
+		visible="false"
+		enabled="true"
+		handcursor="false"
+		maskchildren="false"
+		scalechildren="true"
+		capture="true"
+		scale="1.0"
+		zorder="60"
+		align="center"
+		edge="center"
+		alpha="1.0"
+		onloaded=""
+	/>
+	
+	<layer name="NOVA_Map_3"
+		url="Ref/map_3.jpg"
+		parent="layer[NOVA_Map]"
+		keep="true"
+		visible="false"
+		enabled="true"
+		handcursor="false"
+		maskchildren="false"
+		scalechildren="true"
+		capture="true"
+		scale="1.0"
+		zorder="60"
+		align="center"
+		edge="center"
+		alpha="1.0"
+		onloaded=""
+	/>
+	
+	<layer name="NOVA_Map_4"
+		url="Ref/map_4.jpg"
+		parent="layer[NOVA_Map]"
+		keep="true"
+		visible="false"
+		enabled="true"
+		handcursor="false"
+		maskchildren="false"
+		scalechildren="true"
+		capture="true"
+		scale="1.0"
+		zorder="60"
+		align="center"
+		edge="center"
+		alpha="1.0"
+		onloaded=""
+	/>
+	
+	<layer name="NOVA_Map_roof"
+		url="Ref/map_roof.jpg"
+		parent="layer[NOVA_Map]"
+		keep="true"
+		visible="false"
+		enabled="true"
+		handcursor="false"
+		maskchildren="false"
+		scalechildren="true"
+		capture="true"
+		scale="1.0"
+		zorder="60"
+		align="center"
+		edge="center"
+		alpha="1.0"
+		onloaded=""
+	/>
+	
+	<action name="map_level" >
+		if(%1 == 1,
+			set(layer[NOVA_Map_ground].visible,true);
+			set(layer[NOVA_Map_Small_ground].visible,true);
+			set(layer[NOVA_Map_Level_ground_active].visible,false);
+			set(layer[NOVA_Map_Level_ground_inactive].visible,true);
+
+			set(layer[NOVA_Map_3].visible,false);
+			set(layer[NOVA_Map_Small_3].visible,false);
+			set(layer[NOVA_Map_Level_3_active].visible,true);
+			set(layer[NOVA_Map_Level_3_inactive].visible,false);
+
+			set(layer[NOVA_Map_4].visible,false);
+			set(layer[NOVA_Map_Small_4].visible,false);
+			set(layer[NOVA_Map_Level_4_active].visible,true);
+			set(layer[NOVA_Map_Level_4_inactive].visible,false);
+
+			set(layer[NOVA_Map_roof].visible,false);
+			set(layer[NOVA_Map_Small_roof].visible,false);
+			set(layer[NOVA_Map_Level_roof_active].visible,true);
+			set(layer[NOVA_Map_Level_roof_inactive].visible,false);
+		);
+
+		if(%1 == 2,
+			set(layer[NOVA_Map_ground].visible,false);
+			set(layer[NOVA_Map_Small_ground].visible,false);
+			set(layer[NOVA_Map_Level_ground_active].visible,true);
+			set(layer[NOVA_Map_Level_ground_inactive].visible,false);
+
+			set(layer[NOVA_Map_3].visible,true);
+			set(layer[NOVA_Map_Small_3].visible,true);
+			set(layer[NOVA_Map_Level_3_active].visible,false);
+			set(layer[NOVA_Map_Level_3_inactive].visible,true);
+
+			set(layer[NOVA_Map_4].visible,false);
+			set(layer[NOVA_Map_Small_4].visible,false);
+			set(layer[NOVA_Map_Level_4_active].visible,true);
+			set(layer[NOVA_Map_Level_4_inactive].visible,false);
+
+			set(layer[NOVA_Map_roof].visible,false);
+			set(layer[NOVA_Map_Small_roof].visible,false);
+			set(layer[NOVA_Map_Level_roof_active].visible,true);
+			set(layer[NOVA_Map_Level_roof_inactive].visible,false);
+		);
+
+		if(%1 == 3,
+			set(layer[NOVA_Map_ground].visible,false);
+			set(layer[NOVA_Map_Small_ground].visible,false);
+			set(layer[NOVA_Map_Level_ground_active].visible,true);
+			set(layer[NOVA_Map_Level_ground_inactive].visible,false);
+
+			set(layer[NOVA_Map_3].visible,false);
+			set(layer[NOVA_Map_Small_3].visible,false);
+			set(layer[NOVA_Map_Level_3_active].visible,true);
+			set(layer[NOVA_Map_Level_3_inactive].visible,false);
+
+			set(layer[NOVA_Map_4].visible,true);
+			set(layer[NOVA_Map_Small_4].visible,true);
+			set(layer[NOVA_Map_Level_4_active].visible,false);
+			set(layer[NOVA_Map_Level_4_inactive].visible,true);
+
+			set(layer[NOVA_Map_roof].visible,false);
+			set(layer[NOVA_Map_Small_roof].visible,false);
+			set(layer[NOVA_Map_Level_roof_active].visible,true);
+			set(layer[NOVA_Map_Level_roof_inactive].visible,false);
+		);
+
+		if(%1 == 4,
+			set(layer[NOVA_Map_ground].visible,false);
+			set(layer[NOVA_Map_Small_ground].visible,false);
+			set(layer[NOVA_Map_Level_ground_active].visible,true);
+			set(layer[NOVA_Map_Level_ground_inactive].visible,false);
+
+			set(layer[NOVA_Map_3].visible,false);
+			set(layer[NOVA_Map_Small_3].visible,false);
+			set(layer[NOVA_Map_Level_3_active].visible,true);
+			set(layer[NOVA_Map_Level_3_inactive].visible,false);
+
+			set(layer[NOVA_Map_4].visible,false);
+			set(layer[NOVA_Map_Small_4].visible,false);
+			set(layer[NOVA_Map_Level_4_active].visible,true);
+			set(layer[NOVA_Map_Level_4_inactive].visible,false);
+
+			set(layer[NOVA_Map_roof].visible,true);
+			set(layer[NOVA_Map_Small_roof].visible,true);
+			set(layer[NOVA_Map_Level_roof_active].visible,false);
+			set(layer[NOVA_Map_Level_roof_inactive].visible,true);
+		);
+	</action>
+	
+	<action name="pin_rot" >
+		if(rotate != 89.75,
+			add(rotate,.25);
+		,
+			set(rotate,0);
+		);
+		delayedcall(0.01,pin_rot(););
+	</action>
+	
+<style	name="pin"
+		url="Ref/pin.png"
+		visible="true"
+		keep="true"
+		zorder="15"
+		alpha="1.0"
+		align="bottomleft"
+		edge="center"
+		enabled="true"
+		handcursor="true"
+		scale="0.20"
+		onover="tween(scale,0.35,0.3);"
+		onout="tween(scale,0.20,0.3);"
+		onclick="delayedcall(0.8,loadscene(get(da_scene),null,get(skin_settings.loadscene_flags),get(skin_settings.loadscene_blend));); delayedcall(0.4, set(layer[NOVA_Map].visible,false)); delayedcall(0.4, set(layer[NOVA_Map_Back].visible,false)); "
+		rotate="0"
+		onhover=""
+		onloaded="pin_rot();"
+/>
+
+	   <!-- GROUND Pins -->
+	
+<layer name="Pin-Ground Level - 01"
+	style="pin"
+	parent="layer[NOVA_Map_ground]"
+	x="198"
+	y="162"
+	da_scene="scene_Pier-17-Ground_01"
+/>
+	
+<layer name="Pin-Ground Level - 02"
+	style="pin"
+	parent="layer[NOVA_Map_ground]"
+	x="198"
+	y="443"
+	da_scene="scene_Pier-17-Ground_02"
+/>
+	
+<layer name="Pin-Ground Level - 03"
+	style="pin"
+	parent="layer[NOVA_Map_ground]"
+	x="198"
+	y="1017"
+	da_scene="scene_Pier-17-Ground_03"
+/>
+	
+<layer name="Pin-Ground Level - 04"
+	style="pin"
+	parent="layer[NOVA_Map_ground]"
+	x="582"
+	y="1071"
+	da_scene="scene_Pier-17-Ground_04"
+/>
+
+<layer name="Pin-Ground Level - 05"
+	style="pin"
+	parent="layer[NOVA_Map_ground]"
+	x="595"
+	y="627"
+	da_scene="scene_Pier-17-Ground_05"
+/>
+
+<layer name="Pin-Ground Level - 06"
+	style="pin"
+	parent="layer[NOVA_Map_ground]"
+	x="674"
+	y="332"
+	da_scene="scene_Pier-17-Ground_06"
+/>
+
+<layer name="Pin-Ground Level - 07"
+	style="pin"
+	parent="layer[NOVA_Map_ground]"
+	x="640"
+	y="75"
+	da_scene="scene_Pier-17-Ground_07"
+/>
+
+<layer name="Pin-Ground Level - 08"
+	style="pin"
+	parent="layer[NOVA_Map_ground]"
+	x="1040"
+	y="75"
+	da_scene="scene_Pier-17-Ground_08"
+/>
+
+<layer name="Pin-Ground Level - 09"
+	style="pin"
+	parent="layer[NOVA_Map_ground]"
+	x="1039"
+	y="385"
+	da_scene="scene_Pier-17-Ground_09"
+/>
+
+<layer name="Pin-Ground Level - 10"
+	style="pin"
+	parent="layer[NOVA_Map_ground]"
+	x="900"
+	y="440"
+	da_scene="scene_Pier-17-Ground_10"
+/>
+
+<layer name="Pin-Ground Level - 11"
+	style="pin"
+	parent="layer[NOVA_Map_ground]"
+	x="1050"
+	y="786"
+	da_scene="scene_Pier-17-Ground_11"
+/>
+
+<layer name="Pin-Ground Level - 12"
+	style="pin"
+	parent="layer[NOVA_Map_ground]"
+	x="1044"
+	y="1000"
+	da_scene="scene_Pier-17-Ground_12"
+/>
+
+<layer name="Pin-Ground Level - 13"
+	style="pin"
+	parent="layer[NOVA_Map_ground]"
+	x="1269"
+	y="913"
+	da_scene="scene_Pier-17-Ground_13"
+/>
+
+<layer name="Pin-Ground Level - 14"
+	style="pin"
+	parent="layer[NOVA_Map_ground]"
+	x="783"
+	y="786"
+	da_scene="scene_Pier-17-Ground_14"
+/>
+
+<layer name="Pin-Ground Level - 15"
+	style="pin"
+	parent="layer[NOVA_Map_ground]"
+	x="690"
+	y="894"
+	da_scene="scene_Pier-17-Ground_15"
+/>
+
+<layer name="Pin-Ground Level - 16"
+	style="pin"
+	parent="layer[NOVA_Map_ground]"
+	x="408"
+	y="867"
+	da_scene="scene_Pier-17-Ground_16"
+/>
+
+<layer name="Pin-Ground Level - 17"
+	style="pin"
+	parent="layer[NOVA_Map_ground]"
+	x="567"
+	y="429"
+	da_scene="scene_Pier-17-Ground_17"
+/>
+
+	   <!-- LEVEL 03 Pins -->
+
+<layer name="Pin-Level 03 - 01"
+	style="pin"
+	parent="layer[NOVA_Map_3]"
+	x="204"
+	y="210"
+	da_scene="scene_Pier-17-3_01"
+/>
+
+<layer name="Pin-Level 03 - 02"
+	style="pin"
+	parent="layer[NOVA_Map_3]"
+	x="225"
+	y="568"
+	da_scene="scene_Pier-17-3_02"
+/>
+
+<layer name="Pin-Level 03 - 03"
+	style="pin"
+	parent="layer[NOVA_Map_3]"
+	x="204"
+	y="901"
+	da_scene="scene_Pier-17-3_03"
+/>
+
+<layer name="Pin-Level 03 - 04"
+	style="pin"
+	parent="layer[NOVA_Map_3]"
+	x="643"
+	y="568"
+	da_scene="scene_Pier-17-3_04"
+/>
+
+<layer name="Pin-Level 03 - 05"
+	style="pin"
+	parent="layer[NOVA_Map_3]"
+	x="639"
+	y="883"
+	da_scene="scene_Pier-17-3_05"
+/>
+
+<layer name="Pin-Level 03 - 06"
+	style="pin"
+	parent="layer[NOVA_Map_3]"
+	x="711"
+	y="290"
+	da_scene="scene_Pier-17-3_06"
+/>
+
+<layer name="Pin-Level 03 - 07"
+	style="pin"
+	parent="layer[NOVA_Map_3]"
+	x="420"
+	y="175"
+	da_scene="scene_Pier-17-3_07"
+/>
+
+<layer name="Pin-Level 03 - 08"
+	style="pin"
+	parent="layer[NOVA_Map_3]"
+	x="1116"
+	y="229"
+	da_scene="scene_Pier-17-3_08"
+/>
+
+<layer name="Pin-Level 03 - 09"
+	style="pin"
+	parent="layer[NOVA_Map_3]"
+	x="1597"
+	y="163"
+	da_scene="scene_Pier-17-3_09"
+/>
+
+<layer name="Pin-Level 03 - 10"
+	style="pin"
+	parent="layer[NOVA_Map_3]"
+	x="1606"
+	y="568"
+	da_scene="scene_Pier-17-3_10"
+/>
+
+<layer name="Pin-Level 03 - 11"
+	style="pin"
+	parent="layer[NOVA_Map_3]"
+	x="1603"
+	y="974"
+	da_scene="scene_Pier-17-3_11"
+/>
+
+<layer name="Pin-Level 03 - 12"
+	style="pin"
+	parent="layer[NOVA_Map_3]"
+	x="1128"
+	y="893"
+	da_scene="scene_Pier-17-3_12"
+/>
+	
+	   <!-- LEVEL 04 Pins -->
+	
+<layer name="Pin-Level 04 - 01"
+	style="pin"
+	parent="layer[NOVA_Map_4]"
+	x="123"
+	y="142"
+	da_scene="scene_Pier-17-4_01"
+/>
+
+<layer name="Pin-Level 04 - 02"
+	style="pin"
+	parent="layer[NOVA_Map_4]"
+	x="260"
+	y="285"
+	da_scene="scene_Pier-17-4_02"
+/>
+
+<layer name="Pin-Level 04 - 03"
+	style="pin"
+	parent="layer[NOVA_Map_4]"
+	x="216"
+	y="568"
+	da_scene="scene_Pier-17-4_03"
+/>
+
+<layer name="Pin-Level 04 - 04"
+	style="pin"
+	parent="layer[NOVA_Map_4]"
+	x="123"
+	y="985"
+	da_scene="scene_Pier-17-4_04"
+/>
+
+<layer name="Pin-Level 04 - 05"
+	style="pin"
+	parent="layer[NOVA_Map_4]"
+	x="450"
+	y="985"
+	da_scene="scene_Pier-17-4_05"
+/>
+
+<layer name="Pin-Level 04 - 06"
+	style="pin"
+	parent="layer[NOVA_Map_4]"
+	x="260"
+	y="856"
+	da_scene="scene_Pier-17-4_06"
+/>
+
+<layer name="Pin-Level 04 - 07"
+	style="pin"
+	parent="layer[NOVA_Map_4]"
+	x="450"
+	y="568"
+	da_scene="scene_Pier-17-4_07"
+/>
+
+<layer name="Pin-Level 04 - 08"
+	style="pin"
+	parent="layer[NOVA_Map_4]"
+	x="1329"
+	y="143"
+	da_scene="scene_Pier-17-4_08"
+/>
+
+<layer name="Pin-Level 04 - 10"
+	style="pin"
+	parent="layer[NOVA_Map_4]"
+	x="1070"
+	y="880"
+	da_scene="scene_Pier-17-4_10"
+/>
+
+<layer name="Pin-Level 04 - 11"
+	style="pin"
+	parent="layer[NOVA_Map_4]"
+	x="780"
+	y="568"
+	da_scene="scene_Pier-17-4_11"
+/>
+
+<layer name="Pin-Level 04 - 12"
+	style="pin"
+	parent="layer[NOVA_Map_4]"
+	x="987"
+	y="568"
+	da_scene="scene_Pier-17-4_12"
+/>
+
+<layer name="Pin-Level 04 - 13"
+	style="pin"
+	parent="layer[NOVA_Map_4]"
+	x="1112"
+	y="436"
+	da_scene="scene_Pier-17-4_13"
+/>
+
+<layer name="Pin-Level 04 - 14"
+	style="pin"
+	parent="layer[NOVA_Map_4]"
+	x="1409"
+	y="580"
+	da_scene="scene_Pier-17-4_14"
+/>
+
+<layer name="Pin-Level 04 - 15"
+	style="pin"
+	parent="layer[NOVA_Map_4]"
+	x="1112"
+	y="692"
+	da_scene="scene_Pier-17-4_15"
+/>
+
+<layer name="Pin-Level 04 - 16"
+	style="pin"
+	parent="layer[NOVA_Map_4]"
+	x="1341"
+	y="275"
+	da_scene="scene_Pier-17-4_16"
+/>
+
+<layer name="Pin-Level 04 - 17"
+	style="pin"
+	parent="layer[NOVA_Map_4]"
+	x="1502"
+	y="457"
+	da_scene="scene_Pier-17-4_17"
+/>
+
+<layer name="Pin-Level 04 - 18"
+	style="pin"
+	parent="layer[NOVA_Map_4]"
+	x="1628"
+	y="142"
+	da_scene="scene_Pier-17-4_18"
+/>
+
+<layer name="Pin-Level 04 - 19"
+	style="pin"
+	parent="layer[NOVA_Map_4]"
+	x="1604"
+	y="578"
+	da_scene="scene_Pier-17-4_19"
+/>
+
+<layer name="Pin-Level 04 - 20"
+	style="pin"
+	parent="layer[NOVA_Map_4]"
+	x="1625"
+	y="997"
+	da_scene="scene_Pier-17-4_20"
+/>
+
+<layer name="Pin-Level 04 - 21"
+	style="pin"
+	parent="layer[NOVA_Map_4]"
+	x="1391"
+	y="740"
+	da_scene="scene_Pier-17-4_21"
+/>
+
+<layer name="Pin-Level 04 - 22"
+	style="pin"
+	parent="layer[NOVA_Map_4]"
+	x="1269"
+	y="1007"
+	da_scene="scene_Pier-17-4_22"
+/>
+
+	   <!-- ROOF Pins -->
+
+<layer name="Pin-Roof - 01"
+	style="pin"
+	parent="layer[NOVA_Map_roof]"
+	x="123"
+	y="142"
+	da_scene="scene_Pier-17-Roof_01"
+/>
+
+<layer name="Pin-Roof - 02"
+	style="pin"
+	parent="layer[NOVA_Map_roof]"
+	x="216"
+	y="568"
+	da_scene="scene_Pier-17-Roof_02"
+/>
+
+<layer name="Pin-Roof - 03"
+	style="pin"
+	parent="layer[NOVA_Map_roof]"
+	x="123"
+	y="985"
+	da_scene="scene_Pier-17-Roof_03"
+/>
+
+<layer name="Pin-Roof - 04"
+	style="pin"
+	parent="layer[NOVA_Map_roof]"
+	x="563"
+	y="985"
+	da_scene="scene_Pier-17-Roof_04"
+/>
+
+<layer name="Pin-Roof - 05"
+	style="pin"
+	parent="layer[NOVA_Map_roof]"
+	x="563"
+	y="568"
+	da_scene="scene_Pier-17-Roof_05"
+/>
+
+<layer name="Pin-Roof - 06"
+	style="pin"
+	parent="layer[NOVA_Map_roof]"
+	x="563"
+	y="142"
+	da_scene="scene_Pier-17-Roof_06"
+/>
+
+<layer name="Pin-Roof - 07"
+	style="pin"
+	parent="layer[NOVA_Map_roof]"
+	x="1112"
+	y="142"
+	da_scene="scene_Pier-17-Roof_07"
+/>
+
+<layer name="Pin-Roof - 08"
+	style="pin"
+	parent="layer[NOVA_Map_roof]"
+	x="1049"
+	y="432"
+	da_scene="scene_Pier-17-Roof_08"
+/>
+
+<layer name="Pin-Roof - 09"
+	style="pin"
+	parent="layer[NOVA_Map_roof]"
+	x="1112"
+	y="985"
+	da_scene="scene_Pier-17-Roof_09"
+/>
+
+<layer name="Pin-Roof - 10"
+	style="pin"
+	parent="layer[NOVA_Map_roof]"
+	x="1624"
+	y="985"
+	da_scene="scene_Pier-17-Roof_10"
+/>
+
+<layer name="Pin-Roof - 12"
+	style="pin"
+	parent="layer[NOVA_Map_roof]"
+	x="1624"
+	y="568"
+	da_scene="scene_Pier-17-Roof_12"
+/>
+
+<layer name="Pin-Roof - 13"
+	style="pin"
+	parent="layer[NOVA_Map_roof]"
+	x="1624"
+	y="142"
+	da_scene="scene_Pier-17-Roof_13"
+/>
+
+<layer name="Pin-Roof - 14"
+	style="pin"
+	parent="layer[NOVA_Map_roof]"
+	x="1345"
+	y="578"
+	da_scene="scene_Pier-17-Roof_14"
+/>
+
+	<!--
+	    For an alternative skin design either change the <skin_settings> values 
+	    from above or optionally include one of the predefined designs from below.
+	-->
+	<!-- <include url="skin/vtourskin_design_flat_light.xml"  /> -->
+	<!-- <include url="skin/vtourskin_design_glass.xml"       /> -->
+	<!-- <include url="skin/vtourskin_design_ultra_light.xml" /> -->
+	<!-- <include url="skin/vtourskin_design_117.xml"         /> -->
+	<!-- <include url="skin/vtourskin_design_117round.xml"    /> -->
+	<!-- <include url="skin/vtourskin_design_black.xml"       /> -->
+
+
+	<!-- startup action - load the first scene -->
+	<action name="startup" autorun="onstart">
+		if(startscene === null OR !scene[get(startscene)], copy(startscene,scene[0].name); );
+		loadscene(get(startscene), null, MERGE);
+		if(startactions !== null, startactions() );
+		hotspot_animate();
+		set(overlay_status,false);
+		set(ii,0);
+		menu_buttons(1);
+		delayedcall(0.5,create_comment(); size_comment(););
+	</action>
+
+	<scene name="scene_Pier-17-Ground_01" title="Ground Level - 01" onstart="map_level(1);" thumburl="panos/Pier-17-Ground_01.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-55.635" vlookat="0.000" fovtype="MFOV" fov="105.000" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-Ground_01.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|-9|0">
+			<level tiledimagewidth="2560" tiledimageheight="2560">
+				<cube url="panos/Pier-17-Ground_01.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1280" tiledimageheight="1280">
+				<cube url="panos/Pier-17-Ground_01.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="640" tiledimageheight="640">
+				<cube url="panos/Pier-17-Ground_01.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-87.892" atv="-0.114" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_02" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="-1.715" atv="1.579" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_07" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-Ground_02" title="Ground Level - 02" onstart="map_level(1);" thumburl="panos/Pier-17-Ground_02.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-Ground_02.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|-90|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-Ground_02.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-Ground_02.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-29.816" atv="-1.392" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_05" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="89.450" atv="-1.164" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_01" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="-88.770" atv="-0.137" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_03" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-Ground_03" title="Ground Level - 03" onstart="map_level(1);" thumburl="panos/Pier-17-Ground_03.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-Ground_03.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|-174|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-Ground_03.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-Ground_03.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="82.003" atv="-1.166" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_02" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="-5.481" atv="1.868" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_04" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-Ground_04" title="Ground Level - 04" onstart="map_level(1);" thumburl="panos/Pier-17-Ground_04.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-Ground_04.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|126|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-Ground_04.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-Ground_04.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="152.924" atv="1.608" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_16" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="-179.082" atv="0.297" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_03" />
+		
+
+	</scene>
+
+	<scene name="scene_Pier-17-Ground_05" title="Ground Level - 05" onstart="map_level(1);" thumburl="panos/Pier-17-Ground_05.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-Ground_05.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|-140|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-Ground_05.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-Ground_05.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="162.931" atv="0.568" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_02" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="-103.264" atv="1.899" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_16" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="103.818" atv="2.596" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_17" />
+		<hotspot name="spot5" style="skin_hotspotstyle" ath="-41.724" atv="-0.308" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_14" />
+		<hotspot name="spot6" style="skin_hotspotstyle" ath="38.137" atv="-1.418" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_06" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-Ground_06" title="Ground Level - 06" onstart="map_level(1);" thumburl="panos/Pier-17-Ground_06.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-Ground_06.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|136|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-Ground_06.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-Ground_06.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-84.719" atv="-0.386" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_05" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="98.341" atv="1.118" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_07" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-Ground_07" title="Ground Level - 07" onstart="map_level(1);" thumburl="panos/Pier-17-Ground_07.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-Ground_07.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|134|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-Ground_07.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-Ground_07.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="178.451" atv="1.339" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_01" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="7.757" atv="-1.085" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_08" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="-87.534" atv="0.937" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_06" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-Ground_08" title="Ground Level - 08" onstart="map_level(1);" thumburl="panos/Pier-17-Ground_08.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-Ground_08.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|150|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-Ground_08.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-Ground_08.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-87.235" atv="-0.466" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_09" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="-173.178" atv="-0.236" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_07" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-Ground_09" title="Ground Level - 09" onstart="map_level(1);" thumburl="panos/Pier-17-Ground_09.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-Ground_09.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|124|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-Ground_09.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-Ground_09.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="92.870" atv="2.194" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_08" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="-128.615" atv="1.767" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_10" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="-87.730" atv="-0.184" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_11" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-Ground_10" title="Ground Level - 10" onstart="map_level(1);" thumburl="panos/Pier-17-Ground_10.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-Ground_10.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|45|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-Ground_10.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-Ground_10.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="17.077" atv="0.698" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_09" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-Ground_11" title="Ground Level - 11" onstart="map_level(1);" thumburl="panos/Pier-17-Ground_11.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-Ground_11.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|10|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-Ground_11.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-Ground_11.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="95.148" atv="-0.877" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_09" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="-86.169" atv="-2.703" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_12" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-Ground_12" title="Ground Level - 12" onstart="map_level(1);" thumburl="panos/Pier-17-Ground_12.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-Ground_12.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|-104|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-Ground_12.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-Ground_12.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="37.752" atv="2.604" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_13" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="159.028" atv="0.263" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_15" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="93.129" atv="-1.208" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_11" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-Ground_13" title="Ground Level - 13" onstart="map_level(1);" thumburl="panos/Pier-17-Ground_13.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-Ground_13.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|-175|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-Ground_13.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-Ground_13.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-171.722" atv="-0.079" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_12" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-Ground_14" title="Ground Level - 14" onstart="map_level(1);" thumburl="panos/Pier-17-Ground_14.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-Ground_14.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|75|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-Ground_14.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-Ground_14.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="133.189" atv="-1.189" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_05" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="-158.040" atv="4.579" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_15" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="-36.091" atv="1.185" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_12" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-Ground_15" title="Ground Level - 15" onstart="map_level(1);" thumburl="panos/Pier-17-Ground_15.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-Ground_15.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|10|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-Ground_15.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-Ground_15.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-12.464" atv="-0.235" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_12" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="42.709" atv="-0.453" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_14" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-Ground_16" title="Ground Level - 16" onstart="map_level(1);" thumburl="panos/Pier-17-Ground_16.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-Ground_16.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|180|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-Ground_16.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-Ground_16.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-82.855" atv="0.179" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_04" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="50.310" atv="-0.561" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_05" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-Ground_17" title="Ground Level - 17" onstart="map_level(1);" thumburl="panos/Pier-17-Ground_17.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-Ground_17.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|143|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-Ground_17.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-Ground_17.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-83.324" atv="1.102" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_05" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="-176.263" atv="-0.020" distorted="false" zoom="false" linkedscene="scene_pier-17-ground_02" />
+
+	</scene>
+	
+	<scene name="scene_Pier-17-3_01" title="Level 03 - 01" onstart="map_level(2);" thumburl="panos/Pier-17-3_01.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-3_01.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|-66|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-3_01.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-3_01.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-79.761" atv="-1.003" distorted="false" zoom="false" linkedscene="scene_pier-17-3_02" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-3_02" title="Level 03 - 02" onstart="map_level(2);" thumburl="panos/Pier-17-3_02.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-3_02.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|-173|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-3_02.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-3_02.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-113.740" atv="-0.717" distorted="false" zoom="false" linkedscene="scene_pier-17-3_03" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="93.093" atv="-0.311" distorted="false" zoom="false" linkedscene="scene_pier-17-3_01" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="-10.298" atv="1.500" distorted="false" zoom="false" linkedscene="scene_pier-17-3_04" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-3_03" title="Level 03 - 03" onstart="map_level(2);" thumburl="panos/Pier-17-3_03.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-3_03.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|-87|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-3_03.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-3_03.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="88.727" atv="-0.645" distorted="false" zoom="false" linkedscene="scene_pier-17-3_02" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-3_04" title="Level 03 - 04" onstart="map_level(2);" thumburl="panos/Pier-17-3_04.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-3_04.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|-128|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-3_04.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-3_04.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-107.526" atv="-0.367" distorted="false" zoom="false" linkedscene="scene_pier-17-3_05" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="-38.785" atv="-1.076" distorted="false" zoom="false" linkedscene="scene_pier-17-3_12" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="37.195" atv="-1.339" distorted="false" zoom="false" linkedscene="scene_pier-17-3_08" />
+		<hotspot name="spot5" style="skin_hotspotstyle" ath="93.271" atv="-1.599" distorted="false" zoom="false" linkedscene="scene_pier-17-3_06" />
+		<hotspot name="spot6" style="skin_hotspotstyle" ath="-178.215" atv="0.977" distorted="false" zoom="false" linkedscene="scene_pier-17-3_02" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-3_05" title="Level 03 - 05" onstart="map_level(2);" thumburl="panos/Pier-17-3_05.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-3_05.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|-160|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-3_05.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-3_05.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="73.814" atv="1.449" distorted="false" zoom="false" linkedscene="scene_pier-17-3_04" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="7.007" atv="-0.466" distorted="false" zoom="false" linkedscene="scene_pier-17-3_06" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-3_06" title="Level 03 - 06" onstart="map_level(2);" thumburl="panos/Pier-17-3_06.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-3_06.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|132|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-3_06.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-3_06.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="137.237" atv="-0.004" distorted="false" zoom="false" linkedscene="scene_pier-17-3_07" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="-103.637" atv="2.770" distorted="false" zoom="false" linkedscene="scene_pier-17-3_04" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="12.230" atv="3.167" distorted="false" zoom="false" linkedscene="scene_pier-17-3_08" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-3_07" title="Level 03 - 07" onstart="map_level(2);" thumburl="panos/Pier-17-3_07.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-3_07.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|-170|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-3_07.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-3_07.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-5.438" atv="5.637" distorted="false" zoom="false" linkedscene="scene_pier-17-3_06" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-3_08" title="Level 03 - 08" onstart="map_level(2);" thumburl="panos/Pier-17-3_08.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-3_08.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|-178|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-3_08.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-3_08.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="11.483" atv="-2.099" distorted="false" zoom="false" linkedscene="scene_pier-17-3_09" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="-132.126" atv="1.037" distorted="false" zoom="false" linkedscene="scene_pier-17-3_04" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="-158.262" atv="-0.472" distorted="false" zoom="false" linkedscene="scene_pier-17-3_06" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-3_09" title="Level 03 - 09" onstart="map_level(2);" thumburl="panos/Pier-17-3_09.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-3_09.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|-140|0">
+			<level tiledimagewidth="2560" tiledimageheight="2560">
+				<cube url="panos/Pier-17-3_09.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1280" tiledimageheight="1280">
+				<cube url="panos/Pier-17-3_09.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="640" tiledimageheight="640">
+				<cube url="panos/Pier-17-3_09.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-91.883" atv="4.428" distorted="false" zoom="false" linkedscene="scene_pier-17-3_10" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="178.783" atv="3.822" distorted="false" zoom="false" linkedscene="scene_pier-17-3_07" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-3_10" title="Level 03 - 10" onstart="map_level(2);" thumburl="panos/Pier-17-3_10.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-3_10.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|-148|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-3_10.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-3_10.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-79.962" atv="3.417" distorted="false" zoom="false" linkedscene="scene_pier-17-3_11" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="93.985" atv="3.749" distorted="false" zoom="false" linkedscene="scene_pier-17-3_09" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-3_11" title="Level 03 - 11" onstart="map_level(2);" thumburl="panos/Pier-17-3_11.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-3_11.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|85|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-3_11.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-3_11.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="85.345" atv="2.621" distorted="false" zoom="false" linkedscene="scene_pier-17-3_10" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="177.836" atv="3.672" distorted="false" zoom="false" linkedscene="scene_pier-17-3_12" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-3_12" title="Level 03 - 12" onstart="map_level(2);" thumburl="panos/Pier-17-3_12.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-3_12.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|-24|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-3_12.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-3_12.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-173.323" atv="2.610" distorted="false" zoom="false" linkedscene="scene_pier-17-3_05" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="6.079" atv="3.627" distorted="false" zoom="false" linkedscene="scene_pier-17-3_11" />
+		
+<hotspot 	name="marker"
+			devices="desktop"
+			style="custom_hotspot"
+			visible="true"
+			tooltip="HVAC Location"
+			onclick=""
+			onloaded=""
+	>
+	
+		<point ath="88.106" atv="30.248" />
+		<point ath="107.298" atv="34.251" />
+		<point ath="122.738" atv="36.193" />
+		<point ath="129.413" atv="36.882" />
+		<point ath="134.947" atv="38.446" />
+		<point ath="139.405" atv="40.897" />
+		<point ath="142.329" atv="44.820" />
+		<point ath="142.278" atv="48.279" />
+		<point ath="137.503" atv="54.882" />
+		<point ath="122.435" atv="65.004" />
+		<point ath="14.426" atv="51.642" />
+</hotspot>
+
+	</scene>
+	
+	<scene name="scene_Pier-17-4_01" title="Level 04 - 01" onstart="map_level(3);" thumburl="panos/Pier-17-4_01.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-40.568" vlookat="0.000" fovtype="MFOV" fov="105.000" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-4_01.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|80|0">
+			<level tiledimagewidth="3200" tiledimageheight="3200">
+				<cube url="panos/Pier-17-4_01.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="panos/Pier-17-4_01.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/Pier-17-4_01.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-48.037" atv="1.446" distorted="false" zoom="false" linkedscene="scene_pier-17-4_02" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="-76.912" atv="1.886" distorted="false" zoom="false" linkedscene="scene_pier-17-4_03" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="-37.789" atv="3.916" distorted="false" zoom="false" linkedscene="scene_pier-17-4_07" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-4_02" title="Level 04 - 02" onstart="map_level(3);" thumburl="panos/Pier-17-4_02.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-4_02.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|50|0">
+			<level tiledimagewidth="3200" tiledimageheight="3200">
+				<cube url="panos/Pier-17-4_02.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="panos/Pier-17-4_02.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/Pier-17-4_02.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="129.497" atv="5.043" distorted="false" zoom="false" linkedscene="scene_pier-17-4_01" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="-109.322" atv="6.695" distorted="false" zoom="false" linkedscene="scene_pier-17-4_03" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="-45.535" atv="5.557" distorted="false" zoom="false" linkedscene="scene_pier-17-4_07" />
+		<hotspot name="spot5" style="skin_hotspotstyle" ath="-27.886" atv="3.898" distorted="false" zoom="false" linkedscene="scene_pier-17-4_11" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-4_03" title="Level 04 - 03" onstart="map_level(3);" thumburl="panos/Pier-17-4_03.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-4_03.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|180|0">
+			<level tiledimagewidth="3328" tiledimageheight="3328">
+				<cube url="panos/Pier-17-4_03.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="panos/Pier-17-4_03.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/Pier-17-4_03.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="50.379" atv="7.952" distorted="false" zoom="false" linkedscene="scene_pier-17-4_02" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="99.295" atv="4.183" distorted="false" zoom="false" linkedscene="scene_pier-17-4_01" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="6.515" atv="5.878" distorted="false" zoom="false" linkedscene="scene_pier-17-4_07" />
+		<hotspot name="spot5" style="skin_hotspotstyle" ath="-81.867" atv="5.395" distorted="false" zoom="false" linkedscene="scene_pier-17-4_06" />
+		<hotspot name="spot6" style="skin_hotspotstyle" ath="-101.534" atv="3.754" distorted="false" zoom="false" linkedscene="scene_pier-17-4_04" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-4_04" title="Level 04 - 04" onstart="map_level(3);" thumburl="panos/Pier-17-4_04.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-4_04.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|-130|0">
+			<level tiledimagewidth="3328" tiledimageheight="3328">
+				<cube url="panos/Pier-17-4_04.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="panos/Pier-17-4_04.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/Pier-17-4_04.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="80.209" atv="1.656" distorted="false" zoom="false" linkedscene="scene_pier-17-4_03" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="3.919" atv="5.149" distorted="false" zoom="false" linkedscene="scene_pier-17-4_05" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="52.378" atv="6.709" distorted="false" zoom="false" linkedscene="scene_pier-17-4_06" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-4_05" title="Level 04 - 05" onstart="map_level(3);" thumburl="panos/Pier-17-4_05.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-4_05.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|90|0">
+			<level tiledimagewidth="3328" tiledimageheight="3328">
+				<cube url="panos/Pier-17-4_05.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="panos/Pier-17-4_05.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/Pier-17-4_05.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-177.835" atv="6.020" distorted="false" zoom="false" linkedscene="scene_pier-17-4_04" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="144.274" atv="8.297" distorted="false" zoom="false" linkedscene="scene_pier-17-4_06" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="124.850" atv="3.021" distorted="false" zoom="false" linkedscene="scene_pier-17-4_03" />
+		<hotspot name="spot5" style="skin_hotspotstyle" ath="57.189" atv="3.632" distorted="false" zoom="false" linkedscene="scene_pier-17-4_11" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-4_06" title="Level 04 - 06" onstart="map_level(3);" thumburl="panos/Pier-17-4_06.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-4_06.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|-90|0">
+			<level tiledimagewidth="3200" tiledimageheight="3200">
+				<cube url="panos/Pier-17-4_06.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="panos/Pier-17-4_06.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/Pier-17-4_06.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-139.420" atv="8.396" distorted="false" zoom="false" linkedscene="scene_pier-17-4_04" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="94.012" atv="3.986" distorted="false" zoom="false" linkedscene="scene_pier-17-4_03" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="-35.578" atv="5.180" distorted="false" zoom="false" linkedscene="scene_pier-17-4_05" />
+		<hotspot name="spot5" style="skin_hotspotstyle" ath="45.856" atv="2.731" distorted="false" zoom="false" linkedscene="scene_pier-17-4_07" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-4_07" title="Level 04 - 07" onstart="map_level(3);" thumburl="panos/Pier-17-4_07.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-4_07.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|90|0">
+			<level tiledimagewidth="3200" tiledimageheight="3200">
+				<cube url="panos/Pier-17-4_07.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="panos/Pier-17-4_07.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/Pier-17-4_07.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="174.915" atv="6.967" distorted="false" zoom="false" linkedscene="scene_pier-17-4_03" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="122.163" atv="5.600" distorted="false" zoom="false" linkedscene="scene_pier-17-4_02" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="-129.839" atv="6.056" distorted="false" zoom="false" linkedscene="scene_pier-17-4_06" />
+		<hotspot name="spot5" style="skin_hotspotstyle" ath="-6.184" atv="5.603" distorted="false" zoom="false" linkedscene="scene_pier-17-4_11" />
+		
+
+	</scene>
+
+	<scene name="scene_Pier-17-4_08" title="Level 04 - 08" onstart="map_level(3);" thumburl="panos/Pier-17-4_08.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-4_08.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|-145|0">
+			<level tiledimagewidth="3328" tiledimageheight="3328">
+				<cube url="panos/Pier-17-4_08.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="panos/Pier-17-4_08.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/Pier-17-4_08.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-148.442" atv="2.410" distorted="false" zoom="false" linkedscene="scene_pier-17-4_11" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-4_10" title="Level 04 - 10" onstart="map_level(3);" thumburl="panos/Pier-17-4_10.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-4_10.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|25|0">
+			<level tiledimagewidth="3328" tiledimageheight="3328">
+				<cube url="panos/Pier-17-4_10.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="panos/Pier-17-4_10.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/Pier-17-4_10.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="128.357" atv="3.330" distorted="false" zoom="false" linkedscene="scene_pier-17-4_11" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-4_11" title="Level 04 - 11" onstart="map_level(3);" thumburl="panos/Pier-17-4_11.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-4_11.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|75|0">
+			<level tiledimagewidth="3328" tiledimageheight="3328">
+				<cube url="panos/Pier-17-4_11.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="panos/Pier-17-4_11.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/Pier-17-4_11.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="2.579" atv="5.780" distorted="false" zoom="false" linkedscene="scene_pier-17-4_12" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="176.325" atv="5.648" distorted="false" zoom="false" linkedscene="scene_pier-17-4_07" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="-129.957" atv="3.146" distorted="false" zoom="false" linkedscene="scene_pier-17-4_05" />
+		<hotspot name="spot5" style="skin_hotspotstyle" ath="147.057" atv="2.707" distorted="false" zoom="false" linkedscene="scene_pier-17-4_02" />
+		<hotspot name="spot6" style="skin_hotspotstyle" ath="52.002" atv="1.926" distorted="false" zoom="false" linkedscene="scene_pier-17-4_08" />
+		<hotspot name="spot7" style="skin_hotspotstyle" ath="-45.480" atv="3.237" distorted="false" zoom="false" linkedscene="scene_pier-17-4_10" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-4_12" title="Level 04 - 12" onstart="map_level(3);" thumburl="panos/Pier-17-4_12.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-4_12.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|60|0">
+			<level tiledimagewidth="3328" tiledimageheight="3328">
+				<cube url="panos/Pier-17-4_12.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="panos/Pier-17-4_12.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/Pier-17-4_12.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-167.770" atv="7.377" distorted="false" zoom="false" linkedscene="scene_pier-17-4_11" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="-46.867" atv="0.311" distorted="false" zoom="false" linkedscene="scene_pier-17-4_15" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="56.522" atv="-2.593" distorted="false" zoom="false" linkedscene="scene_pier-17-4_13" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-4_13" title="Level 04 - 13" onstart="map_level(3);" thumburl="panos/Pier-17-4_13.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-4_13.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|-10|0">
+			<level tiledimagewidth="3328" tiledimageheight="3328">
+				<cube url="panos/Pier-17-4_13.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="panos/Pier-17-4_13.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/Pier-17-4_13.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-19.240" atv="0.000" distorted="false" zoom="false" linkedscene="scene_pier-17-4_14" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="-143.545" atv="1.317" distorted="false" zoom="false" linkedscene="scene_pier-17-4_12" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-4_14" title="Level 04 - 14" onstart="map_level(3);" thumburl="panos/Pier-17-4_14.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-4_14.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|-85|0">
+			<level tiledimagewidth="3328" tiledimageheight="3328">
+				<cube url="panos/Pier-17-4_14.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="panos/Pier-17-4_14.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/Pier-17-4_14.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-152.092" atv="3.745" distorted="false" zoom="false" linkedscene="scene_pier-17-4_15" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="152.253" atv="1.736" distorted="false" zoom="false" linkedscene="scene_pier-17-4_13" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="44.680" atv="8.310" distorted="false" zoom="false" linkedscene="scene_pier-17-4_17" />
+		<hotspot name="spot5" style="skin_hotspotstyle" ath="1.733" atv="6.491" distorted="false" zoom="false" linkedscene="scene_pier-17-4_19" />
+		<hotspot name="spot6" style="skin_hotspotstyle" ath="143.820" atv="1.032" distorted="false" zoom="false" linkedscene="scene_pier-17-4_16" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-4_15" title="Level 04 - 15" onstart="map_level(3);" thumburl="panos/Pier-17-4_15.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-4_15.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|100|0">
+			<level tiledimagewidth="3328" tiledimageheight="3328">
+				<cube url="panos/Pier-17-4_15.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="panos/Pier-17-4_15.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/Pier-17-4_15.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="22.064" atv="5.464" distorted="false" zoom="false" linkedscene="scene_pier-17-4_14" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="147.966" atv="-0.174" distorted="false" zoom="false" linkedscene="scene_pier-17-4_12" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-4_16" title="Level 04 - 16" onstart="map_level(3);" thumburl="panos/Pier-17-4_16.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="range" vlookatmin="-85.455" vlookatmax="85.455" />
+
+		<preview url="panos/Pier-17-4_16.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|-70|0">
+			<level tiledimagewidth="3328" tiledimageheight="3328">
+				<cube url="panos/Pier-17-4_16.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="panos/Pier-17-4_16.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/Pier-17-4_16.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-116.655" atv="-4.368" distorted="false" zoom="false" linkedscene="scene_pier-17-4_14" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-4_17" title="Level 04 - 17" onstart="map_level(3);" thumburl="panos/Pier-17-4_17.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-4_17.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|35|0">
+			<level tiledimagewidth="3328" tiledimageheight="3328">
+				<cube url="panos/Pier-17-4_17.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="panos/Pier-17-4_17.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/Pier-17-4_17.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-83.329" atv="11.675" distorted="false" zoom="false" linkedscene="scene_pier-17-4_14" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-4_18" title="Level 04 - 18" onstart="map_level(3);" thumburl="panos/Pier-17-4_18.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-4_18.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|35|0">
+			<level tiledimagewidth="3328" tiledimageheight="3328">
+				<cube url="panos/Pier-17-4_18.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="panos/Pier-17-4_18.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/Pier-17-4_18.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-87.222" atv="2.799" distorted="false" zoom="false" linkedscene="scene_pier-17-4_19" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-4_19" title="Level 04 - 19" onstart="map_level(3);" thumburl="panos/Pier-17-4_19.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="range" vlookatmin="-89.090" vlookatmax="89.090" />
+
+		<preview url="panos/Pier-17-4_19.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|-50|0">
+			<level tiledimagewidth="3328" tiledimageheight="3328">
+				<cube url="panos/Pier-17-4_19.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="panos/Pier-17-4_19.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/Pier-17-4_19.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-82.208" atv="4.926" distorted="false" zoom="false" linkedscene="scene_pier-17-4_20" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="165.854" atv="4.624" distorted="false" zoom="false" linkedscene="scene_pier-17-4_14" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="87.586" atv="3.212" distorted="false" zoom="false" linkedscene="scene_pier-17-4_18" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-4_20" title="Level 04 - 20" onstart="map_level(3);" thumburl="panos/Pier-17-4_20.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="range" vlookatmin="-89.090" vlookatmax="89.090" />
+
+		<preview url="panos/Pier-17-4_20.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|0|0">
+			<level tiledimagewidth="3328" tiledimageheight="3328">
+				<cube url="panos/Pier-17-4_20.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="panos/Pier-17-4_20.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/Pier-17-4_20.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="92.649" atv="4.162" distorted="false" zoom="false" linkedscene="scene_pier-17-4_19" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-4_21" title="Level 04 - 21" onstart="map_level(3);" thumburl="panos/Pier-17-4_21.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-4_21.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|80|0">
+			<level tiledimagewidth="3328" tiledimageheight="3328">
+				<cube url="panos/Pier-17-4_21.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="panos/Pier-17-4_21.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/Pier-17-4_21.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+
+	</scene>
+
+	<scene name="scene_Pier-17-4_22" title="Level 04 - 22" onstart="map_level(3);" thumburl="panos/Pier-17-4_22.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-4_22.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|-105|0">
+			<level tiledimagewidth="3328" tiledimageheight="3328">
+				<cube url="panos/Pier-17-4_22.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="panos/Pier-17-4_22.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/Pier-17-4_22.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+
+	</scene>
+
+	<scene name="scene_Pier-17-Roof_01" title="Roof - 01" onstart="map_level(4);" thumburl="panos/Pier-17-Roof_01.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-42.680" vlookat="0.107" fovtype="MFOV" fov="105.000" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-Roof_01.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|45|0">
+			<level tiledimagewidth="3200" tiledimageheight="3200">
+				<cube url="panos/Pier-17-Roof_01.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="panos/Pier-17-Roof_01.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/Pier-17-Roof_01.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-1.613" atv="2.253" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_06" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="-80.531" atv="1.169" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_02" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="-47.843" atv="1.180" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_05" />
+	</scene>
+
+	<scene name="scene_Pier-17-Roof_02" title="Roof - 02" onstart="map_level(4);" thumburl="panos/Pier-17-Roof_02.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-Roof_02.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|160|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-Roof_02.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-Roof_02.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="102.862" atv="0.979" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_01" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="-115.338" atv="-0.664" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_03" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="-0.013" atv="6.167" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_05" />
+		<hotspot name="spot5" style="skin_hotspotstyle" ath="-71.428" atv="-0.880" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_04" />
+		<hotspot name="spot6" style="skin_hotspotstyle" ath="51.553" atv="0.627" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_06" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-Roof_03" title="Roof - 03" onstart="map_level(4);" thumburl="panos/Pier-17-Roof_03.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="range" vlookatmin="-85.455" vlookatmax="85.455" />
+
+		<preview url="panos/Pier-17-Roof_03.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|-30|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-Roof_03.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-Roof_03.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-0.430" atv="-2.793" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_04" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="51.917" atv="-3.107" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_05" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="84.120" atv="-3.309" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_02" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-Roof_04" title="Roof - 04" onstart="map_level(4);" thumburl="panos/Pier-17-Roof_04.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-Roof_04.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|30|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-Roof_04.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-Roof_04.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-11.865" atv="1.185" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_09" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="89.177" atv="0.441" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_05" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="166.812" atv="0.835" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_03" />
+		<hotspot name="spot5" style="skin_hotspotstyle" ath="123.789" atv="-0.690" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_02" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-Roof_05" title="Roof - 05" onstart="map_level(4);" thumburl="panos/Pier-17-Roof_05.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-Roof_05.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|88|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-Roof_05.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-Roof_05.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-88.362" atv="-0.214" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_04" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="87.895" atv="2.980" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_06" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="178.755" atv="2.441" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_02" />
+		<hotspot name="spot5" style="skin_hotspotstyle" ath="138.458" atv="0.397" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_01" />
+		<hotspot name="spot6" style="skin_hotspotstyle" ath="-145.502" atv="-0.392" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_03" />
+		<hotspot name="spot7" style="skin_hotspotstyle" ath="-40.403" atv="-0.965" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_09" />
+		<hotspot name="spot8" style="skin_hotspotstyle" ath="40.849" atv="-0.465" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_07" />
+		<hotspot name="spot9" style="skin_hotspotstyle" ath="16.341" atv="0.464" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_08" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-Roof_06" title="Roof - 06" onstart="map_level(4);" thumburl="panos/Pier-17-Roof_06.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-Roof_06.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|-95|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-Roof_06.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-Roof_06.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-104.789" atv="3.779" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_05" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="173.365" atv="1.842" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_01" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="-142.033" atv="1.060" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_02" />
+		<hotspot name="spot5" style="skin_hotspotstyle" ath="-7.472" atv="3.829" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_07" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-Roof_07" title="Roof - 07" onstart="map_level(4);" thumburl="panos/Pier-17-Roof_07.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-Roof_07.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|40|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-Roof_07.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-Roof_07.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="2.579" atv="3.219" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_13" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="-101.208" atv="-1.850" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_08" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="-178.858" atv="0.933" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_06" />
+		<hotspot name="spot5" style="skin_hotspotstyle" ath="-148.388" atv="0.239" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_05" />
+		<hotspot name="spot6" style="skin_hotspotstyle" ath="-74.969" atv="-0.925" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_14" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-Roof_08" title="Roof - 08" onstart="map_level(4);" thumburl="panos/Pier-17-Roof_08.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-Roof_08.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|-90|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-Roof_08.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-Roof_08.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="85.135" atv="5.267" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_07" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-Roof_09" title="Roof - 09" onstart="map_level(4);" thumburl="panos/Pier-17-Roof_09.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-Roof_09.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|65|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-Roof_09.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-Roof_09.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-7.895" atv="1.576" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_10" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="174.732" atv="-0.425" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_04" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="147.906" atv="0.064" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_05" />
+		<hotspot name="spot5" style="skin_hotspotstyle" ath="62.387" atv="-0.023" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_14" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-Roof_10" title="Roof - 10" onstart="map_level(4);" thumburl="panos/Pier-17-Roof_10.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-Roof_10.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|-30|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-Roof_10.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-Roof_10.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="175.993" atv="1.552" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_09" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="85.099" atv="0.465" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_12" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="138.789" atv="-1.531" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_14" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-Roof_12" title="Roof - 12" onstart="map_level(4);" thumburl="panos/Pier-17-Roof_12.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-Roof_12.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|40|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-Roof_12.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-Roof_12.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-84.612" atv="2.303" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_10" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="87.875" atv="4.154" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_13" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-Roof_13" title="Roof - 13" onstart="map_level(4);" thumburl="panos/Pier-17-Roof_13.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-Roof_13.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|150|0">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Pier-17-Roof_13.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Pier-17-Roof_13.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-82.450" atv="1.394" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_12" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="-171.132" atv="1.806" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_07" />
+		<hotspot name="spot4" style="skin_hotspotstyle" ath="-135.390" atv="-2.403" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_14" />
+
+	</scene>
+
+	<scene name="scene_Pier-17-Roof_14" title="Roof - 14" onstart="map_level(4);" thumburl="panos/Pier-17-Roof_14.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Pier-17-Roof_14.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" prealign="0|105|0">
+			<level tiledimagewidth="3328" tiledimageheight="3328">
+				<cube url="panos/Pier-17-Roof_14.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1664" tiledimageheight="1664">
+				<cube url="panos/Pier-17-Roof_14.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="768" tiledimageheight="768">
+				<cube url="panos/Pier-17-Roof_14.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="91.775" atv="1.331" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_07" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="-110.145" atv="0.058" distorted="false" zoom="false" linkedscene="scene_pier-17-roof_09" />
+
+	</scene>
+
+
+</krpano>
