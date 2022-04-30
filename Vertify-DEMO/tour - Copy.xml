@@ -1,0 +1,404 @@
+<krpano version="1.19" title="Inspection">	<include url="skin/vtourskin.xml" />	<include url="plugins/showtext.xml" />		<action name="startup">	<!-- Input Settings -->		set(layer[startsettings].columns,4);		set(layer[startsettings].rows,58);		<!-- Parent Folder Name (NOTE: Replace 'spaces' with '+') -->		set(urlbase,'49+Chambers+Street+South');			<!-- Computing -->		set(column,1);		set(row,1);		set(layer[loadingNOVABG].visible,true);		set(layer[loadingNOVA].visible,true);		set(layer[loadingNOVAANI].visible,true);		set(layer[startsettings].tempo_col,1);		set(layer[startsettings].tempo_row,1);		set(layer[startsettings].gwidth_t,calc(1 / layer[startsettings].columns * 100));		txtadd(tempgw,get(layer[startsettings].gwidth_t),'%');		set(layer[startsettings].gwidth,get(tempgw));		set(layer[startsettings].gheight_t,calc(1 / layer[startsettings].rows * 100));		txtadd(tempgh,get(layer[startsettings].gheight_t),'%');		set(layer[startsettings].gheight,get(tempgh));		sixth_day();		seventh_day();		indicator();		set(layer[gc1r1].crop,0|300|300|300);		delayedcall(0.2,			set(layer[spacer].visible,true);			set(layer[leftBackdrop].visible,true);			set(layer[rightBackdrop].visible,true);			d_resize();			set(layer[GridColI].width,get(tempgw));			set(layer[GridRowI].height,get(tempgh));		);	</action>	<action name="indicator">		<!-- Indicator Placement -->		set(colx1,calc(column - 1));		set(colx2,calc(colx1 * layer[startsettings].gwidth_t));		txtadd(colx,get(colx2),'%');		set(rowy1,calc(row - 1));		set(rowy2,calc(rowy1 * layer[startsettings].gheight_t));		txtadd(rowy,get(rowy2),'%');		set(layer[GridRowI].y,get(rowy));		set(layer[GridColI].x,get(colx));	</action>		<action name="sixth_day">			<!-- Grid Creator -->		txtadd(temp14,gc,get(layer[startsettings].tempo_col),r,get(layer[startsettings].tempo_row));		set(stin1,calc(layer[startsettings].tempo_col - 1));		set(stin2,calc(stin1 * layer[startsettings].gwidth_t));		txtadd(tempx26,get(stin2),'%');		set(stin3,calc(layer[startsettings].tempo_row - 1));		set(stin4,calc(stin3 * layer[startsettings].gheight_t));		txtadd(tempy26,get(stin4),'%');		addlayer(get(temp14));		set(layer[get(temp14)].url,Images/Grid.png);		set(layer[get(temp14)].parent,layer[wideImage]);		set(layer[get(temp14)].edge,bottomleft);		set(layer[get(temp14)].align,bottomleft);
+		set(layer[get(temp14)].mq,0);		set(layer[get(temp14)].des,0);		set(layer[get(temp14)].alpha,0.95);		set(layer[get(temp14)].visible,true);		set(layer[get(temp14)].zorder,15);		set(layer[get(temp14)].distorted,false);		set(layer[get(temp14)].enabled,true);		set(layer[get(temp14)].crop,0|0|300|300);		set(layer[get(temp14)].height,get(layer[startsettings].gheight));		set(layer[get(temp14)].width,get(layer[startsettings].gwidth));		set(layer[get(temp14)].x,get(tempx26));		set(layer[get(temp14)].y,get(tempy26));		txtadd(csel,'click_select(',get(layer[startsettings].tempo_col),',',get(layer[startsettings].tempo_row),');');		set(layer[get(temp14)].onclick,get(csel));						<!-- Sixth Day Loop -->		if(layer[startsettings].tempo_row LT layer[startsettings].rows,			inc(layer[startsettings].tempo_row);			sixth_day();			,			if(layer[startsettings].tempo_col LT layer[startsettings].columns,				inc(layer[startsettings].tempo_col);				set(layer[startsettings].tempo_row,1);				sixth_day();				,			);		);			</action>		<action name="seventh_day">		txtadd(temp17,'pc',get(column),'r',get(row));		txtadd(temp18,'fc',get(column),'r',get(row));		txtadd(purl,'Images/Preview/',get(temp17),'.jpg');		txtadd(purl2,'Images/Full/',get(temp18),'.jpg');		set(layer[preview_img].url,get(purl));		set(layer[final_img].url,get(purl2));		set(layer[final_img].scale,1.0);		set(layer[final_img].x,0);		set(layer[final_img].y,0);	</action>	<layer name="preview_img"	url=""	parent="layer[photoholder]"	visible="true"	keep="true"	scalechildren="true"	maskchildren="false"	scale="1.0"	alpha="1.0"	zorder="14"	align="top"	edge="top"	enabled="true"	handcursor="true"	onclick="openmax()"/><layer name="final_img"	url=""	parent="layer[photoholder_maxf]"	visible="true"	keep="true"	scalechildren="true"	maskchildren="false"	capture="true"	x="0"	y="0"	scale="1.0"	alpha="1.0"	zorder="50"	align="center"	edge="center"	enabled="true"	handcursor="false"	onover="set(iszoom,true);"	onout="set(iszoom,false);"	ondown="draglayer();"	onclick="closemax()"/>		<!-- customize skin settings: maps, gyro, thumbnails, tooltips, layout, design, ... -->	<skin_settings maps="false"	               maps_type="bing"	               maps_bing_api_key=""	               maps_zoombuttons="false"	               gyro="false"	               littleplanetintro="false"	               title="true"	               thumbs="true"	               thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160"	               thumbs_opened="false"	               thumbs_text="true"	               thumbs_dragging="true"	               thumbs_onhoverscrolling="false"	               thumbs_scrollbuttons="false"	               thumbs_scrollindicator="false"	               thumbs_loop="false"	               tooltips_buttons="false"	               tooltips_thumbs="false"	               tooltips_hotspots="true"	               tooltips_mapspots="false"	               deeplinking="false"	               loadscene_flags="MERGE"	               loadscene_blend="OPENBLEND(0.5, 0.0, 0.75, 0.05, linear)"	               loadscene_blend_prev="SLIDEBLEND(0.5, 180, 0.75, linear)"	               loadscene_blend_next="SLIDEBLEND(0.5,   0, 0.75, linear)"	               loadingtext="loading..."	               layout_width="0%"	               layout_maxwidth.normal="900"	               layout_maxwidth.mobile=""	               controlbar_width.normal="-44"	               controlbar_width.mobile="0%"	               controlbar_height.normal="38"	               controlbar_height.mobile="34"	               controlbar_offset.normal="22"	               controlbar_offset.mobile="0"	               controlbar_offset_closed="-40"	               controlbar_overlap.normal="7"	               controlbar_overlap.mobile="2"	               design_skin_images="vtourskin.png"	               design_bgcolor="0x000000"	               design_bgalpha="0.6"	               design_bgborder="0 0xFFFFFF 1.0"	               design_bgroundedge.normal="9"	               design_bgroundedge.mobile="1"	               design_bgshadow="0 0 9 0xFFFFFF 0.5"	               design_thumbborder_bgborder="4 0xFFFFFF 1.0"	               design_thumbborder_padding="2"	               design_thumbborder_bgroundedge="5"	               design_text_css="color:#FFFFFF; font-family:Arial; font-weight:bold;"	               design_text_shadow="1"	               /><textstyle name="DEFAULT"           origin="cursor"           edge="bottom"           xoffset="0"           yoffset="-3"           fadeintime="0.0"           showtime="0.1"           fadetime="0.0"           font="Baskerville"           fontsize="18px"           bold="true"           italic="false"           textcolor="0xFFFFFF"           textalign="none"           padding="1"           css=""           width=""           height=""           vcenter=""           background="false"           backgroundcolor="0xFFFFFF"           backgroundalpha="1.0"           border="false"           bordercolor="0x000000"           borderalpha="1.0"           borderwidth="1.0"           roundedge="0"           shadow="0.0"           shadowrange="4.0"           shadowangle="45"           shadowcolor="0x000000"           shadowalpha="1.0"           textshadow="1.0"           textshadowrange="4.0"           textshadowangle="45"           textshadowcolor="0x000000"           textshadowalpha="1.0"           embeddedfonts="false"           alpha="1.0"           blendmode="normal"           effect=""           noclip="true"           /><control usercontrol="all"         keycodesleft=""         keycodesright=""         keycodesup=""         keycodesdown=""         keycodesin=""         keycodesout=""         /><events onresize="d_resize();" /><action name="d_resize">        div(screenaspect, stagewidth, stageheight);        div(imageaspect_load, layer[loadingNOVA].imagewidth, layer[loadingNOVA].imageheight);        if(imageaspect_load GT screenaspect,            set(layer[loadingNOVA].width,80%); set(layer[loadingNOVA].height,prop);          ,            set(layer[loadingNOVA].width,prop); set(layer[loadingNOVA].height,75%);        );		 		<!-- LAYOUT SIZING START -->				div(menu_height, stagewidth, 9);		if(layer[menubar_area].status == 0, set(menu_height,0););		sub(main_height, stageheight, menu_height);		set(layer[menubar_area].width,100%); set(layer[menubar_area].height,get(menu_height));		set(layer[main_area].width,100%); set(layer[main_area].height,get(main_height));		div(layer[menubar_collapse].height,stagewidth,90);		set(layer[menubar_collapse].width,prop);		set(layer[menubar_collapse].y,get(menu_height));				mul(menu_buttonbar_adj,menu_height,0.35);		mul(menu_buttonbar_adj2,stagewidth,0.5);		sub(layer[menubar_left].width,menu_buttonbar_adj2,menu_buttonbar_adj);		sub(layer[menubar_right].width,menu_buttonbar_adj2,menu_buttonbar_adj);		mul(layer[menubar_right].height,menu_height,0.6);		mul(layer[menubar_left].height,menu_height,0.6);		mul(layer[menubar_right].x,menu_height,0.35);		mul(layer[menubar_left].x,menu_height,0.35);		mul(layer[menubar_left].x,-1);		mul(layer[menubar_right].y,menu_height,0.5);		mul(layer[menubar_left].y,menu_height,0.5);				mul(interact_size,0.30,main_height);		if(layer[interact].status == 0,set(interact_size,0););		div(layer[interact_collapse].height,stagewidth,90);		set(layer[interact_collapse].width,prop);		set(layer[interact_collapse].x,get(interact_size));		sub(layer[interact_collapse].y,0,get(menu_height));		div(layer[interact_collapse].y,2);		set(layer[interact].width,get(interact_size)); set(layer[interact].height,100%);		        div(wideShot_we, layer[wideShot].imagewidth, layer[wideShot].imageheight);		if(wideShot_we GT 0.4, set(wideShot_we,0.40););		mul(left_size,main_height,wideShot_we);		if(layer[leftBackdrop].status == 0,set(left_size,0););		sub(right_size, stagewidth, left_size);		sub(right_size, interact_size);		div(layer[left_collapse].height,stagewidth,90);		set(layer[left_collapse].width,prop);		set(layer[left_collapse].x,get(left_size));		sub(layer[left_collapse].y,0,get(menu_height));		div(layer[left_collapse].y,2);				set(layer[leftBackdrop].width,get(left_size)); set(layer[leftBackdrop].height,100%);		set(layer[rightBackdrop].width,get(right_size)); set(layer[rightBackdrop].height,100%);		set(layer[rightBackdrop].x,get(interact_size));		div(wideshot_ratio,left_size,main_height);        if(wideshot_ratio GT wideShot_we,			set(layer[wideShot].width,prop); set(layer[wideShot].height,92%);			,			set(layer[wideShot].width,86%); set(layer[wideShot].height,prop);		);				div(rightBackdrop_we, right_size, main_height);		div(photoholder_we, layer[photoholder].imagewidth, layer[photoholder].imageheight);        if(photoholder_we GT rightBackdrop_we,            set(layer[photoholder].width,98%); set(layer[photoholder].height,prop);          ,            set(layer[photoholder].width,prop); set(layer[photoholder].height,95%);        );				set(layer[left_right_spacer].x,get(left_size));		set(layer[interact_spacer].x,get(interact_size));		set(layer[menubar_spacer].y,get(menu_height));				<!-- LAYOUT SIZING END -->				<!-- EVAL STATUS START -->				mul(eval_width,interact_size,0.95);		mul(eval_height, main_height, 0.42);				<!-- PASS -->		set(layer[textpass].width,get(eval_width));		set(layer[textpass].height,get(eval_height));		mul(layer[textpass].y,interact_size,0.025);		mul(layer[textmask].width,eval_width,0.96);		mul(layer[textmask].height,eval_height,0.96);		mul(layer[textmask].x,eval_width,0.02);		mul(layer[textmask].y,eval_height,0.02);		mul(layer[textpassc].width,eval_width,0.76);		mul(layer[textpassc].x,eval_width,0.04);		mul(layer[textpassc].y,eval_height,0.03);		mul(layer[scrollbar].width,eval_width,0.076);		mul(layer[scrollbar].height,eval_height,0.96);		mul(layer[scrollbar].x,eval_width,0.02);		mul(layer[scrollbar].y,eval_height,0.02);				<!-- FAIL -->		set(layer[textfail].width,get(eval_width));		set(layer[textfail].height,get(eval_height));		mul(layer[textfail].y,interact_size,0.025);		mul(layer[textmask2].width,eval_width,0.96);		mul(layer[textmask2].height,eval_height,0.96);		mul(layer[textmask2].x,eval_width,0.02);		mul(layer[textmask2].y,eval_height,0.02);		mul(layer[textfailc].width,eval_width,0.76);		mul(layer[textfailc].x,eval_width,0.04);		mul(layer[textfailc].y,eval_height,0.03);		mul(layer[scrollbar2].width,eval_width,0.076);		mul(layer[scrollbar2].height,eval_height,0.96);		mul(layer[scrollbar2].x,eval_width,0.02);		mul(layer[scrollbar2].y,eval_height,0.02);				<!-- EVAL STATUS END -->				mul(layer[VA_Logo].height,0.7,menu_height);		set(layer[VA_Logo].width,prop);		mul(layer[VA_Logo].y,0.5,menu_height);				mul(ph_maxw,layer[photoholder_max].imagewidth, 1.15);        div(photoholder_max_we, get(ph_maxw), layer[photoholder_max].imageheight);        if(photoholder_max_we GT screenaspect,            set(layer[photoholder_max].width,84%); set(layer[photoholder_max].height,prop);          ,            set(layer[photoholder_max].width,prop); set(layer[photoholder_max].height,97%);         );        div(save_message_we, layer[save_message].imagewidth, layer[save_message].imageheight);        if(save_message_we GT screenaspect,            set(layer[save_message].width,35%); set(layer[save_message].height,prop);          ,            set(layer[save_message].width,prop); set(layer[save_message].height,40%);         );</action><layer name="loadingNOVABG"	type="image"	url="Images/white1px.jpg"	parent=""	scalechildren="false"	maskchildren="false"	keep="true"	width="100%"	height="100%"	alpha="1.0"	align="topleft"	edge="topleft"	visible="true"	zorder="97"	handcursor="false"	enabled="true"/><layer name="loadingNOVA"	url="Images/NOVALoadingBack.jpg"	parent="layer[loadingNOVABG]"	visible="true"	scalechildren="true"	maskchildren="true"	keep="true"	alpha="1.0"	zorder="98"	align="center"	enabled="false"	handcursor="false"	onloaded=""/>	<action name="loading_animate">		inc(frame,1,11,0);		mul(ypos,frame,70);		txtadd(crop,'0|',get(ypos),'|70|70');		delayedcall(0.1, loading_animate() );    <!-- here you set the speed of the frame change -->	</action>	<layer name="loadingNOVAANI"		url="Images/NOVALoadingANI.jpg"		parent="layer[loadingNOVA]"		scale="1.0"		visible="true"		keep="true"		alpha="1.0"		enabled="false"		handcursor="false"		crop="0|0|70|70"		frame="0"		y="320"		zorder="99"		edge="center"		align="center"		onloaded="d_resize();delayedcall(0,loading_animate();delayedcall(0.6,startup();delayedcall(3,letitbegin(););););"	/><action name="letitbegin">	get_last_save();	tween(layer[loadingNOVA].alpha,0.0,0.75);	delayedcall(0.80,tween(layer[loadingNOVABG].alpha,0.0,0.75););	d_resize();	delayedcall(1.55,		set(layer[loadingNOVABG].visible,false);		set(layer[loadingNOVA].visible,false);		set(layer[loadingNOVAANI].visible,false);	);</action>	<action name="logo_animate">		dec(frame,1);		if(frame GE 1,			mul(ypos,frame,200);			txtadd(crop,'0|',get(ypos),'|200|200');			delayedcall(0.04, logo_animate() );    <!-- here you set the speed of the frame change -->			,			set(crop,0|0|200|200);			set(frame,120);			delayedcall(8.0, logo_animate());		);	</action><layer name="VA_Logo"       devices="all"	   frame="120"	   type="image"       url="Images/vaobj.jpg"       keep="true"	   visible="true"       enabled="true"       handcursor="true"	   capture="false"       zorder="30"	   crop="0|0|200|200"       align="bottom"       edge="center"       alpha="1.0"       bgcapture="false"       onhover=""       onclick="openurl(https://www.vertifyanalytics.com/,_blank);"	   onloaded="logo_animate();"       />		<!-- START LAYOUT --><layer name="main_area"	type="container"	zorder="8"	edge="topleft"	align="topleft"	width="100%"/><layer name="menubar_area"	status="1"	type="container"		zorder="8"	bgalpha="1.0"	bgcolor="0xbe0e0e0"	edge="bottomleft"	align="bottomleft"	width="100%"/><layer name="menubar_collapse"	url="Images/collapse.png"		zorder="21"	edge="center"	align="bottom"	visible="true"    enabled="true"    handcursor="true"	crop="0|0|218|43"	ondown="set(crop,0|43|218|43);"	onup="set(crop,0|0|218|43);"	onclick="collapse_menu();"/><action name="collapse_menu">	if(layer[menubar_area].status GE 1,			set(edge,top);			set(rotate,180);			set(layer[menubar_area].visible,false);			set(layer[menubar_area].status,0);			d_resize();			,			set(edge,center);			set(rotate,0);			set(layer[menubar_area].visible,true);			set(layer[menubar_area].status,1);			d_resize();	);</action><action name="collapse_left">	if(layer[leftBackdrop].status GE 1,			set(edge,top);			set(rotate,270);			set(layer[leftBackdrop].visible,false);			set(layer[leftBackdrop].status,0);			d_resize();			,			set(edge,center);			set(rotate,90);			set(layer[leftBackdrop].visible,true);			set(layer[leftBackdrop].status,1);			d_resize();	);</action><action name="collapse_interact">	if(layer[interact].status GE 1,			set(layer[interact_collapse].edge,top);			set(layer[interact_collapse].rotate,90);			set(layer[interact].visible,false);			set(layer[interact].status,0);			d_resize();			,			set(layer[interact_collapse].edge,center);			set(layer[interact_collapse].rotate,270);			set(layer[interact].visible,true);			set(layer[interact].status,1);			d_resize();	);</action><style 	name="bdrop_style" 	parent="layer[main_area]"	visible="false"	scalechildren="false"	maskchildren="false"	keep="true"	alpha="1.0"	zorder="9"	enabled="true"	handcursor="false"		/><layer name="leftBackdrop"	status="1"	url="Images/dgrey1px.jpg"	style="bdrop_style"	edge="topleft"	align="topleft"/><layer name="left_collapse"	url="Images/collapse.png"		zorder="21"	edge="center"	align="left"	visible="true"    enabled="true"	rotate="90"    handcursor="true"	crop="0|0|218|43"	ondown="set(crop,0|43|218|43);"	onup="set(crop,0|0|218|43);"	onclick="collapse_left();"/><layer name="interact"	status="0"	url="Images/dgrey1px.jpg"	style="bdrop_style"	edge="topright"	align="topright"/><layer name="interact_collapse"	url="Images/collapse.png"		zorder="21"	edge="top"	align="right"	visible="true"    enabled="true"	rotate="90"    handcursor="true"	crop="0|0|218|43"	ondown="set(crop,0|43|218|43);"	onup="set(crop,0|0|218|43);"	onclick="collapse_interact();"/><layer name="rightBackdrop"	url="Images/greyblue1px.jpg"	style="bdrop_style"	edge="topright"	align="topright"/><layer name="left_right_spacer"	url="Images/divider_v_blue.png"	parent="layer[main_area]"	visible="true"	scalechildren="false"	maskchildren="false"	keep="true"	alpha="1.0"	zorder="20"	edge="topleft"	enabled="false"	handcursor="false"	align="topleft"	height="100%"	width="5"/><layer name="interact_spacer"	url="Images/divider_v_blue.png"	parent="layer[main_area]"	visible="true"	scalechildren="false"	maskchildren="false"	keep="true"	alpha="1.0"	zorder="20"	rotate="180"	edge="bottomleft"	enabled="false"	handcursor="false"	align="topright"	height="100%"	width="5"/><layer name="menubar_spacer"	url="Images/divider_h.png"	visible="true"	scalechildren="false"	maskchildren="false"	keep="true"	alpha="1.0"	zorder="20"	enabled="false"	handcursor="false"	align="bottomleft"	edge="bottomleft"	height="6"	width="100%"/><!-- END LAYOUT --><!-- MENU BUTTONS --><layer name="menubar_left"	type="container"	scalechildren="true"	zorder="10"	bgalpha="0.0"	bgcolor="0x000000"	edge="right"	align="bottom"/><layer name="menubutton_help"	url="Images/Buttons/menu_buttons.png"	parent="layer[menubar_left]"	zorder="11"	height="100%"	width="prop"	edge="right"	align="right"	enabled="true"	handcursor="true"	crop="1800|0|300|420"	ondown="set(crop,1800|420|300|420);"	onup="set(crop,1800|0|300|420);"	visible="true"	alpha="1.0"	x="4%"	onclick=""/><layer name="menubutton_fullscreen"	url="Images/Buttons/menu_buttons.png"	parent="layer[menubar_left]"	zorder="11"	height="100%"	width="prop"	edge="right"	align="right"	enabled="true"	handcursor="true"	crop="1500|0|300|420"	ondown="set(crop,1500|420|300|420);"	onup="set(crop,1500|0|300|420);"	visible="true"	alpha="1.0"	x="16%"	onclick="switch(fullscreen);"/><layer name="menubutton_evaluation"	url="Images/Buttons/menu_buttons.png"	parent="layer[menubar_left]"	zorder="11"	height="100%"	width="prop"	edge="right"	align="right"	enabled="true"	handcursor="true"	crop="1200|0|300|420"	ondown="set(crop,1200|420|300|420);"	onup="set(crop,1200|0|300|420);"	visible="true"	alpha="1.0"	x="28%"	onclick="set(layer[interact].status,0);set(layer[textfail].visible,true);set(layer[textpass].visible,true);set(layer[previewbr].visible,false);set(layer[previewco].visible,false);set(layer[marker_container].visible,false);collapse_interact();"/><layer name="menubutton_upload"	url="Images/Buttons/menu_buttons.png"	parent="layer[menubar_left]"	zorder="11"	height="100%"	width="prop"	edge="right"	align="right"	enabled="true"	handcursor="true"	crop="900|0|300|420"	ondown="set(crop,900|420|300|420);"	onup="set(crop,900|0|300|420);"	visible="true"	alpha="1.0"	x="40%"	onclick=""/><layer name="menubutton_print"	url="Images/Buttons/menu_buttons.png"	parent="layer[menubar_left]"	zorder="11"	height="100%"	width="prop"	edge="right"	align="right"	enabled="true"	handcursor="true"	crop="600|0|300|420"	ondown="set(crop,600|420|300|420);"	onup="set(crop,600|0|300|420);"	visible="true"	alpha="1.0"	x="52%"	onclick=""/><layer name="menubutton_save"	url="Images/Buttons/menu_buttons.png"	parent="layer[menubar_left]"	zorder="11"	height="100%"	width="prop"	edge="right"	align="right"	enabled="true"	handcursor="true"	crop="300|0|300|420"	ondown="set(crop,300|420|300|420);"	onup="set(crop,300|0|300|420);"	visible="true"	alpha="1.0"	x="64%"	onclick="save_toggle()"/><layer name="menubutton_projects"	url="Images/Buttons/menu_buttons.png"	parent="layer[menubar_left]"	zorder="11"	height="100%"	width="prop"	edge="right"	align="right"	enabled="true"	handcursor="true"	crop="0|0|300|420"	ondown="set(crop,0|420|300|420);"	onup="set(crop,0|0|300|420);"	visible="true"	alpha="1.0"	x="76%"	onclick=""/><layer name="menubar_right"	type="container"		zorder="10"	bgalpha="0.0"	bgcolor="0x000000"	edge="left"	align="bottom"/><layer name="menubutton_enlarge"	url="Images/Buttons/menu_buttons.png"	parent="layer[menubar_right]"	zorder="11"	height="100%"	width="prop"	edge="left"	align="left"	enabled="true"	handcursor="true"	crop="2100|0|300|420"	ondown="set(crop,2100|420|300|420);"	onup="set(crop,2100|0|300|420);"	visible="true"	alpha="1.0"	x="4%"	onclick="openmax()"/><layer name="menubutton_brightness"	url="Images/Buttons/menu_buttons.png"	parent="layer[menubar_right]"	zorder="11"	height="100%"	width="prop"	edge="left"	align="left"	enabled="true"	handcursor="true"	crop="2400|0|300|420"	ondown="set(crop,2400|420|300|420);"	onup="set(crop,2400|0|300|420);"	visible="true"	alpha="1.0"	x="16%"	onclick=""/><layer name="menubutton_comment"	url="Images/Buttons/menu_buttons.png"	parent="layer[menubar_right]"	zorder="11"	height="100%"	width="prop"	edge="left"	align="left"	enabled="true"	handcursor="true"	crop="2700|0|300|420"	ondown="set(crop,2700|420|300|420);"	onup="set(crop,2700|0|300|420);"	visible="true"	alpha="1.0"	x="28%"	onclick=""/><layer name="menubutton_marker"	url="Images/Buttons/menu_buttons.png"	parent="layer[menubar_right]"	zorder="11"	height="100%"	width="prop"	edge="left"	align="left"	enabled="true"	handcursor="true"	crop="3000|0|300|420"	ondown="set(crop,3000|420|300|420);"	onup="set(crop,3000|0|300|420);"	visible="true"	alpha="1.0"	x="40%"	onclick="set(layer[interact].status,0);set(layer[textfail].visible,false);set(layer[textpass].visible,false);set(layer[previewbr].visible,false);set(layer[previewco].visible,false);set(layer[marker_container].visible,true);collapse_interact();"/><!-- END MENU BUTTONS -->
+
+<!-- MARKER SELECTION -->
+
+<layer name="marker_container"
+	url="Images/Marker/marker_container.jpg"
+	parent="layer[interact]"
+	scalechildren="true"
+	zorder="12"
+	height="prop"
+	width="100%"
+	edge="center"
+	align="center"
+	enabled="true"
+	handcursor="false"
+	visible="false"
+	alpha="1.0"
+/>
+
+<layer name="select_marker"
+	url="Images/Marker/select_marker.jpg"
+	parent="layer[marker_container]"
+	zorder="13"
+	scale="1.0"
+	edge="top"
+	align="top"
+	enabled="false"
+	handcursor="false"
+	visible="true"
+	y="15"
+	alpha="1.0"
+/>
+
+<layer name="red_box"
+	url="Images/Marker/red_box.jpg"
+	parent="layer[marker_container]"
+	zorder="13"
+	scale="1.0"
+	edge="topleft"
+	align="topleft"
+	enabled="true"
+	handcursor="true"
+	visible="true"
+	x="25"
+	y="105"
+	alpha="1.0"
+	onclick="add_mark(1);"
+/>
+
+<layer name="green_box"
+	url="Images/Marker/green_box.jpg"
+	parent="layer[marker_container]"
+	zorder="13"
+	scale="1.0"
+	edge="topright"
+	align="topright"
+	enabled="true"
+	handcursor="true"
+	visible="true"
+	x="25"
+	y="105"
+	alpha="1.0"
+	onclick="add_mark(2);"
+/>
+
+<layer name="yellow_box"
+	url="Images/Marker/yellow_box.jpg"
+	parent="layer[marker_container]"
+	zorder="13"
+	scale="1.0"
+	edge="topleft"
+	align="topleft"
+	enabled="true"
+	handcursor="true"
+	visible="true"
+	x="25"
+	y="255"
+	alpha="1.0"
+	onclick="add_mark(3);"
+/>
+
+<action name="add_mark">
+	txtadd(cur_g,gc,get(column),r,get(row));
+	copy(q,layer[get(cur_g)].mq);
+	inc(q,1);
+	mul(mark_height,layer[preview_img].height,0.2);
+	mul(mark_width,layer[preview_img].width,0.2);
+	txtadd(new_mp,'m',get(q),get(cur_g),'p');
+	txtadd(new_mf,'m',get(q),get(cur_g),'f');
+	txtadd(new_mp_parent,'layer[',get(new_mp),']');
+	txtadd(red_transp,'Images/Marker/red_marker.png');
+	txtadd(green_transp,'Images/Marker/green_marker.png');
+	txtadd(yellow_transp,'Images/Marker/yellow_marker.png');
+	txtadd(red_solid,'Images/Marker/red_solid.jpg');
+	txtadd(green_solid,'Images/Marker/green_solid.jpg');
+	txtadd(yellow_solid,'Images/Marker/yellow_solid.jpg');
+	txtadd(new_mpl,get(new_mp),'l');
+	txtadd(new_mpr,get(new_mp),'r');
+	txtadd(new_mpt,get(new_mp),'t');
+	txtadd(new_mpb,get(new_mp),'b');
+	txtadd(new_mpfl,get(new_mp),'fl');
+	txtadd(new_mpfr,get(new_mp),'fr');
+	txtadd(new_mpft,get(new_mp),'ft');
+	txtadd(new_mpfb,get(new_mp),'fb');
+	txtadd(drg,'dragmarker();');
+	mul(scale_height,layer[preview_img].height,0.016);
+	mul(frame_width,layer[preview_img].height,0.003);
+	
+	delayedcall(0,
+		<!-- PREVIEW MARKER -->
+		
+			<!-- MAIN BOX -->
+			addlayer(get(new_mp));
+			set(layer[get(new_mp)].visible,true);
+			set(layer[get(new_mp)].keep,true);
+			set(layer[get(new_mp)].alpha,1.0);
+			set(layer[get(new_mp)].parent,layer[preview_img]);
+			if(%1 == 1,
+				set(layer[get(new_mp)].url,get(red_transp));
+			);
+			if(%1 == 2,
+				set(layer[get(new_mp)].url,get(green_transp));
+			);
+			if(%1 == 3,
+				set(layer[get(new_mp)].url,get(yellow_transp));
+			);
+			set(layer[get(new_mp)].enabled,true);
+			set(layer[get(new_mp)].scalechildren,false);
+			set(layer[get(new_mp)].maskchildren,false);
+			set(layer[get(new_mp)].handcursor,true);
+			set(layer[get(new_mp)].height,get(mark_height));
+			set(layer[get(new_mp)].width,get(mark_width));
+			set(layer[get(new_mp)].edge,center);
+			set(layer[get(new_mp)].align,center);
+			set(layer[get(new_mp)].zorder,15);
+			set(layer[get(new_mp)].ondown,get(drg));
+			
+			<!-- SCALERS -->
+			
+				<!-- LEFT -->
+				addlayer(get(new_mpl));
+				set(layer[get(new_mpl)].name,get(new_mpl));
+				set(layer[get(new_mpl)].visible,true);
+				set(layer[get(new_mpl)].keep,true);
+				set(layer[get(new_mpl)].alpha,1.0);
+				set(layer[get(new_mpl)].parent,get(new_mp_parent));
+				set(layer[get(new_mpl)].enabled,true);
+				set(layer[get(new_mpl)].handcursor,true);
+				set(layer[get(new_mpl)].height,get(scale_height));
+				set(layer[get(new_mpl)].width,prop);
+				set(layer[get(new_mpl)].edge,center);
+				set(layer[get(new_mpl)].align,left);
+				set(layer[get(new_mpl)].zorder,17);
+				if(%1 === 1,
+					set(layer[get(new_mpl)].url,get(red_solid));
+				);
+				if(%1 === 2,
+					set(layer[get(new_mpl)].url,get(green_solid));
+				);
+				if(%1 === 3,
+					set(layer[get(new_mpl)].url,get(yellow_solid));
+				);
+				
+				<!-- RIGHT -->
+				addlayer(get(new_mpr));
+				set(layer[get(new_mpr)].visible,true);
+				set(layer[get(new_mpr)].keep,true);
+				set(layer[get(new_mpr)].alpha,1.0);
+				set(layer[get(new_mpr)].parent,get(new_mp_parent));
+				set(layer[get(new_mpr)].enabled,true);
+				set(layer[get(new_mpr)].handcursor,true);
+				set(layer[get(new_mpr)].height,get(scale_height));
+				set(layer[get(new_mpr)].width,prop);
+				set(layer[get(new_mpr)].edge,center);
+				set(layer[get(new_mpr)].align,right);
+				set(layer[get(new_mpr)].zorder,17);
+				if(%1 === 1,
+					set(layer[get(new_mpr)].url,get(red_solid));
+				);
+				if(%1 === 2,
+					set(layer[get(new_mpr)].url,get(green_solid));
+				);
+				if(%1 === 3,
+					set(layer[get(new_mpr)].url,get(yellow_solid));
+				);
+				
+				<!-- TOP -->
+				addlayer(get(new_mpt));
+				set(layer[get(new_mpt)].visible,true);
+				set(layer[get(new_mpt)].keep,true);
+				set(layer[get(new_mpt)].alpha,1.0);
+				set(layer[get(new_mpt)].parent,get(new_mp_parent));
+				set(layer[get(new_mpt)].enabled,true);
+				set(layer[get(new_mpt)].handcursor,true);
+				set(layer[get(new_mpt)].height,get(scale_height));
+				set(layer[get(new_mpt)].width,prop);
+				set(layer[get(new_mpt)].edge,center);
+				set(layer[get(new_mpt)].align,top);
+				set(layer[get(new_mpt)].zorder,17);
+				if(%1 === 1,
+					set(layer[get(new_mpt)].url,get(red_solid));
+				);
+				if(%1 === 2,
+					set(layer[get(new_mpt)].url,get(green_solid));
+				);
+				if(%1 === 3,
+					set(layer[get(new_mpt)].url,get(yellow_solid));
+				);
+				
+				<!-- BOTTOM -->
+				addlayer(get(new_mpb));
+				set(layer[get(new_mpb)].visible,true);
+				set(layer[get(new_mpb)].keep,true);
+				set(layer[get(new_mpb)].alpha,1.0);
+				set(layer[get(new_mpb)].parent,get(new_mp_parent));
+				set(layer[get(new_mpb)].enabled,true);
+				set(layer[get(new_mpb)].handcursor,true);
+				set(layer[get(new_mpb)].height,get(scale_height));
+				set(layer[get(new_mpb)].width,prop);
+				set(layer[get(new_mpb)].edge,center);
+				set(layer[get(new_mpb)].align,bottom);
+				set(layer[get(new_mpb)].zorder,17);
+				if(%1 === 1,
+					set(layer[get(new_mpb)].url,get(red_solid));
+				);
+				if(%1 === 2,
+					set(layer[get(new_mpb)].url,get(green_solid));
+				);
+				if(%1 === 3,
+					set(layer[get(new_mpb)].url,get(yellow_solid));
+				);
+				
+				
+			<!-- FRAME -->
+			
+				<!-- LEFT -->
+				addlayer(get(new_mpfl));
+				set(layer[get(new_mpfl)].visible,true);
+				set(layer[get(new_mpfl)].keep,true);
+				set(layer[get(new_mpfl)].alpha,1.0);
+				set(layer[get(new_mpfl)].parent,get(new_mp_parent));
+				set(layer[get(new_mpfl)].enabled,false);
+				set(layer[get(new_mpfl)].handcursor,false);
+				set(layer[get(new_mpfl)].height,100%);
+				set(layer[get(new_mpfl)].width,get(frame_width));
+				set(layer[get(new_mpfl)].edge,topleft);
+				set(layer[get(new_mpfl)].align,topleft);
+				set(layer[get(new_mpfl)].zorder,16);
+				if(%1 === 1,
+					set(layer[get(new_mpfl)].url,get(red_solid));
+				);
+				if(%1 === 2,
+					set(layer[get(new_mpfl)].url,get(green_solid));
+				);
+				if(%1 === 3,
+					set(layer[get(new_mpfl)].url,get(yellow_solid));
+				);
+				
+				<!-- RIGHT -->
+				addlayer(get(new_mpfr));
+				set(layer[get(new_mpfr)].visible,true);
+				set(layer[get(new_mpfr)].keep,true);
+				set(layer[get(new_mpfr)].alpha,1.0);
+				set(layer[get(new_mpfr)].parent,get(new_mp_parent));
+				set(layer[get(new_mpfr)].enabled,false);
+				set(layer[get(new_mpfr)].handcursor,false);
+				set(layer[get(new_mpfr)].height,100%);
+				set(layer[get(new_mpfr)].width,get(frame_width));
+				set(layer[get(new_mpfr)].edge,topright);
+				set(layer[get(new_mpfr)].align,topright);
+				set(layer[get(new_mpfr)].zorder,16);
+				if(%1 === 1,
+					set(layer[get(new_mpfr)].url,get(red_solid));
+				);
+				if(%1 === 2,
+					set(layer[get(new_mpfr)].url,get(green_solid));
+				);
+				if(%1 === 3,
+					set(layer[get(new_mpfr)].url,get(yellow_solid));
+				);
+				
+				<!-- TOP -->
+				addlayer(get(new_mpft));
+				set(layer[get(new_mpft)].visible,true);
+				set(layer[get(new_mpft)].keep,true);
+				set(layer[get(new_mpft)].alpha,1.0);
+				set(layer[get(new_mpft)].parent,get(new_mp_parent));
+				set(layer[get(new_mpft)].enabled,false);
+				set(layer[get(new_mpft)].handcursor,false);
+				set(layer[get(new_mpft)].height,get(frame_width));
+				set(layer[get(new_mpft)].width,100%);
+				set(layer[get(new_mpft)].edge,topleft);
+				set(layer[get(new_mpft)].align,topleft);
+				set(layer[get(new_mpft)].zorder,16);
+				if(%1 === 1,
+					set(layer[get(new_mpft)].url,get(red_solid));
+				);
+				if(%1 === 2,
+					set(layer[get(new_mpft)].url,get(green_solid));
+				);
+				if(%1 === 3,
+					set(layer[get(new_mpft)].url,get(yellow_solid));
+				);
+				
+				<!-- BOTTOM -->
+				addlayer(get(new_mpfb));
+				set(layer[get(new_mpfb)].visible,true);
+				set(layer[get(new_mpfb)].keep,true);
+				set(layer[get(new_mpfb)].alpha,1.0);
+				set(layer[get(new_mpfb)].parent,get(new_mp_parent));
+				set(layer[get(new_mpfb)].enabled,false);
+				set(layer[get(new_mpfb)].handcursor,false);
+				set(layer[get(new_mpfb)].height,get(frame_width));
+				set(layer[get(new_mpfb)].width,100%);
+				set(layer[get(new_mpfb)].edge,bottomleft);
+				set(layer[get(new_mpfb)].align,bottomleft);
+				set(layer[get(new_mpfb)].zorder,16);
+				if(%1 === 1,
+					set(layer[get(new_mpfb)].url,get(red_solid));
+				);
+				if(%1 === 2,
+					set(layer[get(new_mpfb)].url,get(green_solid));
+				);
+				if(%1 === 3,
+					set(layer[get(new_mpfb)].url,get(yellow_solid));
+				);
+				
+		<!-- ASSIGN VALUES TO GRID -->
+		set(layer[get(cur_g)].mq,get(q));
+		txtadd(mx,'layer[',get(cur_g),'].m',get(cur_g),'x');
+		set(get(mx),0);
+		txtadd(my,'layer[',get(cur_g),'].m',get(cur_g),'y');
+		set(get(my),0);
+		txtadd(mh,'layer[',get(cur_g),'].m',get(cur_g),'h');
+		set(get(mh),get(mark_height));
+		txtadd(mw,'layer[',get(cur_g),'].m',get(cur_g),'w');
+	set(get(mw),get(mark_width));
+	);
+						
+</action>
+
+<action name="dragmarker">
+
+		if(%1 != dragging,
+			sub(height_chk,layer[preview_img].pixelheight,height);
+			div(height_chk,2);
+			sub(width_chk,layer[preview_img].pixelwidth,width);
+			div(width_chk,2);
+			div(menu_height, stagewidth, 9);
+			if(layer[menubar_area].status == 0, set(menu_height,0););
+			sub(main_height, stageheight, menu_height);
+			mul(interact_size,0.30,main_height);
+			if(layer[interact].status == 0,set(interact_size,0););
+			div(wideShot_we, layer[wideShot].imagewidth, layer[wideShot].imageheight);
+			if(wideShot_we GT 0.4, set(wideShot_we,0.40););
+			mul(left_size,main_height,wideShot_we);
+			if(layer[leftBackdrop].status == 0,set(left_size,0););
+			sub(right_size, stagewidth, left_size);
+			sub(right_size, interact_size);
+			div(rightBackdrop_we, right_size, main_height);
+			div(photoholder_we, layer[photoholder].imagewidth, layer[photoholder].imageheight);
+			
+			copy(drag_currentx, x); 
+			copy(drag_currenty, y); 
+			copy(drag_stagex, mouse.stagex); 
+			copy(drag_stagey, mouse.stagey); 
+			set(drag_sx, +1); set(drag_sy, +1); 
+			if(align == righttop, set(drag_sx,-1); );
+			if(align == right, set(drag_sx,-1); );
+			if(align == rightbottom, set(drag_sx,-1); set(drag_sy,-1); );
+			if(align == bottom, set(drag_sy,-1); );
+			if(align == leftbottom, set(drag_sy,-1); );
+			if(photoholder_we GT rightBackdrop_we,
+				mul(adjtemp, right_size, 0.98); div(adjtemp2, layer[preview_img].imagewidth, get(adjtemp)); set(adjsc,get(adjtemp2));
+				,
+				mul(adjtemp, main_height, 0.95); mul(adjtemp,photoholder_we); div(adjtemp2, layer[preview_img].imagewidth, get(adjtemp)); set(adjsc,get(adjtemp2));
+			);
+						
+			set(limitx,get(width_chk));
+			set(limity,get(height_chkh));
+			sub(neglimitx,0,limitx);
+			sub(neglimity,0,limity);
+			dragmarker(dragging);
+			,
+			if(pressed,
+				sub(dx, mouse.stagex, drag_stagex);
+				sub(dy, mouse.stagey, drag_stagey);
+				mul(dx, drag_sx);
+				mul(dy, drag_sy);
+				mul(dx, adjsc);
+				mul(dy, adjsc);
+				add(dx1, drag_currentx, dx);
+				add(dy1, drag_currenty, dy);
+				Math.abs(dx1);
+				Math.abs(dy1);
+				if(dx1 GE limitx, if(dx LT 0, set(x,get(neglimitx));,set(dx,get(limitx)););,add(x, drag_currentx, dx););
+				if(dy1 GE limity, if(dy LT 0, set(y,get(neglimity));,set(dy,get(limity)););,add(y, drag_currenty, dy););
+				delayedcall(0, dragmarker(dragging) );
+			);
+		);
+</action>
+
+<!-- END MARKER SELECTION --><layer name="wideShot"	url="Images/Wide_Grid.jpg"	parent="layer[leftBackdrop]"	visible="true"	scalechildren="true"	maskchildren="true"	keep="true"	alpha="1.0"	zorder="11"	edge="center"	align="center"	enabled="true"	handcursor="false"/><layer name="wideImage"	url="Images/Wide.jpg"	parent="layer[wideShot]"	scalechildren="true"	visible="true"	scale="1.0"	keep="true"	alpha="1.0"	zorder="14"	edge="bottomright"	align="bottomright"	enabled="true"	handcursor="false"/>	<layer name="GridRowI"		url="Images/white1px.jpg"		parent="layer[wideImage]"		edge="bottomright"		align="bottomleft"		alpha="0.6"		visible="true"		zorder="12"		distorted="false"		enabled="false"		width="800"		height="get(layer[startsettings].gheight);"	/>		<layer name="GridColI"		url="Images/white1px.jpg"		parent="layer[wideImage]"		edge="bottomleft"		align="topleft"		alpha="0.6"		visible="true"		zorder="12"		distorted="false"		enabled="false"		height="800"		width="get(layer[startsettings].gwidth);"	/>	<!-- Inspec Data --><!--  pass text box  -->	<layer name="textpass" parent="layer[interact]" url="txtimg/textfield.png" scalechildren="false" align="top" visible="true" zorder="20" onloaded="if(device.desktop,,set(y,8.5%))">		<layer name="textmask" type="container" align="lefttop" maskchildren="true">			<layer name="textpassc" url="%SWFPATH%/plugins/textfield.swf" handcursor="false" enabled="true" children="false" align="lefttop" autoheight="true" onautosized="add(height,pixelheight,40);" background="false" border="false" html="APPROVED" css="color:#000000; font-family:Arial; font-size:11;"/> 		</layer>		<layer name="scrollbar" url="txtimg/slider.png" scalechildren="true" align="righttop" zorder="1">			<layer name="scrollup" url="txtimg/dirbutton.png" align="righttop" width="100%" height="prop" x="19" y="0" zorder="2" rotate="-90" crop="0|0|19|19" onovercrop="0|19|19|19" ondowncrop="0|38|19|19" ondown="asyncloop(pressed, mul(scrolly_temp,layer[textpass].pixelheight,.03);sub(ny,layer[textpassc].y,scrolly_temp); add(ny,8); if(ny GT 0, set(ny,0)); div(sy,ny,th); sub(th,layer[textmask].height,txtheight); mul(sy,352); add(sy,19); copy(layer[scrollslider].y,sy); add(ny,scrolly_temp); copy(layer[textpassc].y,ny); );"/>			<layer name="scrolldown" url="txtimg/dirbutton.png" align="rightbottom" width="100%" height="prop" x="19" y="0" zorder="2" rotate="+90" crop="0|0|19|19" onovercrop="0|19|19|19" ondowncrop="0|38|19|19" ondown="asyncloop(pressed, mul(scrolly_temp,layer[textpass].pixelheight,.03); sub(ny,layer[textpassc].y,scrolly_temp); add(ny,-8); mul(scrolly_temp2,scrolly_temp,2);add(txtheight,layer[textpassc].height,scrolly_temp2); sub(th,layer[textmask].pixelheight,txtheight); if(ny LT th, copy(ny,th)); if(th GE 0, set(ny,0)); div(sy,ny,th); mul(sy,333); add(sy,19); copy(layer[scrollslider].y,sy); add(ny,scrolly_temp); copy(layer[textpassc].y,ny); );"/>			<layer name="scrollslider" url="txtimg/sliderbutton.png" align="righttop" width="100%" height="prop" x="0" y="19" zorder="2" crop="0|0|19|19" onovercrop="0|19|19|19" ondowncrop="0|38|19|19" ondown="copy(cy,y);copy(sy,mouse.stagey); div(menu_height, stagewidth, 9); if(layer[menubar_area].status == 0, set(menu_height,0);); sub(main_height, stageheight, menu_height); mul(eval_height, main_height, 0.42); mul(eval_height2,eval_height, 0.96); div(temp_scroll, 390, eval_height2); dragging();" dragging="if(pressed, sub(dy,mouse.stagey,sy); mul(dy,temp_scroll); add(ny,cy,dy); if(ny LT 19, set(ny,19)); if(ny GT 352, set(ny,352)); copy(y,ny); sub(ty,ny,19);sub(temp_scroll2,layer[textpass].pixelheight,38);div(ty,temp_scroll2); sub(th,layer[textpass].pixelheight,layer[textpassc].pixelheight); mul(ty,th);mul(scrolly_temp,layer[textpass].pixelheight,.04); add(ty,scrolly_temp); copy(layer[textpassc].y,ty); delayedcall(0,dragging()); );"/>		</layer>	</layer>	<layer name="textfail" parent="layer[interact]" url="txtimg/textfield.png" scalechildren="false" align="bottom" visible="true" zorder="20" onloaded="if(device.desktop,,set(y,8.5%))">		<layer name="textmask2" type="container" align="lefttop" maskchildren="true">			<layer name="textfailc" url="%SWFPATH%/plugins/textfield.swf" handcursor="false" enabled="true" children="false" align="lefttop" x="10" y="10" width="220" autoheight="true" background="false" border="false" html="REJECTED" css="color:#000000; font-family:Arial; font-size:11;"/>		</layer>		<layer name="scrollbar2" url="txtimg/slider.png" scalechildren="true" align="righttop" zorder="1">			<layer name="scrollup2" url="txtimg/dirbutton.png" align="righttop" width="100%" height="prop" x="19" y="0" zorder="2" rotate="-90" crop="0|0|19|19" onovercrop="0|19|19|19" ondowncrop="0|38|19|19" ondown="asyncloop(pressed, mul(scrolly_temp,layer[textfail].pixelheight,.03);sub(ny,layer[textfailc].y,scrolly_temp); add(ny,8); if(ny GT 0, set(ny,0)); div(sy,ny,th); sub(th,layer[textmask2].height,txtheight); mul(sy,352); add(sy,19); copy(layer[scrollslider2].y,sy); add(ny,scrolly_temp); copy(layer[textfailc].y,ny); );"/>			<layer name="scrolldown2" url="txtimg/dirbutton.png" align="rightbottom" width="100%" height="prop" x="19" y="0" zorder="2" rotate="+90" crop="0|0|19|19" onovercrop="0|19|19|19" ondowncrop="0|38|19|19" ondown="asyncloop(pressed, mul(scrolly_temp,layer[textfail].pixelheight,.03); sub(ny,layer[textfailc].y,scrolly_temp); add(ny,-8); mul(scrolly_temp2,scrolly_temp,2);add(txtheight,layer[textfailc].height,scrolly_temp2); sub(th,layer[textmask2].pixelheight,txtheight); if(ny LT th, copy(ny,th)); if(th GE 0, set(ny,0)); div(sy,ny,th); mul(sy,333); add(sy,19); copy(layer[scrollslider2].y,sy); add(ny,scrolly_temp); copy(layer[textfailc].y,ny); );"/>			<layer name="scrollslider2" url="txtimg/sliderbutton.png" align="righttop" width="100%" height="prop" x="0" y="19" zorder="2" crop="0|0|19|19" onovercrop="0|19|19|19" ondowncrop="0|38|19|19" ondown="copy(cy,y);copy(sy,mouse.stagey); div(menu_height, stagewidth, 9); if(layer[menubar_area].status == 0, set(menu_height,0);); sub(main_height, stageheight, menu_height); mul(eval_height, main_height, 0.42); mul(eval_height2,eval_height, 0.96); div(temp_scroll, 390, eval_height2); dragging();" dragging="if(pressed, sub(dy,mouse.stagey,sy); mul(dy,temp_scroll); add(ny,cy,dy); if(ny LT 19, set(ny,19)); if(ny GT 352, set(ny,352)); copy(y,ny); sub(ty,ny,19);sub(temp_scroll2,layer[textfail].pixelheight,38);div(ty,temp_scroll2); sub(th,layer[textfail].pixelheight,layer[textfailc].pixelheight); mul(ty,th);mul(scrolly_temp,layer[textfail].pixelheight,.04); add(ty,scrolly_temp); copy(layer[textfailc].y,ty); delayedcall(0,dragging()); );"/>		</layer>	</layer>	<!-- Inspec Nav --><action name="openmax" >	set(layer[photoholder_max].visible,true);	set(layer[Background_Max].visible,true);	tween(layer[Background_Max].bgalpha,0.8,0.5);	tween(layer[final_img].alpha,1.0,0.5);	set(layer[final_img].visible,true);</action><action name="closemax" >	tween(layer[final_img].alpha,0.0,0.5);	tween(layer[Background_Max].bgalpha,0.0,0.5);	delayedcall(0.5,		set(layer[photoholder_max].visible,false);		set(layer[Background_Max].visible,false);		set(layer[final_img].scale,1.0);		set(layer[final_img].x,0);		set(layer[final_img].y,0);		set(layer[final_img].visible,false);	);</action><action name="toggle_lists" >	switch(layer[textfail].visible);	switch(layer[textpass].visible);</action><layer name="Background_Save"	type="container"	keep="true"	width="100%"	height="100%"	bgalpha="0.7"	zorder="89"	bgcolor="0x000000"	bgcapture="true"	visible="false"	handcursor="false"	align="center"	onclick="save_toggle()"/><layer name="save_message"	url="txtimg/save_message.png"	parent="layer[Background_Save]"	scalechildren="true"	visible="true"	keep="true"	alpha="1.0"	zorder="91"	edge="center"	align="center"	enabled="true"	handcursor="false"	onclick=""	onloaded=""/><layer name="ok"	url="txtimg/ok.jpg"	parent="layer[save_message]"	visible="true"	keep="true"	alpha="1.0"	y="70"	scale="1.75"	zorder="92"	crop="0|0|137|50"	edge="bottom"	align="bottom"	enabled="true"	handcursor="true"	onclick="create_save();save_toggle()"	ondown="set(crop,0|50|137|50);"	onup="set(crop,0|0|137|50);"	onloaded=""/><layer name="x"	url="txtimg/x.jpg"	parent="layer[save_message]"	visible="true"	keep="true"	alpha="1.0"	x="35"	y="35"	scale="1.75"	zorder="92"	crop="0|0|30|30"	edge="topright"	align="topright"	enabled="true"	handcursor="true"	onclick="save_toggle()"	ondown="set(crop,0|30|30|30);"	onup="set(crop,0|0|30|30);"	onloaded=""/><action name="save_toggle" >	switch(layer[Background_Save].visible);</action><action name="create_save" >	txtreplace(layer[fail_data].outsource,layer[fail_data].info, '<br/>', 'b');	txtreplace(layer[pass_data].outsource,layer[pass_data].info, '<br/>', 'b');	txtadd(plugin[clipboard].text,'https://s3.amazonaws.com/novainspec/',get(urlbase),'/inspection.html?pass_through=',get(layer[pass_data].outsource),&amp;,'fail_through=',get(layer[fail_data].outsource));	grefresh();</action><action name="get_last_save" >	set(layer[pass_data].temp,get(pass_through));	set(layer[fail_data].temp,get(fail_through));	txtreplace(layer[pass_data].info,layer[pass_data].temp, 'b', '<br/>');	txtreplace(layer[fail_data].info,layer[fail_data].temp, 'b', '<br/>');	txtreplace(layer[pass_data].init,layer[pass_data].info, 'C', 'set(layer[gc');	txtreplace(layer[pass_data].init,layer[pass_data].init, 'R', 'r');	txtreplace(layer[pass_data].init,layer[pass_data].init, '<br/>', '].crop,0|900|300|300);');	txtreplace(layer[pass_data].initd,layer[pass_data].info, 'C', 'set(layer[gc');	txtreplace(layer[pass_data].initd,layer[pass_data].initd, 'R', 'r');	txtreplace(layer[pass_data].initd,layer[pass_data].initd, '<br/>', '].des,1);');	txtreplace(layer[fail_data].init,layer[fail_data].info, 'C', 'set(layer[gc');	txtreplace(layer[fail_data].init,layer[fail_data].init, 'R', 'r');	txtreplace(layer[fail_data].init,layer[fail_data].init, '<br/>', '].crop,0|1200|300|300);');	txtreplace(layer[fail_data].initd,layer[fail_data].info, 'C', 'set(layer[gc');	txtreplace(layer[fail_data].initd,layer[fail_data].initd, 'R', 'r');	txtreplace(layer[fail_data].initd,layer[fail_data].initd, '<br/>', '].des,2);');	txtadd(temp26,get(layer[pass_data].init),get(layer[fail_data].init),get(layer[pass_data].initd),get(layer[fail_data].initd));	delayedcall(.01,		drefresh();		grefresh(get(temp26));	);</action><action name="grefresh" >		%1</action>	<plugin name="clipboard" 		url="plugins/clipboard.swf" 		keep="true"	/><events name="image_zoom_events" onmousewheel="image_onmousewheel();" /><action name="zoomadjust">	sub(5tempboth, get(scale),1);	div(5tempboth,2);	mul(5limitx,get(5tempboth),get(imagewidth));	mul(5limity,get(5tempboth),get(imageheight));	sub(neg5limitx,0,5limitx);	sub(neg5limity,0,5limity);	if(x GE 5limitx, set(x,get(5limitx)););	if(x LE neg5limitx, set(x,get(neg5limitx)););	if(y GE 5limity, set(y,get(5limity)););	if(y LE 5limity, set(y,get(neg5limity)););</action><action name="image_onmousewheel"> 	copy(6tempx,layer[final_img].x);	copy(6tempy,layer[final_img].y);	if(iszoom,<!-- mouse wheel zoom --> 			if((wheeldelta_raw GT 0) OR (wheeldelta GT 0),				add(nwzoom,get(layer[final_img].scale),0.4);				if(nwzoom LE 6, set(layer[final_img].scale, get(nwzoom)););				set(layer[final_img].x,get(6tempx));				set(layer[final_img].y,get(6tempy));				set(layer[final_img].edge,center);				set(layer[final_img].align,center);			,				sub(nwzoom,get(layer[final_img].scale),0.4);				delayedcall(0,					if(nwzoom LE 1.0,						set(layer[final_img].x,0);						set(layer[final_img].y,0);						set(layer[final_img].scale,1.0);						set(layer[final_img].edge,center);						set(layer[final_img].align,center);					,						set(layer[final_img].scale,get(nwzoom));						div(layer[final_img].x,get(6tempx),1.22);						div(layer[final_img].y,get(6tempy),1.22);						set(layer[final_img].edge,center);						set(layer[final_img].align,center);					);				);			);		,<!-- touch zoom --> 			if(wheeldelta_touchscale GT 1,				add(nwzoom,get(layer[final_img].scale),0.1);				if(nwzoom LE 6, set(layer[final_img].scale, get(nwzoom)););			,				sub(nwzoom,get(layer[final_img].scale),0.1);				delayedcall(0,					if(nwzoom LE 1.0,						set(layer[final_img].x,0);						set(layer[final_img].y,0);						set(layer[final_img].scale,1.0);						set(layer[final_img].edge,center);						set(layer[final_img].align,center);					,						set(layer[final_img].scale,get(nwzoom));						set(layer[final_img].x,get(6tempx));						set(layer[final_img].y,get(6tempy));					);				);			);		);		delayedcall(0,			zoom_adjust();		);</action><action name="column_swap">		txtreplace(layer[pass_data].col,layer[pass_data].info, 'R', 'Row ');		txtreplace(layer[pass_data].col,layer[pass_data].col, 'C1', 'Column A - ');		txtreplace(layer[pass_data].col,layer[pass_data].col, 'C2', 'Column B - ');		txtreplace(layer[pass_data].col,layer[pass_data].col, 'C3', 'Column C - ');		txtreplace(layer[pass_data].col,layer[pass_data].col, 'C4', 'Column D - ');		txtreplace(layer[pass_data].col,layer[pass_data].col, 'C5', 'Column E - ');		txtreplace(layer[pass_data].col,layer[pass_data].col, 'C6', 'Column F - ');		txtreplace(layer[pass_data].col,layer[pass_data].col, 'C7', 'Column G - ');		txtreplace(layer[pass_data].col,layer[pass_data].col, 'C8', 'Column H - ');		txtreplace(layer[pass_data].col,layer[pass_data].col, 'C9', 'Column I - ');		txtreplace(layer[pass_data].col,layer[pass_data].col, 'C10', 'Column J - ');		txtreplace(layer[pass_data].col,layer[pass_data].col, 'C11', 'Column K - ');		txtreplace(layer[pass_data].col,layer[pass_data].col, 'C12', 'Column L - ');		txtreplace(layer[pass_data].col,layer[pass_data].col, 'C13', 'Column M - ');		txtreplace(layer[pass_data].col,layer[pass_data].col, 'C14', 'Column N - ');		txtreplace(layer[pass_data].col,layer[pass_data].col, 'C15', 'Column O - ');		txtreplace(layer[pass_data].col,layer[pass_data].col, 'C16', 'Column P - ');		txtreplace(layer[pass_data].col,layer[pass_data].col, 'C17', 'Column Q - ');		txtreplace(layer[pass_data].col,layer[pass_data].col, 'C18', 'Column R - ');		txtreplace(layer[pass_data].col,layer[pass_data].col, 'C19', 'Column S - ');		txtreplace(layer[pass_data].col,layer[pass_data].col, 'C20', 'Column T - ');		txtreplace(layer[pass_data].col,layer[pass_data].col, 'C21', 'Column U - ');		txtreplace(layer[pass_data].col,layer[pass_data].col, 'C22', 'Column V - ');		txtreplace(layer[pass_data].col,layer[pass_data].col, 'C23', 'Column W - ');		txtreplace(layer[pass_data].col,layer[pass_data].col, 'C24', 'Column X - ');		txtreplace(layer[pass_data].col,layer[pass_data].col, 'C25', 'Column Y - ');		txtreplace(layer[pass_data].col,layer[pass_data].col, 'C26', 'Column Z - ');		txtreplace(layer[fail_data].col,layer[fail_data].info, 'R', 'Row ');		txtreplace(layer[fail_data].col,layer[fail_data].col, 'C1', 'Column A - ');		txtreplace(layer[fail_data].col,layer[fail_data].col, 'C2', 'Column B - ');		txtreplace(layer[fail_data].col,layer[fail_data].col, 'C3', 'Column C - ');		txtreplace(layer[fail_data].col,layer[fail_data].col, 'C4', 'Column D - ');		txtreplace(layer[fail_data].col,layer[fail_data].col, 'C5', 'Column E - ');		txtreplace(layer[fail_data].col,layer[fail_data].col, 'C6', 'Column F - ');		txtreplace(layer[fail_data].col,layer[fail_data].col, 'C7', 'Column G - ');		txtreplace(layer[fail_data].col,layer[fail_data].col, 'C8', 'Column H - ');		txtreplace(layer[fail_data].col,layer[fail_data].col, 'C9', 'Column I - ');		txtreplace(layer[fail_data].col,layer[fail_data].col, 'C10', 'Column J - ');		txtreplace(layer[fail_data].col,layer[fail_data].col, 'C11', 'Column K - ');		txtreplace(layer[fail_data].col,layer[fail_data].col, 'C12', 'Column L - ');		txtreplace(layer[fail_data].col,layer[fail_data].col, 'C13', 'Column M - ');		txtreplace(layer[fail_data].col,layer[fail_data].col, 'C14', 'Column N - ');		txtreplace(layer[fail_data].col,layer[fail_data].col, 'C15', 'Column O - ');		txtreplace(layer[fail_data].col,layer[fail_data].col, 'C16', 'Column P - ');		txtreplace(layer[fail_data].col,layer[fail_data].col, 'C17', 'Column Q - ');		txtreplace(layer[fail_data].col,layer[fail_data].col, 'C18', 'Column R - ');		txtreplace(layer[fail_data].col,layer[fail_data].col, 'C19', 'Column S - ');		txtreplace(layer[fail_data].col,layer[fail_data].col, 'C20', 'Column T - ');		txtreplace(layer[fail_data].col,layer[fail_data].col, 'C21', 'Column U - ');		txtreplace(layer[fail_data].col,layer[fail_data].col, 'C22', 'Column V - ');		txtreplace(layer[fail_data].col,layer[fail_data].col, 'C23', 'Column W - ');		txtreplace(layer[fail_data].col,layer[fail_data].col, 'C24', 'Column X - ');		txtreplace(layer[fail_data].col,layer[fail_data].col, 'C25', 'Column Y - ');		txtreplace(layer[fail_data].col,layer[fail_data].col, 'C26', 'Column Z - ');</action><action name="drefresh"> 	column_swap();		txtadd(layer[textpassc].html,,);	txtadd(layer[textpassc].html,'<html><b><font size="12">APPROVED</font></b><br/><br/>',get(layer[pass_data].col),'</html>');	txtadd(layer[textfailc].html,,);	txtadd(layer[textfailc].html,'<html><b><font size="12">REJECTED</font></b><br/><br/>',get(layer[fail_data].col),'</html>');</action><action name="zoomzoom"> 	copy(6tempx,layer[final_img].x);	copy(6tempy,layer[final_img].y);	set(plugin[finaladjust].enabled,false);	delayedcall(0,		if(%1 GT 0,			add(newzoom,get(layer[final_img].scale),0.4);			if(newzoom LE 6, set(layer[final_img].scale,get(newzoom)););			set(layer[final_img].x,get(6tempx));			set(layer[final_img].y,get(6tempy));			set(layer[final_img].edge,center);			set(layer[final_img].align,center);			delayedcall(0,				zoom_adjust();			);		,			sub(newzoom,get(layer[final_img].scale),0.4);			delayedcall(0,				if(newzoom LE 1.0,					set(layer[final_img].x,0);					set(layer[final_img].y,0);					set(layer[final_img].scale,1.0);					set(layer[final_img].edge,center);					set(layer[final_img].align,center);				,					set(layer[final_img].scale,get(newzoom));					div(layer[final_img].x,get(6tempx),1.22);					div(layer[final_img].y,get(6tempy),1.22);					set(layer[final_img].edge,center);					set(layer[final_img].align,center);				);			);		);	);	delayedcall(0.1, set(plugin[finaladjust].enabled,true););</action><action name="draglayer">	set(scl_chk,get(scale));	if(scl_chk GT 1,		if(%1 != dragging,			copy(drag_currentx, x); 			copy(drag_currenty, y); 			copy(drag_stagex, mouse.stagex); 			copy(drag_stagey, mouse.stagey); 			set(drag_sx, +1); set(drag_sy, +1); 			if(align == righttop, set(drag_sx,-1); );			if(align == right, set(drag_sx,-1); );			if(align == rightbottom, set(drag_sx,-1); set(drag_sy,-1); );			if(align == bottom, set(drag_sy,-1); );			if(align == leftbottom, set(drag_sy,-1); );			if(photoholder_max_we GT screenaspect,				mul(adjtemp, stagewidth, 0.84); div(adjtemp2, layer[photoholder_max].imagewidth, get(adjtemp)); set(adjsc,get(adjtemp2));				,				mul(adjtemp, stageheight, 0.97); div(adjtemp2, layer[photoholder_max].imageheight, get(adjtemp)); set(adjsc,get(adjtemp2));			);			sub(tempboth, get(scale),1);			div(tempboth,2);			mul(limitx,get(tempboth),get(imagewidth));			mul(limity,get(tempboth),get(imageheight));			sub(neglimitx,0,limitx);			sub(neglimity,0,limity);			draglayer(dragging);			,			if(pressed,				sub(dx, mouse.stagex, drag_stagex);				sub(dy, mouse.stagey, drag_stagey);				mul(dx, drag_sx);				mul(dy, drag_sy);				mul(dx, adjsc);				mul(dy, adjsc);				add(dx1, drag_currentx, dx);				add(dy1, drag_currenty, dy);				Math.abs(dx1);				Math.abs(dy1);				if(dx1 GE limitx, if(dx LT 0, set(x,get(neglimitx));,set(dx,get(limitx)););,add(x, drag_currentx, dx););				if(dy1 GE limity, if(dy LT 0, set(y,get(neglimity));,set(dy,get(limity)););,add(y, drag_currenty, dy););				delayedcall(0, draglayer(dragging) );			);		);	);</action><action name="click_select" >	txtadd(cur_g,gc,get(column),r,get(row));	if((layer[get(cur_g)].des != 1) AND (get(cur_g).des != 2),		set(layer[get(cur_g)].crop,0|600|300|300);	);	if(layer[get(cur_g)].des == 1,		set(layer[get(cur_g)].crop,0|900|300|300);	);	if(layer[get(cur_g)].des == 2,		set(layer[get(cur_g)].crop,0|1200|300|300);	);	delayedcall(.01,		set(column,%1);		set(row,%2);		txtadd(cur_g,gc,%1,r,%2);		seventh_day();		br_co_reset();		indicator();		set(layer[get(cur_g)].crop,0|300|300|300);	);	</action><action name="click_des" >	txtadd(cur_g,gc,get(column),r,get(row));	txtadd(tmp1,C,get(column),R,get(row),'<br/>');	if(%1 == 0,		set(layer[get(cur_g)].crop,0|300|300|300);		txtreplace(layer[fail_data].info,get(tmp1),'');		txtreplace(layer[pass_data].info,get(tmp1),'');	);	if(%1 == 1,		set(layer[get(cur_g)].crop,0|900|300|300);		txtreplace(layer[fail_data].info,get(tmp1),'');		if(layer[get(cur_g)].des != 1, txtadd(layer[pass_data].info,get(tmp1)););	);	if(%1 == 2,		set(layer[get(cur_g)].crop,0|1200|300|300);		txtreplace(layer[pass_data].info,get(tmp1),'');		if(layer[get(cur_g)].des != 2, txtadd(layer[fail_data].info,get(tmp1)););	);	drefresh();	set(layer[get(cur_g)].des,%1);	delete(cur_g);</action>	<events name="keydown_select"	        onkeydown="keydown_navi();"	/>	<action name="keydown_navi">	<!-- Up -->		if(keycode == 38, keydown_up());		if(keycode == 87, keydown_up());	<!-- Down -->		if(keycode == 40, keydown_down());		if(keycode == 83, keydown_down());	<!-- Left -->		if(keycode == 37, keydown_left());		if(keycode == 65, keydown_left());	<!-- Right -->		if(keycode == 39, keydown_right());		if(keycode == 68, keydown_right());	<!-- Space -->		if(keycode == 32, keydown_space());	<!-- Enter -->		if(keycode == 13, 			if(layer[photoholder_max].visible == true,				closemax();				,				openmax();			);		);	<!-- E -->		if(keycode == 69, toggle_lists());	<!-- Q -->		if(keycode == 81, save_toggle());	</action>		<action name="keydown_space">			txtadd(tmp1,C,get(column),R,get(row),'<br/>');			txtadd(cur_g,gc,get(column),r,get(row));			if(layer[get(cur_g)].des == 0,				set(layer[get(cur_g)].crop,0|900|300|300);				txtreplace(layer[fail_data].info,get(tmp1),'');				if(layer[get(cur_g)].des != 1, txtadd(layer[pass_data].info,get(tmp1)););				delayedcall(0,					set(layer[get(cur_g)].des,1);				);			);			if(layer[get(cur_g)].des == 1,				set(layer[get(cur_g)].crop,0|1200|300|300);				txtreplace(layer[pass_data].info,get(tmp1),'');				if(layer[get(cur_g)].des != 2, txtadd(layer[fail_data].info,get(tmp1)););				delayedcall(0,					set(layer[get(cur_g)].des,2);				);			);			if(layer[get(cur_g)].des == 2,				set(layer[get(cur_g)].crop,0|300|300|300);				txtreplace(layer[fail_data].info,get(tmp1),'');				txtreplace(layer[pass_data].info,get(tmp1),'');				delayedcall(0,					set(layer[get(cur_g)].des,0);				);			);			drefresh();		</action>		<action name="keydown_up">			if(row LT layer[startsettings].rows,				txtadd(cur_g,gc,get(column),r,get(row));				if((layer[get(cur_g)].des != 1) AND (get(cur_g).des != 2),					set(layer[get(cur_g)].crop,0|600|300|300);				);				if(layer[get(cur_g)].des == 1,					set(layer[get(cur_g)].crop,0|900|300|300);				);				if(layer[get(cur_g)].des == 2,					set(layer[get(cur_g)].crop,0|1200|300|300);				);				seventh_day_del();				delayedcall(0,					inc(row,1);					txtadd(cur_g,gc,get(column),r,get(row));					seventh_day();					br_co_reset();					indicator();					set(layer[get(cur_g)].crop,0|300|300|300);				);			);		</action>		<action name="keydown_down">			if(row GT 1,				txtadd(cur_g,gc,get(column),r,get(row));				if((layer[get(cur_g)].des != 1) AND (get(cur_g).des != 2),					set(layer[get(cur_g)].crop,0|600|300|300);				);				if(layer[get(cur_g)].des == 1,					set(layer[get(cur_g)].crop,0|900|300|300);				);				if(layer[get(cur_g)].des == 2,					set(layer[get(cur_g)].crop,0|1200|300|300);				);				delayedcall(0,					dec(row,1);					txtadd(cur_g,gc,get(column),r,get(row));					seventh_day();					br_co_reset();					indicator();					set(layer[get(cur_g)].crop,0|300|300|300);				);			);		</action>		<action name="keydown_left">			if(column GT 1,				txtadd(cur_g,gc,get(column),r,get(row));				if((layer[get(cur_g)].des != 1) AND (get(cur_g).des != 2),					set(layer[get(cur_g)].crop,0|600|300|300);				);				if(layer[get(cur_g)].des == 1,					set(layer[get(cur_g)].crop,0|900|300|300);				);				if(layer[get(cur_g)].des == 2,					set(layer[get(cur_g)].crop,0|1200|300|300);				);				delayedcall(0,					dec(column,1);					txtadd(cur_g,gc,get(column),r,get(row));					seventh_day();					br_co_reset();					indicator();					set(layer[get(cur_g)].crop,0|300|300|300);				);			);		</action>		<action name="keydown_right">			if(column LT layer[startsettings].columns,				txtadd(cur_g,gc,get(column),r,get(row));				if((layer[get(cur_g)].des != 1) AND (get(cur_g).des != 2),					set(layer[get(cur_g)].crop,0|600|300|300);				);				if(layer[get(cur_g)].des == 1,					set(layer[get(cur_g)].crop,0|900|300|300);				);				if(layer[get(cur_g)].des == 2,					set(layer[get(cur_g)].crop,0|1200|300|300);				);				delayedcall(0,					inc(column,1);					txtadd(cur_g,gc,get(column),r,get(row));					seventh_day();					br_co_reset();					indicator();					set(layer[get(cur_g)].crop,0|300|300|300);				);			);		</action>			<!-- GRID -->	<!-- Photo Enlarger --><layer name="photoholder"	url="Images/photoholder.png"	parent="layer[rightBackdrop]"	visible="true"	scalechildren="true"	maskchildren="false"	keep="true"	alpha="1.0"	zorder="11"	edge="center"	align="center"	enabled="true"	handcursor="false"	onclick=""	onloaded="d_resize();"/><layer name="check"	url="Images/approval_buttons.png"	parent="layer[photoholder]"	visible="true"	scale="1.0"	y="10"	zorder="24"	edge="bottomright"	align="bottomright"	enabled="true"	handcursor="true"	crop="0|0|333|69"	onclick="click_des(1);"	ondowncrop="0|69|333|69"/><layer name="ques"	url="Images/approval_buttons.png"	parent="layer[photoholder]"	visible="true"	scale="1.0"	y="10"	zorder="24"	edge="bottom"	align="bottom"	enabled="true"	handcursor="true"	crop="333|0|333|69"	onclick="click_des(0);"	ondowncrop="333|69|333|69"/><layer name="ex"	url="Images/approval_buttons.png"	parent="layer[photoholder]"	visible="true"	scale="1.0"	y="10"	zorder="24"	edge="bottomleft"	align="bottomleft"	enabled="true"	handcursor="true"	crop="666|0|333|69"	onclick="click_des(2);"	ondowncrop="666|69|333|69"/>	<layer name="previewbr"		devices="desktop"		url="Images/Brightness.jpg"		parent="layer[interact]"		visible="false"		scalechildren="true"		maskchildren="false"		keep="true"		alpha="1.0"		scale="1.0"		y="85"		zorder="28"		edge="bottom"		align="bottom"		enabled="true"		handcursor="false"	/>	<layer	name="previewbre"		url="Images/Brightness-Empty.jpg"		devices="desktop"		parent="layer[previewbr]"		maskchildren="false"		distorted="false"		visible="true"		keep="true"		scale="1.0"		alpha="1.0"		zorder="29"		y="1.5"		align="center"		edge="center"		enabled="true"		handcursor="false"	/>	<layer	name="previewbrf"		url="Images/Brightness-Full.jpg"		devices="desktop"		parent="layer[previewbre]"		visible="true"		distorted="false"		keep="true"		height="100%"		width="50%"		alpha="1.0"		zorder="30"		align="left"		edge="left"		enabled="false"		handcursor="false"		onclick=""	/>		<layer	name="previewbsl"		url="Images/Brightness-Slider.jpg"		devices="desktop"		parent="layer[previewbre]"		visible="true"		distorted="false"		keep="true"		scale="1.0"		alpha="1.0"		zorder="31"		align="center"		edge="center"		enabled="true"		handcursor="true"		ondown="dragpreview(null,previewbrf,brightness);"	/>			<action name="br_co_reset">			set(layer[previewbsl].x, 0);			set(layer[previewbrf].width,50%);			set(plugin[previewadjust].brightness,0);			set(layer[previewcosl].x, 0);			set(layer[previewcof].width,50%);			set(plugin[previewadjust].contrast,0);			set(layer[finalbrsl].y, 0);			set(layer[finalbrf].height,50%);			set(plugin[finaladjust].brightness,0);			set(layer[finalcosl].y, 0);			set(layer[finalcof].height,50%);			set(plugin[finaladjust].contrast,0);		</action>	<action name="dragpreview">		if(%1 != dragging2,			copy(2drag_currentx, x);			copy(layer[%2].widthtemp, layer[%2].width);			txtreplace(2drag_currentw, layer[%2].widthtemp, '%', '');						copy(2drag_stagex, mouse.stagex); 			set(2drag_sx, +1);			if(align == righttop, set(2drag_sx,-1); );			if(align == right, set(2drag_sx,-1); );			if(align == rightbottom, set(2drag_sx,-1); );			if(photoholder_we GT rightBackdrop_we,				div(adjtemp, layer[photoholder].imagewidth, get(rscw)); div(adjtemp,0.98); set(2adj,get(adjtemp));  			  ,				div(adjtemp, layer[photoholder].imageheight, get(rsch)); div(adjtemp,0.95); set(2adj,get(adjtemp));			 );			set(2limitx2,556);			set(2neg2limitx2,-556);			dragpreview(dragging2,%2,%3);			,			if(pressed,				sub(2dx, mouse.stagex, 2drag_stagex);				mul(2dx, 2drag_sx);				mul(2dx, 2adj);				div(3dx, 2dx, 556);				mul(3dx, 50);				add(3dx, 2drag_currentw);				txtadd(3dw, get(3dx),'%');				add(2dx1, 2drag_currentx, 2dx);				div(prebr, 2dx1, 1112);				copy(2dx2, 2dx1);				Math.abs(2dx1);				if(2dx1 GE 2limitx2,					if(2dx2 LE -555,						set(x,get(2neg2limitx2));						set(layer[%2].width,0%);						set(plugin[previewadjust].,-0.5);						,						set(x,get(2limitx2));						set(layer[%2].width,100%);						set(plugin[previewadjust].%3,0.5);					);					,					add(x, 2drag_currentx, 2dx);					set(layer[%2].width,get(3dw));					set(plugin[previewadjust].%3,get(prebr));				);				delayedcall(0, dragpreview(dragging2,%2,%3) );			);		);</action>	<layer name="previewco"		url="Images/Contrast.jpg"		devices="desktop"		parent="layer[interact_column]"		visible="false"		scalechildren="true"		maskchildren="false"		keep="true"		alpha="1.0"		scale="1.0"		y="0"		zorder="28"		edge="bottom"		align="bottom"		enabled="true"		handcursor="false"	/>	<layer	name="previewcoe"		url="Images/Brightness-Empty.jpg"		devices="desktop"		parent="layer[previewco]"		maskchildren="false"		distorted="false"		visible="true"		keep="true"		scale="1.0"		alpha="1.0"		zorder="29"		y="1.5"		align="center"		edge="center"		enabled="true"		handcursor="false"	/>	<layer	name="previewcof"		url="Images/Brightness-Full.jpg"		devices="desktop"		parent="layer[previewcoe]"		visible="true"		distorted="false"		keep="true"		height="100%"		width="50%"		alpha="1.0"		zorder="30"		align="left"		edge="left"		enabled="false"		handcursor="false"		onclick=""	/>		<layer	name="previewcosl"		url="Images/Brightness-Slider.jpg"		devices="desktop"		parent="layer[previewcoe]"		visible="true"		distorted="false"		keep="true"		scale="1.0"		alpha="1.0"		zorder="31"		align="center"		edge="center"		enabled="true"		handcursor="true"		ondown="dragpreview(null,previewcof,contrast);"	/>	<plugin name="previewadjust"		devices="desktop"		url="plugins/imageadjustpre.swf"		enabled="true"		brightness="0"		contrast="0"		hue="0"		saturation="0"		blurradius="0"		keep="true"	/><layer name="zoom_in_ri"	url="Images/zoomi.png"	parent="layer[photoholder]"	visible="true"	capture="false"	keep="true"	scale="1.0"	alpha="1.0"	zorder="15"	edge="topright"	align="topright"	enabled="false"	handcursor="true"	onclick=""	onloaded="if(device.tablet,set(scale,1.3););if(device.mobile,set(scale,1.6););"/>	<!-- Photo Enlarger --><layer name="photoholder_max"	url="Images/Full/photoholder.png"	parent=""	visible="false"	capture="false"	scalechildren="true"	maskchildren="false"	keep="true"	alpha="1.0"	zorder="41"	edge="center"	align="center"	enabled="true"	handcursor="false"	onclick=""	onloaded=""/><layer name="photoholder_maxf"	url="Images/Full/photoholder.png"	parent="layer[photoholder_max]"	visible="true"	capture="false"	scalechildren="true"	maskchildren="true"	keep="true"	scale="1.0"	alpha="1.0"	zorder="42"	edge="center"	align="center"	enabled="true"	handcursor="false"	onclick=""	onloaded=""/><layer name="Background_Max"	type="container"	keep="true"	width="100%"	height="100%"	bgalpha="0.0"	zorder="40"	bgcolor="0x000000"	bgcapture="true"	visible="false"	handcursor="false"	align="center"	onclick="closemax()"/><action name="dragfinal">		if(%1 != dragging2,			copy(2drag_currenty, y);			copy(layer[%2].heighttemp, layer[%2].height);			txtreplace(2drag_currentw, layer[%2].heighttemp, '%', '');			sub(2drag_currentw, 0, get(2drag_currentw));			copy(2drag_stagey, mouse.stagey); 			set(2drag_sy, +1);			if(align == righttop, set(2drag_sy,-1); );			if(align == right, set(2drag_sy,-1); );			if(align == rightbottom, set(2drag_sy,-1); );			if(photoholder_max_we GT screenaspect,				mul(adjtemp, stagewidth, 0.84); div(adjtemp3, layer[photoholder_max].imagewidth, get(adjtemp)); mul(adjtemp2, layer[photoholder_max].imageheight, 0.70); div(adjtemp4, layer[finalbr].imageheight, get(adjtemp2)); mul(2adj,get(adjtemp3),get(adjtemp4));				,				mul(adjtemp, stageheight, 0.97); div(adjtemp3, layer[photoholder_max].imageheight, get(adjtemp)); mul(adjtemp2, layer[photoholder_max].imageheight, 0.70); div(adjtemp4, layer[finalbr].imageheight, get(adjtemp2)); mul(2adj,get(adjtemp3),get(adjtemp4));			 );			set(2limity2,456);			set(2neg2limity2,-456);			dragfinal(dragging2,%2,%3);			,			if(pressed,				sub(2dy, mouse.stagey, 2drag_stagey);				mul(2dy, 2drag_sy);				mul(2dy, 2adj);				div(3dy, 2dy, 456);				mul(3dy, 50);				add(3dy, 2drag_currentw);				sub(3dy3, 0, get(3dy));				txtadd(3dw, get(3dy3),'%');				add(2dy1, 2drag_currenty, 2dy);				div(prebr, 2dy1, 913);				sub(prebr, 0, get(prebr));				copy(2dy2, 2dy1);				Math.abs(2dy1);				if(2dy1 GE 2limity2,					if(2dy2 LE -455,						set(y,get(2neg2limity2));						set(layer[%2].height,100%);						set(plugin[finaladjust].,0.5);						,						set(y,get(2limity2));						set(layer[%2].height,100%);						set(plugin[finaladjust].%3,-0.5);					);					,					add(y, 2drag_currenty, 2dy);					set(layer[%2].height,get(3dw));					set(plugin[finaladjust].%3,get(prebr));				);				delayedcall(0, dragfinal(dragging2,%2,%3) );			);		);</action>	<layer name="finalbr"		devices="desktop"		url="Images/FBrightness.png"		parent="layer[photoholder_max]"		visible="true"		scalechildren="true"		maskchildren="false"		keep="true"		alpha="1.0"		height="70%"		width="prop"		zorder="42"		edge="right"		align="left"		enabled="true"		handcursor="false"	/>	<layer	name="finalbre"		url="Images/FBar-Empty.jpg"		devices="desktop"		parent="layer[finalbr]"		maskchildren="false"		distorted="false"		visible="true"		keep="true"		scale="1.0"		alpha="1.0"		zorder="43"		x="22"		align="right"		edge="right"		enabled="true"		handcursor="false"	/>	<layer	name="finalbrf"		url="Images/FBar-Full.jpg"		devices="desktop"		parent="layer[finalbre]"		visible="true"		distorted="false"		keep="true"		height="50%"		width="100%"		alpha="1.0"		zorder="44"		align="bottom"		edge="bottom"		enabled="false"		handcursor="false"		onclick=""	/>		<layer	name="finalbrsl"		devices="desktop"		url="Images/Final-Slider.jpg"		parent="layer[finalbre]"		visible="true"		distorted="false"		keep="true"		scale="1.0"		alpha="1.0"		zorder="45"		align="center"		edge="center"		enabled="true"		handcursor="true"		ondown="dragfinal(null,finalbrf,brightness);"	/>	<layer name="finalco"		devices="desktop"		url="Images/FContrast.png"		parent="layer[photoholder_max]"		visible="true"		scalechildren="true"		maskchildren="false"		keep="true"		alpha="1.0"		height="70%"		width="prop"		zorder="42"		edge="left"		align="right"		enabled="true"		handcursor="false"	/>	<layer	name="finalcoe"		devices="desktop"		url="Images/FBar-Empty.jpg"		parent="layer[finalco]"		maskchildren="false"		distorted="false"		visible="true"		keep="true"		scale="1.0"		alpha="1.0"		zorder="43"		x="22"		align="left"		edge="left"		enabled="true"		handcursor="false"	/>	<layer	name="finalcof"		devices="desktop"		url="Images/FBar-Full.jpg"		parent="layer[finalcoe]"		visible="true"		distorted="false"		keep="true"		height="50%"		width="100%"		alpha="1.0"		zorder="44"		align="bottom"		edge="bottom"		enabled="false"		handcursor="false"		onclick=""	/>		<layer	name="finalcosl"		devices="desktop"		url="Images/Final-Slider.jpg"		parent="layer[finalcoe]"		visible="true"		distorted="false"		keep="true"		scale="1.0"		alpha="1.0"		zorder="45"		align="center"		edge="center"		enabled="true"		handcursor="true"		ondown="dragfinal(null,finalcof,contrast);"	/>	<plugin name="finaladjust"		devices="desktop"		url="plugins/imageadjustfinal.swf"		enabled="true"		brightness="0"		contrast="0"		hue="0"		saturation="0"		blurradius="0"		keep="true"	/><layer name="zoom_in"	url="Images/Full/zoomi.png"	parent="layer[photoholder_max]"	visible="true"	capture="false"	keep="true"	scale="1.0"	alpha="1.0"	zorder="51"	edge="bottomright"	align="bottomright"	enabled="true"	handcursor="true"	onclick="zoomzoom(1);"	onloaded="if(device.tablet,set(scale,1.5););if(device.mobile,set(scale,2.0););"/><layer name="zoom_out"	url="Images/Full/zoomo.png"	parent="layer[photoholder_max]"	visible="true"	capture="false"	keep="true"	scale="1.0"	alpha="1.0"	zorder="51"	edge="bottomleft"	align="bottomleft"	enabled="true"	handcursor="true"	onclick="zoomzoom(-1);"	onloaded="if(device.tablet,set(scale,1.5););if(device.mobile,set(scale,2.0););"/></krpano>

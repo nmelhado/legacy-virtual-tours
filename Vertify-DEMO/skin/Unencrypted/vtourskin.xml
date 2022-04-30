@@ -1,0 +1,43 @@
+<krpano>
+	<!-- save the url path of this xml file (the url value will be adjusted during xml parsing) -->
+	<vtourskinxmlpath url="./" />
+
+	<!-- mouse / keyboard(button) control settings - http://krpano.com/docu/xml/#control.advanced -->
+	<control mousetype="moveto"
+	         zoomtocursor="false"
+	         zoomoutcursor="false"
+	         mouseaccelerate="1.0"
+	         mousespeed="10.0"
+	         mousefriction="0.8"
+	         mousefovchange="1.0"
+	         keybaccelerate="0.09"
+	         keybfriction="0.94"
+	         keybfovchange="0.25"
+	         fovspeed="3.0"
+	         fovfriction="0.9"
+	         bouncinglimits="true"
+	         touchfriction="0.9"
+	         />
+
+	<!-- mouse cursors -->
+	<cursors standard="default"
+	         dragging="drag"
+	         moving="move"
+	         />
+
+
+	<!-- ensure stagescale 2x for mobile devices (regardless if mobilescale is 0.5 or 1.0) -->
+	<krpano stagescale="calc:stagescale*(1.0 + 1.0*(stagescale LT 1.0))" devices="mobile" />
+
+	<!-- context menu -->
+		<contextmenu fullscreen="true" enterfs="Fullscreen" exitfs="Exit Fullscreen">
+
+		<item name="photographedby" caption="Photographed by Vertify Analytics" enabled="true" visible="true" separator="true" onclick="openurl(http://www.mbmRender.com,_blank);"/>
+
+		<item name="producedby" caption="Produced by Vertify Analytics" enabled="true" visible="true" separator="true" onclick="openurl(http://www.mbmRender.com,_blank);"/>
+
+		<item name="copyright" caption="Copyright &#169; 2017 Vertify Analytics" enabled="true" visible="true" separator="true" onclick="openurl(http://www.mbmRender.com,_blank);"/>
+
+	</contextmenu>
+
+</krpano>
