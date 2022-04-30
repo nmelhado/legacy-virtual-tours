@@ -1,0 +1,1943 @@
+<krpano version="1.19" title="Lyric Theatre">
+
+
+	<include url="skin/vtourskin.xml" />
+
+	<include url="plugins/showtext.xml" />
+
+
+	<!-- customize skin settings: maps, gyro, thumbnails, tooltips, layout, design, ... -->
+	<skin_settings maps="true"
+	               gyro="true"
+	               littleplanetintro="false"
+	               title="true"
+	               thumbs="true"
+	               thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160"
+	               thumbs_opened="false"
+	               thumbs_text="true"
+	               thumbs_dragging="true"
+	               thumbs_onhoverscrolling="false"
+	               thumbs_scrollbuttons="false"
+	               thumbs_scrollindicator="false"
+	               thumbs_loop="false"
+	               tooltips_buttons="false"
+	               tooltips_thumbs="false"
+	               tooltips_hotspots="true"
+	               tooltips_mapspots="false"
+	               deeplinking="false"
+	               loadscene_flags="MERGE"
+	               loadscene_blend="OPENBLEND(0.5, 0.0, 0.75, 0.05, linear)"
+	               loadscene_blend_prev="SLIDEBLEND(0.5, 180, 0.75, linear)"
+	               loadscene_blend_next="SLIDEBLEND(0.5,   0, 0.75, linear)"
+	               loadingtext="loading..."
+	               layout_width="100%"
+	               layout_maxwidth.normal="900"
+	               layout_maxwidth.mobile=""
+	               controlbar_width.normal="-44"
+	               controlbar_width.mobile="100%"
+	               controlbar_height.normal="38"
+	               controlbar_height.mobile="34"
+	               controlbar_offset.normal="22"
+	               controlbar_offset.mobile="0"
+	               controlbar_offset_closed="-40"
+	               controlbar_overlap.normal="7"
+	               controlbar_overlap.mobile="2"
+	               design_skin_images="vtourskin.png"
+	               design_bgcolor="0x000000"
+	               design_bgalpha="0.6"
+	               design_bgborder="0 0xFFFFFF 1.0"
+	               design_bgroundedge.normal="9"
+	               design_bgroundedge.mobile="1"
+	               design_bgshadow="0 0 9 0xFFFFFF 0.5"
+	               design_thumbborder_bgborder="4 0xFFFFFF 1.0"
+	               design_thumbborder_padding="2"
+	               design_thumbborder_bgroundedge="5"
+	               design_text_css="color:#FFFFFF; font-family:Arial; font-weight:bold;"
+	               design_text_shadow="1"
+	               />
+
+<textstyle name="DEFAULT"
+           origin="cursor"
+           edge="bottom"
+           xoffset="0"
+           yoffset="-3"
+           fadeintime="0.0"
+           showtime="0.1"
+           fadetime="0.0"
+           font="Baskerville"
+           fontsize="18px"
+           bold="true"
+           italic="false"
+           textcolor="0xFFFFFF"
+           textalign="none"
+           padding="1"
+           css=""
+           width=""
+           height=""
+           vcenter=""
+           background="false"
+           backgroundcolor="0xFFFFFF"
+           backgroundalpha="1.0"
+           border="false"
+           bordercolor="0x000000"
+           borderalpha="1.0"
+           borderwidth="1.0"
+           roundedge="0"
+           shadow="0.0"
+           shadowrange="4.0"
+           shadowangle="45"
+           shadowcolor="0x000000"
+           shadowalpha="1.0"
+           textshadow="1.0"
+           textshadowrange="4.0"
+           textshadowangle="45"
+           textshadowcolor="0x000000"
+           textshadowalpha="1.0"
+           embeddedfonts="false"
+           alpha="1.0"
+           blendmode="normal"
+           effect=""
+           noclip="true"
+           />
+
+<style 	name="skin_hotspotstyle" 
+		devices="desktop"
+		edge="top"
+		alpha="0.7"
+		scale="0.50"
+		visible="true"
+		zorder="40"
+		capture="true" 
+		distorted="false"
+		onclick="set(layer[lyric].alpha,1.0); set(layer[hp].alpha,0.0); set(layer[Status].height,0);set(layer[Slider].y,0); if(linkedscene, set(enabled,false); skin_hidetooltips(); tween(depth|alpha|oy|rx, 4000|0.0|-50|-60, 0.5, default, loadscene(get(linkedscene),null,get(skin_settings.loadscene_flags),get(skin_settings.loadscene_blend)); skin_updatescroll(); ); );"
+		onloaded="if(linkedscene AND skin_settings.tooltips_hotspots, copy(tooltip,scene[get(linkedscene)].title); loadstyle(skin_tooltips); ); d_resize();"
+		/>
+
+<style 	name="skin_hotspotstyle" 
+		devices="tablet"
+		edge="top"
+		alpha="0.7"
+		scale="0.50"
+		visible="true"
+		zorder="40"
+		capture="true" 
+		distorted="false"
+		onclick="set(layer[lyric].alpha,1.0); set(layer[hp].alpha,0.0); set(layer[Status].height,0);set(layer[Slider].y,0); if(linkedscene, set(enabled,false); skin_hidetooltips(); tween(depth|alpha|oy|rx, 4000|0.0|-50|-60, 0.5, default, loadscene(get(linkedscene),null,get(skin_settings.loadscene_flags),get(skin_settings.loadscene_blend)); skin_updatescroll(); ); );"
+		onloaded="if(linkedscene AND skin_settings.tooltips_hotspots, copy(tooltip,scene[get(linkedscene)].title); loadstyle(skin_tooltips); );"
+		/>
+
+<style 	name="skin_hotspotstyle" 
+		devices="mobile"
+		edge="top"
+		alpha="0.7"
+		scale="0.30"
+		visible="true"
+		zorder="40"
+		capture="true" 
+		distorted="false"
+		onclick="set(layer[lyric].alpha,1.0); set(layer[hp].alpha,0.0); set(layer[Status].height,0);set(layer[Slider].y,0); if(linkedscene, set(enabled,false); skin_hidetooltips(); tween(depth|alpha|oy|rx, 4000|0.0|-50|-60, 0.5, default, loadscene(get(linkedscene),null,get(skin_settings.loadscene_flags),get(skin_settings.loadscene_blend)); skin_updatescroll(); ); );"
+		onloaded="if(linkedscene AND skin_settings.tooltips_hotspots, copy(tooltip,scene[get(linkedscene)].title); loadstyle(skin_tooltips); );"
+		/>
+
+
+<control usercontrol="all"
+         mousetype="drag2d"
+         touchtype="drag2d"
+         zoomtocursor="false"
+         zoomoutcursor="true"
+         mouseaccelerate="1.0"
+         mousespeed="8.0"
+         mousefriction="0.8"
+         mouseyfriction="1.0"
+         mousefovchange="1.0"
+         keybaccelerate="0.2"
+         keybspeed="1.5"
+         keybfriction="0.9"
+         keybfovchange="0.75"
+         keybinvert="false"
+         fovspeed="1.0"
+         fovfriction="0.9"
+         movetocursor="none"
+         cursorsize="10.0"
+         headswing="0.0"
+         camrollreset="true"
+         keycodesleft="37"
+         keycodesright="39"
+         keycodesup="38"
+         keycodesdown="40"
+         keycodesin=""
+         keycodesout=""
+         bouncinglimits="false"
+         touchfriction="0.87"
+         touchzoom="true"
+         />
+
+<style name="embedskin"
+       type="image"
+       alturl=""
+       keep="false"
+       devices="all"
+       parent=""
+       visible="false"
+       enabled="true"
+       handcursor="true"
+       maskchildren="false"
+       scalechildren="false"
+       zorder="10"
+       align="center"
+       edge=""
+       rotate="0.0"
+       width=""
+       height=""
+       scale="1.0"
+       alpha="1.0"
+       crop=""
+       onovercrop=""
+       ondowncrop=""
+       bgcolor="0x000000"
+       bgalpha="0.0"
+       bgborder="0"
+       bgroundedge="0"
+       bgshadow=""
+       bgcapture="false"
+       onloaded=""
+       />
+
+<style name="custom_hotspot"
+		keep="false"
+		visible="true"
+		enabled="true"
+		handcursor="true"
+		capture="false"
+		alpha="1.0"
+		fillcolor="0xFFFFFF"
+		fillalpha="0.0"
+		borderwidth="3.0"
+	    bordercolor="0xFFFFFF"
+		borderalpha="0.0"
+        ondown=""
+        onup=""
+        onloaded=""
+		/>
+
+<events onresize="d_resize();"
+ 
+/>
+
+<action name="d_resize">
+	if(device.desktop,
+		if(stagewidth LT 1200, 
+			set(layer[NOVA Logo Desktop].scale,0.10);
+		,
+			set(layer[NOVA Logo Desktop].scale,0.15);
+		);  
+
+		if(stagewidth LT 1090,
+			set(layer[NOVA Logo Desktop].y,60); 
+		,
+			set(layer[NOVA Logo Desktop].y,15);
+		); 
+
+		if(stagewidth GE 1200, 
+			tween(hotspot[spot1].scale,0.5);
+			tween(hotspot[spot2].scale,0.5);
+			tween(hotspot[spot3].scale,0.5);
+			tween(hotspot[spot4].scale,0.5);
+			tween(hotspot[spot5].scale,0.5);
+			tween(hotspot[spot6].scale,0.5);
+		); 
+
+		if(stagewidth LT 1200, 
+			tween(hotspot[spot1].scale,0.45);
+			tween(hotspot[spot2].scale,0.45);
+			tween(hotspot[spot3].scale,0.45);
+			tween(hotspot[spot4].scale,0.45);
+			tween(hotspot[spot5].scale,0.45);
+			tween(hotspot[spot6].scale,0.45);
+		); 
+
+		if(stagewidth LT 1000, 
+			tween(hotspot[spot1].scale,0.40);
+			tween(hotspot[spot2].scale,0.40);
+			tween(hotspot[spot3].scale,0.40);
+			tween(hotspot[spot4].scale,0.40);
+			tween(hotspot[spot5].scale,0.40);
+			tween(hotspot[spot6].scale,0.40);
+		); 
+
+		if(stagewidth LT 800, 
+			tween(hotspot[spot1].scale,0.35);
+			tween(hotspot[spot2].scale,0.35);
+			tween(hotspot[spot3].scale,0.35);
+			tween(hotspot[spot4].scale,0.35);
+			tween(hotspot[spot5].scale,0.35);
+			tween(hotspot[spot6].scale,0.35);
+		); 
+
+);
+
+if(layer[Overlay_collapse].status == 1,
+	,
+	div(adj, stageheight, layer[Overlay_Parent].imageheight);
+	mul(adj, layer[Overlay_Parent].imagewidth);
+	roundval(adj);
+	sub(coll, 0, adj);
+	set(layer[Overlay_Parent].x,get(coll));
+);
+
+div(stageaspect, stagewidth, stageheight);
+div(photoaspect, layer[Photo_holder].imagewidth, layer[Photo_holder].imageheight);
+if(photoaspect GT stageaspect,
+	set(layer[Photo_holder].width,80%); set(layer[Photo_holder].height,prop);
+	set(layer[Choice_holder].width,80%); set(layer[Choice_holder].height,prop);
+	,
+	set(layer[Photo_holder].width,prop); set(layer[Photo_holder].height,75%);
+	set(layer[Choice_holder].width,prop); set(layer[Choice_holder].height,75%);
+);
+
+</action>
+
+
+<layer name="NOVA Logo Desktop"
+       type="image"
+       url="https://s3.amazonaws.com/nova-logos/adventure-logo.png"
+       keep="true"
+       devices="desktop"
+       parent=""
+       visible="true"
+       enabled="true"
+       handcursor="true"
+       maskchildren="false"
+       scalechildren="false"
+	   capture="false"
+       zorder="10"
+       style=""
+       align="bottomright"
+       edge="bottomright"
+       x="15"
+       y=""
+       rotate="0.0"
+       width=""
+       height=""
+       scale=""
+       alpha="0.85"
+       crop=""
+       onovercrop=""
+       ondowncrop=""
+       bgcolor="0x000000"
+       bgalpha="0.0"
+       bgborder="0"
+       bgroundedge="0"
+       bgshadow=""
+       bgcapture="false"
+       onover=""
+       onhover="showtext(' Virtual Tour by NOVA.com ')"
+       onout=""
+       onclick="openurl(http://www.conceptsbyNOVA.com,_blank);"
+       ondown=""
+       onup=""
+       onloaded="d_resize();"
+       />
+
+<layer name="NOVA Logo Desktop"
+       type="image"
+       url="https://s3.amazonaws.com/nova-logos/adventure-logo.png"
+       keep="true"
+       devices="mobile"
+       parent=""
+       visible="true"
+       enabled="true"
+       handcursor="true"
+       maskchildren="false"
+       scalechildren="false"
+	   capture="false"
+       zorder="10"
+       style=""
+       align="bottomright"
+       edge="bottomright"
+       x="10"
+       y="40"
+       rotate="0.0"
+       width=""
+       height=""
+       scale="0.1"
+       alpha="0.85"
+       crop=""
+       onovercrop=""
+       ondowncrop=""
+       bgcolor="0x000000"
+       bgalpha="0.0"
+       bgborder="0"
+       bgroundedge="0"
+       bgshadow=""
+       bgcapture="false"
+       onover=""
+       onhover="showtext(' Virtual Tour by NOVA.com ')"
+       onout=""
+       onclick="openurl(http://www.conceptsbyNOVA.com,_blank);"
+       ondown=""
+       onup=""
+       onloaded=""
+       />
+
+<layer name="NOVA Logo Desktop"
+       type="image"
+       url="https://s3.amazonaws.com/nova-logos/adventure-logo.png"
+       keep="true"
+       devices="tablet"
+       parent=""
+       visible="true"
+       enabled="true"
+       handcursor="true"
+       maskchildren="false"
+       scalechildren="false"
+	   capture="false"
+       zorder="10"
+       style=""
+       align="bottomright"
+       edge="bottomright"
+       x="10"
+       y="65"
+       rotate="0.0"
+       width=""
+       height=""
+       scale="0.1"
+       alpha="0.85"
+       crop=""
+       onovercrop=""
+       ondowncrop=""
+       bgcolor="0x000000"
+       bgalpha="0.0"
+       bgborder="0"
+       bgroundedge="0"
+       bgshadow=""
+       bgcapture="false"
+       onover=""
+       onhover="showtext(' Virtual Tour by NOVA.com ')"
+       onout=""
+       onclick="openurl(http://www.conceptsbyNOVA.com,_blank);"
+       ondown=""
+       onup=""
+       onloaded=""
+       />
+	   
+<action name="overlay_alpha">
+		if(%1 != dragging,
+			copy(drag_currenty, y);
+			copy(drag_stagey, mouse.stagey); 
+			div(adj, layer[Overlay_Parent].imageheight, stageheight);
+			overlay_alpha(dragging);
+			,
+			if(pressed,
+				sub(dy, mouse.stagey, drag_stagey);
+				mul(dy, adj);
+				mul(dy,-1);
+				add(dy, drag_currenty);
+				if(dy LT 0, set(dy,0););
+				if(dy GT 770, set(dy,770););
+				div(2dy, dy, 770);
+				copy(o_alpha,2dy);
+				roundval(o_alpha,2);
+				sub(o_alpha2,1,o_alpha);
+				mul(2dy, 100);
+				txtadd(2dy, '%');
+				copy(y, dy);
+				copy(layer[Status].height,2dy);
+				copy(layer[hp].alpha,o_alpha);
+				copy(layer[lyric].alpha,o_alpha2);
+				copy(hotspot[Overlay_f].alpha,o_alpha);
+				copy(hotspot[Overlay_l].alpha,o_alpha);
+				copy(hotspot[Overlay_r].alpha,o_alpha);
+				copy(hotspot[Overlay_b].alpha,o_alpha);
+				copy(hotspot[Overlay_u].alpha,o_alpha);
+				copy(hotspot[Overlay_d].alpha,o_alpha);
+			);
+			delayedcall(0,overlay_alpha(dragging););
+		);
+</action>
+
+<action name="collapse_overlay">
+	if(layer[Overlay_collapse].status == 1,
+			set(layer[Overlay_collapse].edge,right);
+			set(layer[Overlay_collapse].rotate,180);
+			copy(layer[Overlay_collapse].status,0);
+			div(adj, stageheight, layer[Overlay_Parent].imageheight);
+			mul(adj, layer[Overlay_Parent].imagewidth);
+			roundval(adj);
+			sub(coll, 0, adj);
+			set(layer[Overlay_Parent].x,get(coll));
+			,
+			set(layer[Overlay_collapse].edge,center);
+			set(layer[Overlay_collapse].rotate,0);
+			set(layer[Overlay_collapse].status,1);
+			set(layer[Overlay_Parent].x,0);
+	);
+</action>
+
+	<layer	name="Overlay_Parent"
+		url="Ref/Toggle/Background.jpg"
+		devices="all"
+		scalechildren="true"
+		distorted="false"
+		visible="true"
+		keep="true"
+		height="100%"
+		width="prop"
+		alpha="1.0"
+		x="0"
+		zorder="20"
+		align="topleft"
+		edge="topleft"
+		enabled="true"
+		handcursor="false"
+	/>
+
+	<layer	name="lyric"
+		url="Ref/Toggle/lyric.png"
+		parent="layer[Overlay_Parent]"
+		devices="all"
+		scalechildren="true"
+		distorted="false"
+		visible="true"
+		keep="true"
+		width="100%"
+		height="prop"
+		y="0"
+		alpha="1.0"
+		zorder="21"
+		align="bottom"
+		edge="bottom"
+		enabled="true"
+		handcursor="false"
+	/>
+	
+	<layer	name="hp"
+		url="Ref/Toggle/hp.png"
+		parent="layer[Overlay_Parent]"
+		devices="all"
+		scalechildren="true"
+		distorted="false"
+		visible="true"
+		keep="true"
+		width="100%"
+		height="prop"
+		y="0"
+		alpha="0.0"
+		zorder="21"
+		align="bottom"
+		edge="bottom"
+		enabled="true"
+		handcursor="false"
+	/>
+	
+	<layer	name="Empty_Bar"
+		url="Ref/Toggle/Bar.jpg"
+		parent="layer[Overlay_Parent]"
+		devices="all"
+		scalechildren="true"
+		distorted="false"
+		visible="true"
+		keep="true"
+		width="12%"
+		height="774"
+		y="-120"
+		alpha="1.0"
+		zorder="21"
+		align="center"
+		edge="center"
+		enabled="true"
+		handcursor="false"
+	/>
+	
+	<layer	name="Empty_Bar_Transp"
+		url="Ref/Toggle/Bar.png"
+		parent="layer[Empty_Bar]"
+		devices="all"
+		scalechildren="true"
+		distorted="false"
+		visible="true"
+		keep="true"
+		scale="1.0"
+		alpha="1.0"
+		zorder="22"
+		align="center"
+		edge="center"
+		enabled="true"
+		handcursor="false"
+	/>
+
+	<layer	name="Status"
+		url="Ref/Toggle/Status.jpg"
+		parent="layer[Empty_Bar_Transp]"
+		devices="all"
+		scalechildren="true"
+		distorted="false"
+		visible="true"
+		keep="true"
+		height="0%"
+		width="100%"
+		alpha="1.0"
+		zorder="23"
+		align="bottom"
+		edge="bottom"
+		enabled="false"
+		handcursor="false"
+	/>
+	
+	<layer	name="Slider"
+		devices="normal"
+		url="Ref/Toggle/Toggle.png"
+		parent="layer[Empty_Bar_Transp]"
+		visible="true"
+		distorted="false"
+		keep="true"
+		width="140%"
+		height="36"
+		alpha="1.0"
+		zorder="24"
+		y="0"
+		align="bottom"
+		edge="center"
+		enabled="true"
+		handcursor="true"
+		ondown="overlay_alpha();"
+	/>
+	
+	<layer	name="Slider"
+		devices="mobile"
+		url="Ref/Toggle/Toggle.png"
+		parent="layer[Empty_Bar_Transp]"
+		visible="true"
+		distorted="false"
+		keep="true"
+		width="200%"
+		height="46"
+		alpha="1.0"
+		zorder="24"
+		y="0"
+		align="bottom"
+		edge="center"
+		enabled="true"
+		handcursor="true"
+		ondown="overlay_alpha();"
+	/>
+
+	<layer name="Overlay_collapse"
+		url="Ref/Toggle/collapse.png"
+		parent="layer[Overlay_Parent]"
+		edge="center"
+		align="right"
+		zorder="25"
+		rotate="0"
+		status="1"
+		keep="true"
+		height="12%"
+		width="prop"
+		alpha="1.0"
+		visible="true"
+		enabled="true"
+		handcursor="true"
+		crop="0|0|43|218"
+		ondown="set(crop,43|0|43|218);"
+		onup="set(crop,0|0|43|218);"
+		onclick="collapse_overlay();"
+	/>
+	
+	<plugin name="model"
+		enabled="true" 
+		url="plugins/textfield.swf"
+		devices="normal"
+		keep="true" 
+		scaechildren="true"
+		align="center" 
+		edge="center" 
+		alpha="1.0"
+		width="75%"
+		height="80%"
+		x="0" 
+		y="0" 
+		visible="false" 
+		html="[div id=&#x22;iframe-wrapper&#x22; style=&#x22;text-align:center;width:100%;&#x22;]
+				&#x9;&#x9;[style].embed-container { height: 768px; width: 1024px; overflow: hidden;} .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; } #my-iframe{ position: absolute; left : 0; width : 100%; height: 100%;}
+				&#x9;&#x9;[/style][div class=&#x27;embed-container&#x27;][iframe src=&#x22;https://myhub.autodesk360.com/ue2bf881f/shares/public/SHabee1QT1a327cf2b7a9251f00e531af020?mode=embed&#x22; id=&#x22;my-iframe&#x22; mozallowfullscreen=&#x22;true&#x22; webkitallowfullscreen=&#x22;true&#x22; allowfullscreen=&#x22;true&#x22; frameborder=&#x22;0&#x22; width=&#x22;100%&#x22; height=&#x22;100%&#x22;][/iframe][/div][/div]" 
+		zorder="90" 
+		onloaded="d_resize();" 
+	/>
+	
+	<layer name="Close_model"
+		url="Ref/X.jpg"
+		parent="pugin[model]"
+		edge="center"
+		align="topright"
+		zorder="91"
+		rotate="0"
+		keep="true"
+		height="4%"
+		width="prop"
+		alpha="1.0"
+		visible="true"
+		enabled="true"
+		handcursor="true"
+		crop="0|0|85|85"
+		ondown="set(crop,0|85|85|85);"
+		onup="set(crop,0|0|85|85);"
+		onclick="set(plugin[model].visible,false);"
+	/>
+	
+<action name="openPhoto">
+	if(layer[Photo_holder].status == 1,
+			set(layer[Photo_holder].visible,false);
+			set(layer[PhotoBackground].visible,false);
+			set(layer[Photo_holder].status,0);
+			,
+			set(layer[Study].url,Ref/Images/Dome_Study1.jpg);
+			set(layer[Study].current,1);
+			set(layer[nav_right].visible,true);
+			set(layer[nav_left].visible,false);
+			set(layer[Photo_holder].visible,true);
+			set(layer[PhotoBackground].visible,true);
+			set(layer[Photo_holder].status,1);
+	);
+</action>
+
+<action name="slide">
+	if(%1 == 1,
+			if(layer[Study].current LT 13,
+				set(layer[Study].visible,false);
+				inc(layer[Study].current,1);
+				set(layer[nav_left].visible,true);
+				if(layer[Study].current == 13, set(layer[nav_right].visible,false););
+				txtadd(purl,'Ref/Images/Dome_Study',get(layer[Study].current),'.jpg');
+				set(layer[Study].url,get(purl));
+				delayedcall(0,set(layer[Study].visible,true););
+			);
+			,
+			if(layer[Study].current GT 1,
+				set(layer[Study].visible,false);
+				inc(layer[Study].current,-1);
+				set(layer[nav_right].visible,true);
+				if(layer[Study].current == 1, set(layer[nav_left].visible,false););
+				txtadd(purl,'Ref/Images/Dome_Study',get(layer[Study].current),'.jpg');
+				set(layer[Study].url,get(purl));
+				delayedcall(0,set(layer[Study].visible,true););
+			);
+	);
+</action>
+	
+	<layer name="PhotoBackground"
+		type="container"
+		keep="true"
+		zorder="49"
+		width="110%"
+		height="110%"
+		bgalpha="0.65"
+		bgcolor="0x000000"
+		bgcapture="true"
+		visible="false"
+		handcursor="false"
+		align="center"
+		onclick="openPhoto();"
+	/>
+	
+	<layer name="Photo_holder"
+		url="Ref/Images/Holder.jpg"
+		scalechildren="true"
+		edge="center"
+		status="0"
+		align="center"
+		zorder="50"
+		keep="true"
+		alpha="1.0"
+		visible="false"
+		enabled="true"
+		handcursor="false"
+		onclick=""
+	/>
+	
+	<layer name="nav_right"
+		url="Ref/Images/nav.png"
+		parent="layer[Photo_holder]"
+		devices="desktop"
+		edge="left"
+		align="right"
+		zorder="52"
+		rotate="180"
+		scale="1.0"
+		keep="true"
+		alpha="0.0"
+		onover="tween(alpha,1.0);"
+		onout="tween(alpha,0.0);"
+		visible="true"
+		enabled="true"
+		handcursor="true"
+		onclick="slide(1)"
+	/>
+	
+	<layer name="nav_left"
+		url="Ref/Images/nav.png"
+		parent="layer[Photo_holder]"
+		devices="desktop"
+		edge="left"
+		align="left"
+		zorder="52"
+		scale="1.0"
+		keep="true"
+		alpha="0.0"
+		onover="tween(alpha,1.0);"
+		onout="tween(alpha,0.0);"
+		visible="false"
+		enabled="true"
+		handcursor="true"
+		onclick="slide(0)"
+	/>
+	
+	<layer name="nav_right"
+		url="Ref/Images/nav.png"
+		parent="layer[Photo_holder]"
+		devices="tablet|mobile"
+		edge="left"
+		align="right"
+		zorder="52"
+		rotate="180"
+		scale="1.0"
+		keep="true"
+		alpha="0.5"
+		visible="true"
+		enabled="true"
+		handcursor="true"
+		onclick="slide(1)"
+	/>
+	
+	<layer name="nav_left"
+		url="Ref/Images/nav.png"
+		parent="layer[Photo_holder]"
+		devices="tablet|mobile"
+		edge="left"
+		align="left"
+		zorder="52"
+		scale="1.0"
+		keep="true"
+		alpha="0.5"
+		visible="false"
+		enabled="true"
+		handcursor="true"
+		onclick="slide(0)"
+	/>
+	
+	<layer name="Close_Photo"
+		url="Ref/X.jpg"
+		parent="layer[Photo_holder]"
+		edge="center"
+		align="topright"
+		zorder="53"
+		rotate="0"
+		keep="true"
+		height="5%"
+		width="prop"
+		alpha="1.0"
+		visible="true"
+		enabled="true"
+		handcursor="true"
+		crop="0|0|85|85"
+		ondown="set(crop,0|85|85|85);"
+		onup="set(crop,0|0|85|85);"
+		onclick="openPhoto();"
+	/>
+	
+	<layer name="Study"
+		url="Ref/Images/Dome_Study1.jpg"
+		parent="layer[Photo_holder]"
+		edge="center"
+		align="center"
+		current="1"
+		zorder="51"
+		scale="1.0"
+		rotate="0"
+		keep="true"
+		alpha="1.0"
+		visible="true"
+		enabled="false"
+		handcursor="false"
+	/>
+	
+	<layer name="ChoiceBackground"
+		type="container"
+		keep="true"
+		zorder="49"
+		width="110%"
+		height="110%"
+		bgalpha="0.65"
+		bgcolor="0x000000"
+		bgcapture="true"
+		visible="false"
+		handcursor="false"
+		align="center"
+		onclick="set(visible,false);set(layer[Choice_holder].visible,false);"
+	/>
+	
+	<layer name="Choice_holder"
+		url="Ref/Choice.jpg"
+		scalechildren="true"
+		edge="center"
+		status="0"
+		align="center"
+		zorder="50"
+		keep="true"
+		alpha="1.0"
+		visible="false"
+		enabled="true"
+		handcursor="false"
+		onclick=""
+	/>
+	
+	<layer name="Close_Choice"
+		url="Ref/X.jpg"
+		parent="layer[Choice_holder]"
+		edge="center"
+		align="topright"
+		zorder="53"
+		rotate="0"
+		keep="true"
+		height="5%"
+		width="prop"
+		alpha="1.0"
+		visible="true"
+		enabled="true"
+		handcursor="true"
+		crop="0|0|85|85"
+		ondown="set(crop,0|85|85|85);"
+		onup="set(crop,0|0|85|85);"
+		onclick="set(layer[ChoiceBackground].visible,false);set(layer[Choice_holder].visible,false);"
+	/>
+	
+	<layer name="Choice_3D"
+		url="Ref/3D.jpg"
+		devices="normal"
+		parent="layer[Choice_holder]"
+		edge="center"
+		align="center"
+		zorder="51"
+		keep="true"
+		alpha="1.0"
+		x="280"
+		scale="1.0"
+		visible="true"
+		enabled="true"
+		handcursor="true"
+		onclick="set(layer[Choice_holder].visible,false);set(layer[ChoiceBackground].visible,false);set(plugin[model].visible,true);"
+	/>
+	
+	<layer name="Choice_Images"
+		url="Ref/Images.jpg"
+		parent="layer[Choice_holder]"
+		devices="normal"
+		edge="center"
+		align="center"
+		zorder="51"
+		keep="true"
+		alpha="1.0"
+		x="-280"
+		scale="1.0"
+		visible="true"
+		enabled="true"
+		handcursor="true"
+		onclick="set(layer[Choice_holder].visible,false);set(layer[ChoiceBackground].visible,false);openPhoto();"
+	/>
+	
+	<layer name="Choice_Images"
+		url="Ref/Images.jpg"
+		parent="layer[Choice_holder]"
+		devices="mobile"
+		edge="center"
+		align="center"
+		zorder="51"
+		keep="true"
+		alpha="1.0"
+		x="0"
+		scale="1.0"
+		visible="true"
+		enabled="true"
+		handcursor="true"
+		onclick="set(layer[Choice_holder].visible,false);set(layer[ChoiceBackground].visible,false);openPhoto();"
+	/>
+
+	<!--
+	    For an alternative skin design either change the <skin_settings> values 
+	    from above or optionally include one of the predefined designs from below.
+	    Either by removing the 'xml-if-check' from the particular <include> element
+	    or by adding e.g. initvar:{design:'flat_light'} to the embedpano() call in
+	    the html file:
+	-->
+	<include url="skin/vtourskin_design_glass.xml"       if="design === 'glass'"       />
+	<include url="skin/vtourskin_design_flat.xml"        if="design === 'flat'"        />
+	<include url="skin/vtourskin_design_flat_light.xml"  if="design === 'flat_light'"  />
+	<include url="skin/vtourskin_design_ultra_light.xml" if="design === 'ultra_light'" />
+	<include url="skin/vtourskin_design_117.xml"         if="design === '117'"         />
+
+
+	<!-- startup action - load the first pano/scene -->
+	<action name="startup" autorun="onstart">
+		if(startscene === null OR !scene[get(startscene)], copy(startscene,scene[0].name); );
+		loadscene(get(startscene), null, MERGE);
+		if(startactions !== null, startactions() );
+		createModel();
+		d_resize();
+		delayedcall(0.5,d_resize(););
+	</action>
+
+
+	
+	<scene name="scene_Main_Theatre" title="Main Theatre" onstart="" thumburl="panos/Main_Theatre.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Main_Theatre.tiles/preview.jpg" />
+
+		<image name="base" zorder="1" type="CUBE" multires="true" tilesize="512">
+			<level tiledimagewidth="7936" tiledimageheight="7936">
+				<cube url="panos/Main_Theatre.tiles/%s/l4/%v/l4_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="3840" tiledimageheight="3840">
+				<cube url="panos/Main_Theatre.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Main_Theatre.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Main_Theatre.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+
+		<!-- place your scene hotspots here -->
+
+		<hotspot name="Overlay_f"
+			url="Ref/Overlay/Main/pano_f.jpg"
+			devices="normal"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="0"
+			atv="0"
+			enabled="false"
+			distorted="true"
+			height="1001"
+			width="1001"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_l"
+			url="Ref/Overlay/Main/pano_l.jpg"
+			devices="normal"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="-90"
+			atv="0"
+			enabled="false"
+			distorted="true"
+			height="1000"
+			width="1000"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_r"
+			url="Ref/Overlay/Main/pano_r.jpg"
+			devices="normal"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="90"
+			atv="0"
+			enabled="false"
+			distorted="true"
+			height="1000"
+			width="1000"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_b"
+			url="Ref/Overlay/Main/pano_b.jpg"
+			devices="normal"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="180"
+			atv="0"
+			enabled="false"
+			distorted="true"
+			height="1001"
+			width="1001"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_u"
+			url="Ref/Overlay/Main/pano_u.jpg"
+			devices="normal"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="0"
+			atv="-90"
+			enabled="false"
+			distorted="true"
+			height="1001"
+			width="1001"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_d"
+			url="Ref/Overlay/Main/pano_d.jpg"
+			devices="normal"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="0"
+			atv="90"
+			enabled="false"
+			distorted="true"
+			height="1001"
+			width="1001"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_f"
+			url="Ref/Overlay/Main/mobile_f.jpg"
+			devices="mobile"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="0"
+			atv="0"
+			enabled="false"
+			distorted="true"
+			height="1001"
+			width="1001"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_l"
+			url="Ref/Overlay/Main/mobile_l.jpg"
+			devices="mobile"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="-90"
+			atv="0"
+			enabled="false"
+			distorted="true"
+			height="1000"
+			width="1000"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_r"
+			url="Ref/Overlay/Main/mobile_r.jpg"
+			devices="mobile"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="90"
+			atv="0"
+			enabled="false"
+			distorted="true"
+			height="1000"
+			width="1000"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_b"
+			url="Ref/Overlay/Main/mobile_b.jpg"
+			devices="mobile"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="180"
+			atv="0"
+			enabled="false"
+			distorted="true"
+			height="1001"
+			width="1001"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_u"
+			url="Ref/Overlay/Main/mobile_u.jpg"
+			devices="mobile"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="0"
+			atv="-90"
+			enabled="false"
+			distorted="true"
+			height="1001"
+			width="1001"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_d"
+			url="Ref/Overlay/Main/mobile_d.jpg"
+			devices="mobile"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="0"
+			atv="90"
+			enabled="false"
+			distorted="true"
+			height="1001"
+			width="1001"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot 	name="Stage"
+					style="custom_hotspot"
+					linkedscene="scene_stage"
+					tooltip=""
+					zorder="3"
+					onover="tween(borderalpha,0.7,0.4);tween(fillalpha,0.3,0.4); copy(layer[skin_tooltip].html, tooltip); set(layer[skin_tooltip].visible, true); tween(layer[skin_tooltip].alpha, 1.0, 0.1); asyncloop(hovering, copy(layer[skin_tooltip].x,mouse.stagex); copy(layer[skin_tooltip].y,mouse.stagey); );"
+					onhover=""
+					onout="tween(borderalpha,0.0,0.4); tween(fillalpha,0.0,0.4);tween(layer[skin_tooltip].alpha, 0.0, 0.1, default, set(layer[skin_tooltip].visible,false), copy(layer[skin_tooltip].x,mouse.stagex); copy(layer[skin_tooltip].y,mouse.stagey); );"
+					onclick="set(layer[lyric].alpha,1.0); set(layer[hp].alpha,0.0); set(layer[Status].height,0);set(layer[Slider].y,0); if(linkedscene, set(enabled,false); skin_hidetooltips(); tween(depth|alpha|oy|rx, 4000|0.0|-50|-60, 0.5, default, loadscene(get(linkedscene),null,get(skin_settings.loadscene_flags),get(skin_settings.loadscene_blend)); skin_updatescroll(); ); );"
+					onloaded="if(linkedscene AND skin_settings.tooltips_hotspots, copy(tooltip,scene[get(linkedscene)].title); );"
+			>
+				<point ath="-22.582" atv="4.684" />
+				<point ath="-22.949" atv="-17.730" />
+				<point ath="-19.015" atv="-18.299" />
+				<point ath="-19.130" atv="-22.173" />
+				<point ath="21.667" atv="-23.060" />
+				<point ath="21.726" atv="-19.276" />
+				<point ath="25.745" atv="-18.806" />
+				<point ath="26.264" atv="3.768" />
+
+		</hotspot>
+		
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="2.537" atv="3.174" linkedscene="scene_stage" />
+		
+		<hotspot 	name="Balcony"
+					style="custom_hotspot"
+					linkedscene="scene_balcony"
+					tooltip=""
+					zorder="3"
+					onover="tween(borderalpha,0.7,0.4);tween(fillalpha,0.3,0.4); copy(layer[skin_tooltip].html, tooltip); set(layer[skin_tooltip].visible, true); tween(layer[skin_tooltip].alpha, 1.0, 0.1); asyncloop(hovering, copy(layer[skin_tooltip].x,mouse.stagex); copy(layer[skin_tooltip].y,mouse.stagey); );"
+					onhover=""
+					onout="tween(borderalpha,0.0,0.4); tween(fillalpha,0.0,0.4);tween(layer[skin_tooltip].alpha, 0.0, 0.1, default, set(layer[skin_tooltip].visible,false), copy(layer[skin_tooltip].x,mouse.stagex); copy(layer[skin_tooltip].y,mouse.stagey); );"
+					onclick="set(layer[lyric].alpha,1.0); set(layer[hp].alpha,0.0); set(layer[Status].height,0);set(layer[Slider].y,0); if(linkedscene, set(enabled,false); skin_hidetooltips(); tween(depth|alpha|oy|rx, 4000|0.0|-50|-60, 0.5, default, loadscene(get(linkedscene),null,get(skin_settings.loadscene_flags),get(skin_settings.loadscene_blend)); skin_updatescroll(); ); );"
+					onloaded="if(linkedscene AND skin_settings.tooltips_hotspots, copy(tooltip,scene[get(linkedscene)].title); );"
+			>
+				<point ath="107.734" atv="-30.065" />
+				<point ath="107.236" atv="-33.390" />
+				<point ath="117.353" atv="-39.425" />
+				<point ath="136.343" atv="-48.449" />
+				<point ath="-176.758" atv="-55.989" />
+				<point ath="-137.168" atv="-49.060" />
+				<point ath="-113.644" atv="-37.947" />
+				<point ath="-103.079" atv="-31.294" />
+				<point ath="-102.991" atv="-27.591" />
+				<point ath="-116.750" atv="-24.931" />
+				<point ath="-127.055" atv="-23.581" />
+				<point ath="-172.372" atv="-32.617" />
+				<point ath="132.877" atv="-25.958" />
+				<point ath="119.792" atv="-27.846" />
+
+		</hotspot>
+		
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-176.394" atv="-46.566" linkedscene="scene_balcony" />
+		
+		<hotspot 	name="Dome Study"
+					style="custom_hotspot"
+					tooltip=""
+					zorder="4"
+					onover="tween(borderalpha,0.7,0.4);tween(fillalpha,0.3,0.4); copy(layer[skin_tooltip].html, tooltip); set(layer[skin_tooltip].visible, true); tween(layer[skin_tooltip].alpha, 1.0, 0.1); asyncloop(hovering, copy(layer[skin_tooltip].x,mouse.stagex); copy(layer[skin_tooltip].y,mouse.stagey); );"
+					onhover=""
+					onout="tween(borderalpha,0.0,0.4); tween(fillalpha,0.0,0.4);tween(layer[skin_tooltip].alpha, 0.0, 0.1, default, set(layer[skin_tooltip].visible,false), copy(layer[skin_tooltip].x,mouse.stagex); copy(layer[skin_tooltip].y,mouse.stagey); );"
+					onclick="set(layer[ChoiceBackground].visible,true);set(layer[Choice_holder].visible,true);"
+					onloaded="txtadd(tooltip,'Dome', ' Study');"
+			>
+				<point ath="-175.203" atv="-68.463" />
+				<point ath="162.061" atv="-68.573" />
+				<point ath="138.805" atv="-68.045" />
+				<point ath="114.697" atv="-66.313" />
+				<point ath="94.948" atv="-65.280" />
+				<point ath="72.747" atv="-65.502" />
+				<point ath="53.534" atv="-66.315" />
+				<point ath="22.289" atv="-67.539" />
+				<point ath="-1.562" atv="-67.432" />
+				<point ath="-26.338" atv="-66.425" />
+				<point ath="-45.315" atv="-64.855" />
+				<point ath="-61.646" atv="-63.326" />
+				<point ath="-76.058" atv="-62.445" />
+				<point ath="-86.850" atv="-62.335" />
+				<point ath="-100.641" atv="-62.838" />
+				<point ath="-110.909" atv="-63.652" />
+				<point ath="-122.676" atv="-64.918" />
+				<point ath="-132.640" atv="-65.955" />
+				<point ath="-144.303" atv="-66.931" />
+				<point ath="-159.236" atv="-67.849" />
+
+		</hotspot>
+		
+	</scene>
+	
+	<scene name="scene_Stage" title="Stage" onstart="" thumburl="panos/Stage.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Stage.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512">
+			<level tiledimagewidth="7936" tiledimageheight="7936">
+				<cube url="panos/Stage.tiles/%s/l4/%v/l4_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="3840" tiledimageheight="3840">
+				<cube url="panos/Stage.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Stage.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Stage.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+
+		<!-- place your scene hotspots here -->
+
+		<hotspot name="Overlay_f"
+			url="Ref/Overlay/Stage/pano_f.jpg"
+			devices="normal"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="0"
+			atv="0"
+			enabled="false"
+			distorted="true"
+			height="1001"
+			width="1001"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_l"
+			url="Ref/Overlay/Stage/pano_l.jpg"
+			devices="normal"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="-90"
+			atv="0"
+			enabled="false"
+			distorted="true"
+			height="1000"
+			width="1000"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_r"
+			url="Ref/Overlay/Stage/pano_r.jpg"
+			devices="normal"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="90"
+			atv="0"
+			enabled="false"
+			distorted="true"
+			height="1000"
+			width="1000"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_b"
+			url="Ref/Overlay/Stage/pano_b.jpg"
+			devices="normal"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="180"
+			atv="0"
+			enabled="false"
+			distorted="true"
+			height="1001"
+			width="1001"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_u"
+			url="Ref/Overlay/Stage/pano_u.jpg"
+			devices="normal"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="0"
+			atv="-90"
+			enabled="false"
+			distorted="true"
+			height="1001"
+			width="1001"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_d"
+			url="Ref/Overlay/Stage/pano_d.jpg"
+			devices="normal"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="0"
+			atv="90"
+			enabled="false"
+			distorted="true"
+			height="1001"
+			width="1001"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_f"
+			url="Ref/Overlay/Stage/mobile_f.jpg"
+			devices="mobile"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="0"
+			atv="0"
+			enabled="false"
+			distorted="true"
+			height="1001"
+			width="1001"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_l"
+			url="Ref/Overlay/Stage/mobile_l.jpg"
+			devices="mobile"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="-90"
+			atv="0"
+			enabled="false"
+			distorted="true"
+			height="1000"
+			width="1000"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_r"
+			url="Ref/Overlay/Stage/mobile_r.jpg"
+			devices="mobile"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="90"
+			atv="0"
+			enabled="false"
+			distorted="true"
+			height="1000"
+			width="1000"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_b"
+			url="Ref/Overlay/Stage/mobile_b.jpg"
+			devices="mobile"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="180"
+			atv="0"
+			enabled="false"
+			distorted="true"
+			height="1001"
+			width="1001"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_u"
+			url="Ref/Overlay/Stage/mobile_u.jpg"
+			devices="mobile"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="0"
+			atv="-90"
+			enabled="false"
+			distorted="true"
+			height="1001"
+			width="1001"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_d"
+			url="Ref/Overlay/Stage/mobile_d.jpg"
+			devices="mobile"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="0"
+			atv="90"
+			enabled="false"
+			distorted="true"
+			height="1001"
+			width="1001"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot 	name="Main Theatre"
+					style="custom_hotspot"
+					linkedscene="scene_main_theatre"
+					tooltip=""
+					zorder="3"
+					onover="tween(borderalpha,0.7,0.4);tween(fillalpha,0.3,0.4); copy(layer[skin_tooltip].html, tooltip); set(layer[skin_tooltip].visible, true); tween(layer[skin_tooltip].alpha, 1.0, 0.1); asyncloop(hovering, copy(layer[skin_tooltip].x,mouse.stagex); copy(layer[skin_tooltip].y,mouse.stagey); );"
+					onhover=""
+					onout="tween(borderalpha,0.0,0.4); tween(fillalpha,0.0,0.4);tween(layer[skin_tooltip].alpha, 0.0, 0.1, default, set(layer[skin_tooltip].visible,false), copy(layer[skin_tooltip].x,mouse.stagex); copy(layer[skin_tooltip].y,mouse.stagey); );"
+					onclick="set(layer[lyric].alpha,1.0); set(layer[hp].alpha,0.0); set(layer[Status].height,0);set(layer[Slider].y,0); if(linkedscene, set(enabled,false); skin_hidetooltips(); tween(depth|alpha|oy|rx, 4000|0.0|-50|-60, 0.5, default, loadscene(get(linkedscene),null,get(skin_settings.loadscene_flags),get(skin_settings.loadscene_blend)); skin_updatescroll(); ); );"
+					onloaded="if(linkedscene AND skin_settings.tooltips_hotspots, copy(tooltip,scene[get(linkedscene)].title); );"
+			>
+				<point ath="-39.762" atv="37.581" />
+				<point ath="-38.184" atv="14.385" />
+				<point ath="-34.487" atv="10.912" />
+				<point ath="-28.971" atv="10.157" />
+				<point ath="-9.730" atv="-0.153" />
+				<point ath="9.946" atv="0.072" />
+				<point ath="28.899" atv="10.772" />
+				<point ath="34.043" atv="11.913" />
+				<point ath="38.780" atv="15.512" />
+				<point ath="39.337" atv="38.163" />
+				<point ath="17.410" atv="43.126" />
+				<point ath="-15.883" atv="42.867" />
+
+		</hotspot>
+		
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="0.869" atv="10.196" linkedscene="scene_main_theatre" />
+		
+		<hotspot 	name="Balcony"
+					style="custom_hotspot"
+					linkedscene="scene_balcony"
+					tooltip=""
+					zorder="3"
+					onover="tween(borderalpha,0.7,0.4);tween(fillalpha,0.3,0.4); copy(layer[skin_tooltip].html, tooltip); set(layer[skin_tooltip].visible, true); tween(layer[skin_tooltip].alpha, 1.0, 0.1); asyncloop(hovering, copy(layer[skin_tooltip].x,mouse.stagex); copy(layer[skin_tooltip].y,mouse.stagey); );"
+					onhover=""
+					onout="tween(borderalpha,0.0,0.4); tween(fillalpha,0.0,0.4);tween(layer[skin_tooltip].alpha, 0.0, 0.1, default, set(layer[skin_tooltip].visible,false), copy(layer[skin_tooltip].x,mouse.stagex); copy(layer[skin_tooltip].y,mouse.stagey); );"
+					onclick="set(layer[lyric].alpha,1.0); set(layer[hp].alpha,0.0); set(layer[Status].height,0);set(layer[Slider].y,0); if(linkedscene, set(enabled,false); skin_hidetooltips(); tween(depth|alpha|oy|rx, 4000|0.0|-50|-60, 0.5, default, loadscene(get(linkedscene),null,get(skin_settings.loadscene_flags),get(skin_settings.loadscene_blend)); skin_updatescroll(); ); );"
+					onloaded="if(linkedscene AND skin_settings.tooltips_hotspots, copy(tooltip,scene[get(linkedscene)].title); );"
+			>
+				<point ath="-29.511" atv="-17.016" />
+				<point ath="-34.580" atv="-17.125" />
+				<point ath="-34.255" atv="-19.812" />
+				<point ath="-32.846" atv="-19.881" />
+				<point ath="-33.207" atv="-26.039" />
+				<point ath="-7.826" atv="-27.037" />
+				<point ath="-7.613" atv="-26.692" />
+				<point ath="8.464" atv="-26.513" />
+				<point ath="8.376" atv="-27.198" />
+				<point ath="33.497" atv="-25.388" />
+				<point ath="33.944" atv="-19.329" />
+				<point ath="34.870" atv="-19.013" />
+				<point ath="34.750" atv="-16.129" />
+				<point ath="19.050" atv="-16.922" />
+				<point ath="9.105" atv="-17.384" />
+				<point ath="-8.715" atv="-17.665" />
+
+		</hotspot>
+		
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="0.321" atv="-20.522" linkedscene="scene_balcony" />
+		
+		<hotspot 	name="Dome Study"
+					style="custom_hotspot"
+					tooltip=""
+					zorder="4"
+					onover="tween(borderalpha,0.7,0.4);tween(fillalpha,0.3,0.4); copy(layer[skin_tooltip].html, tooltip); set(layer[skin_tooltip].visible, true); tween(layer[skin_tooltip].alpha, 1.0, 0.1); asyncloop(hovering, copy(layer[skin_tooltip].x,mouse.stagex); copy(layer[skin_tooltip].y,mouse.stagey); );"
+					onhover=""
+					onout="tween(borderalpha,0.0,0.4); tween(fillalpha,0.0,0.4);tween(layer[skin_tooltip].alpha, 0.0, 0.1, default, set(layer[skin_tooltip].visible,false), copy(layer[skin_tooltip].x,mouse.stagex); copy(layer[skin_tooltip].y,mouse.stagey); );"
+					onclick="set(layer[ChoiceBackground].visible,true);set(layer[Choice_holder].visible,true);"
+					onloaded="txtadd(tooltip,'Dome', ' Study');"
+			>
+				<point ath="-22.845" atv="-51.808" />
+				<point ath="-26.628" atv="-48.511" />
+				<point ath="-27.331" atv="-45.343" />
+				<point ath="-25.312" atv="-41.513" />
+				<point ath="-21.042" atv="-38.462" />
+				<point ath="-12.837" atv="-36.220" />
+				<point ath="-5.830" atv="-34.798" />
+				<point ath="0.564" atv="-34.501" />
+				<point ath="8.953" atv="-34.965" />
+				<point ath="16.248" atv="-36.095" />
+				<point ath="21.759" atv="-37.563" />
+				<point ath="25.886" atv="-39.903" />
+				<point ath="28.390" atv="-43.023" />
+				<point ath="28.345" atv="-46.911" />
+				<point ath="25.535" atv="-50.847" />
+				<point ath="24.307" atv="-49.862" />
+				<point ath="12.823" atv="-51.354" />
+				<point ath="12.538" atv="-53.704" />
+				<point ath="6.082" atv="-54.493" />
+				<point ath="5.826" atv="-52.030" />
+				<point ath="-3.109" atv="-52.167" />
+				<point ath="-3.219" atv="-54.637" />
+				<point ath="-9.503" atv="-54.154" />
+				<point ath="-9.941" atv="-51.813" />
+				<point ath="-21.811" atv="-50.477" />
+
+		</hotspot>
+
+	</scene>
+	
+	<scene name="scene_Balcony" title="Balcony" onstart="" thumburl="panos/Balcony.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="105" maxpixelzoom="2.0" fovmin="70" fovmax="120" limitview="auto" />
+
+		<preview url="panos/Balcony.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512">
+			<level tiledimagewidth="7808" tiledimageheight="7808">
+				<cube url="panos/Balcony.tiles/%s/l4/%v/l4_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="3840" tiledimageheight="3840">
+				<cube url="panos/Balcony.tiles/%s/l3/%v/l3_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/Balcony.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/Balcony.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		
+		<hotspot name="Overlay_f"
+			url="Ref/Overlay/Balcony/pano_f.jpg"
+			devices="normal"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="0"
+			atv="0"
+			enabled="false"
+			distorted="true"
+			height="1001"
+			width="1001"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_l"
+			url="Ref/Overlay/Balcony/pano_l.jpg"
+			devices="normal"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="-90"
+			atv="0"
+			enabled="false"
+			distorted="true"
+			height="1000"
+			width="1000"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_r"
+			url="Ref/Overlay/Balcony/pano_r.jpg"
+			devices="normal"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="90"
+			atv="0"
+			enabled="false"
+			distorted="true"
+			height="1000"
+			width="1000"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_b"
+			url="Ref/Overlay/Balcony/pano_b.jpg"
+			devices="normal"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="180"
+			atv="0"
+			enabled="false"
+			distorted="true"
+			height="1001"
+			width="1001"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_u"
+			url="Ref/Overlay/Balcony/pano_u.jpg"
+			devices="normal"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="0"
+			atv="-90"
+			enabled="false"
+			distorted="true"
+			height="1001"
+			width="1001"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_d"
+			url="Ref/Overlay/Balcony/pano_d.jpg"
+			devices="normal"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="0"
+			atv="90"
+			enabled="false"
+			distorted="true"
+			height="1001"
+			width="1001"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_f"
+			url="Ref/Overlay/Balcony/mobile_f.jpg"
+			devices="mobile"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="0"
+			atv="0"
+			enabled="false"
+			distorted="true"
+			height="1001"
+			width="1001"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_l"
+			url="Ref/Overlay/Balcony/mobile_l.jpg"
+			devices="mobile"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="-90"
+			atv="0"
+			enabled="false"
+			distorted="true"
+			height="1000"
+			width="1000"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_r"
+			url="Ref/Overlay/Balcony/mobile_r.jpg"
+			devices="mobile"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="90"
+			atv="0"
+			enabled="false"
+			distorted="true"
+			height="1000"
+			width="1000"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_b"
+			url="Ref/Overlay/Balcony/mobile_b.jpg"
+			devices="mobile"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="180"
+			atv="0"
+			enabled="false"
+			distorted="true"
+			height="1001"
+			width="1001"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_u"
+			url="Ref/Overlay/Balcony/mobile_u.jpg"
+			devices="mobile"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="0"
+			atv="-90"
+			enabled="false"
+			distorted="true"
+			height="1001"
+			width="1001"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot name="Overlay_d"
+			url="Ref/Overlay/Balcony/mobile_d.jpg"
+			devices="mobile"
+			visible="true"
+			zorder="2"
+			keep="false"
+			alpha="0.0"
+			ath="0"
+			atv="90"
+			enabled="false"
+			distorted="true"
+			height="1001"
+			width="1001"
+			onclick=""
+			onloaded=""
+		/>
+		
+		<hotspot 	name="Main Theatre"
+					style="custom_hotspot"
+					linkedscene="scene_main_theatre"
+					tooltip=""
+					zorder="3"
+					onover="tween(borderalpha,0.7,0.4);tween(fillalpha,0.3,0.4); copy(layer[skin_tooltip].html, tooltip); set(layer[skin_tooltip].visible, true); tween(layer[skin_tooltip].alpha, 1.0, 0.1); asyncloop(hovering, copy(layer[skin_tooltip].x,mouse.stagex); copy(layer[skin_tooltip].y,mouse.stagey); );"
+					onhover=""
+					onout="tween(borderalpha,0.0,0.4); tween(fillalpha,0.0,0.4);tween(layer[skin_tooltip].alpha, 0.0, 0.1, default, set(layer[skin_tooltip].visible,false), copy(layer[skin_tooltip].x,mouse.stagex); copy(layer[skin_tooltip].y,mouse.stagey); );"
+					onclick="set(layer[lyric].alpha,1.0); set(layer[hp].alpha,0.0); set(layer[Status].height,0);set(layer[Slider].y,0); if(linkedscene, set(enabled,false); skin_hidetooltips(); tween(depth|alpha|oy|rx, 4000|0.0|-50|-60, 0.5, default, loadscene(get(linkedscene),null,get(skin_settings.loadscene_flags),get(skin_settings.loadscene_blend)); skin_updatescroll(); ); );"
+					onloaded="if(linkedscene AND skin_settings.tooltips_hotspots, copy(tooltip,scene[get(linkedscene)].title); );"
+			>
+				<point ath="-27.995" atv="44.624" />
+				<point ath="-23.936" atv="37.485" />
+				<point ath="-7.632" atv="31.773" />
+				<point ath="8.029" atv="31.697" />
+				<point ath="24.679" atv="37.982" />
+				<point ath="28.418" atv="45.380" />
+
+		</hotspot>
+		
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="1.286" atv="43.555" linkedscene="scene_main_theatre" />
+		
+		<hotspot 	name="Stage"
+					style="custom_hotspot"
+					linkedscene="scene_stage"
+					tooltip=""
+					zorder="3"
+					onover="tween(borderalpha,0.7,0.4);tween(fillalpha,0.3,0.4); copy(layer[skin_tooltip].html, tooltip); set(layer[skin_tooltip].visible, true); tween(layer[skin_tooltip].alpha, 1.0, 0.1); asyncloop(hovering, copy(layer[skin_tooltip].x,mouse.stagex); copy(layer[skin_tooltip].y,mouse.stagey); );"
+					onhover=""
+					onout="tween(borderalpha,0.0,0.4); tween(fillalpha,0.0,0.4);tween(layer[skin_tooltip].alpha, 0.0, 0.1, default, set(layer[skin_tooltip].visible,false), copy(layer[skin_tooltip].x,mouse.stagex); copy(layer[skin_tooltip].y,mouse.stagey); );"
+					onclick="set(layer[lyric].alpha,1.0); set(layer[hp].alpha,0.0); set(layer[Status].height,0);set(layer[Slider].y,0); if(linkedscene, set(enabled,false); skin_hidetooltips(); tween(depth|alpha|oy|rx, 4000|0.0|-50|-60, 0.5, default, loadscene(get(linkedscene),null,get(skin_settings.loadscene_flags),get(skin_settings.loadscene_blend)); skin_updatescroll(); ); );"
+					onloaded="if(linkedscene AND skin_settings.tooltips_hotspots, copy(tooltip,scene[get(linkedscene)].title); );"
+			>
+				<point ath="-18.121" atv="24.147" />
+				<point ath="-17.899" atv="8.602" />
+				<point ath="-14.939" atv="8.487" />
+				<point ath="-14.870" atv="5.297" />
+				<point ath="14.711" atv="5.474" />
+				<point ath="14.801" atv="8.468" />
+				<point ath="17.825" atv="8.392" />
+				<point ath="17.944" atv="24.165" />
+
+		</hotspot>
+		
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="0.191" atv="25.178" linkedscene="scene_stage" />
+		
+		<hotspot 	name="Dome Study"
+					style="custom_hotspot"
+					tooltip=""
+					zorder="4"
+					onover="tween(borderalpha,0.7,0.4);tween(fillalpha,0.3,0.4); copy(layer[skin_tooltip].html, tooltip); set(layer[skin_tooltip].visible, true); tween(layer[skin_tooltip].alpha, 1.0, 0.1); asyncloop(hovering, copy(layer[skin_tooltip].x,mouse.stagex); copy(layer[skin_tooltip].y,mouse.stagey); );"
+					onhover=""
+					onout="tween(borderalpha,0.0,0.4); tween(fillalpha,0.0,0.4);tween(layer[skin_tooltip].alpha, 0.0, 0.1, default, set(layer[skin_tooltip].visible,false), copy(layer[skin_tooltip].x,mouse.stagex); copy(layer[skin_tooltip].y,mouse.stagey); );"
+					onclick="set(layer[ChoiceBackground].visible,true);set(layer[Choice_holder].visible,true);"
+					onloaded="txtadd(tooltip,'Dome', ' Study');"
+			>
+				<point ath="3.833" atv="-81.112" />
+				<point ath="46.879" atv="-76.348" />
+				<point ath="64.270" atv="-59.363" />
+				<point ath="62.952" atv="-47.156" />
+				<point ath="59.822" atv="-39.043" />
+				<point ath="55.529" atv="-34.070" />
+				<point ath="46.034" atv="-29.127" />
+				<point ath="34.565" atv="-25.882" />
+				<point ath="24.157" atv="-24.553" />
+				<point ath="13.226" atv="-24.034" />
+				<point ath="0.549" atv="-23.671" />
+				<point ath="-10.751" atv="-24.039" />
+				<point ath="-22.887" atv="-24.563" />
+				<point ath="-33.692" atv="-25.939" />
+				<point ath="-41.346" atv="-27.728" />
+				<point ath="-46.940" atv="-29.344" />
+				<point ath="-56.308" atv="-35.198" />
+				<point ath="-61.895" atv="-43.371" />
+				<point ath="-63.613" atv="-59.752" />
+				<point ath="-50.440" atv="-74.653" />
+
+		</hotspot>
+
+	</scene>
+
+
+
+</krpano>
